@@ -1,7 +1,10 @@
 <template>
-  <nav class="bg-black py-2 h-28 sm:h-14 md:h-14" style="height: 10vh;">
-    <button class="text-white hover:bg-white hover:text-black px-4 m-2 ml-6" @click="showDrawer = true" :style="buttonStyle">
-      Menu
+  <nav class="bg-black py-2" style="height: 10vh;">
+    <button class="menu-button" @click="showDrawer = true" :style="buttonStyle" v-if="isLargeScreen">Menu</button>
+    <button class="hamburger-button" @click="showDrawer = true" :style="buttonStyle" v-else>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 12h18M3 6h18M3 18h18" />
+      </svg>
     </button>
     <div class="drawer" v-if="showDrawer" :style="drawerStyle">
       <div class="drawer-buttons" :class="{'flex-col': isSmallScreen, 'flex-row': isLargeScreen}">
@@ -28,12 +31,13 @@ export default defineComponent({
     });
 
     const buttonStyle = computed(() => {
-      if (screenWidth.value >= 768) {
-        return { height: '6vh' };
-      } else {
-        return { height: '16vh' };
-      }
-    });
+  if (screenWidth.value >= 768) {
+    return { height: '6vh', margin: '1rem' };
+  } else {
+    return { height: '16vh', margin: '1rem' };
+  }
+});
+
 
     const drawerStyle = computed(() => {
       if (screenWidth.value >= 992) {
@@ -62,6 +66,14 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
+@media screen and (min-width: 768px) {
+  .hamburger-button {
+    padding: 0.75rem;
+    top: 0rem;
+    right: 0.75rem;
+  }
+}
 .close-button {
   margin: 1rem;
   padding: 0.5rem 0.5rem;
@@ -88,6 +100,7 @@ button {
 button:hover {
   background-color: White;
   color: black;
+  padding: 0.5rem;
   transition: background-color 1.6s ease, color 1.6s ease;
 }
 
@@ -112,7 +125,9 @@ button:hover {
   z-index: 999;
   animation-duration: 3.2s;
   animation-timing-function: ease;
+  bottom: 0;
 }
+
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .drawer-buttons {
@@ -147,6 +162,14 @@ button:hover {
 }
 
 @media screen and (max-width: 991px) {
+  .hamburger-button {
+  margin-top: 12%;
+  background-color: transparent;
+  padding: 0.5rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
   .drawer {
     background-color: black;
     width: 100vw;
