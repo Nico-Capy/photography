@@ -1,30 +1,25 @@
 <template>
-  <div>
-    <div class="hero bg-black h-100">
-      <div class="container h-screen flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row text-center sm:justify-center md:justify-center lg:justify-center">
-        <h1 class="text-4xl sm:3xl md:4xl lg:5xl xl:6xl 2xl:7xl font-bold text-white drop-shadow-xl sm:mx-0 p-3">Nicola Corradini</h1>
-        <h2 class="tracking-widest text-2xl sm:2xl md:2xl lg:3xl xl:3xl 2xl:4xl text-gray-300 drop-shadow-xl mt-0 indent-2 p-3">| Photographer</h2>
-      </div>
-    </div>
+  <div class="flex flex-row justify-center h-screen" role="banner" aria-label="Header">
+    <h1 class="text-4xl font-bold text-white" role="heading" aria-level="1">Nicola Corradini</h1>
+    <h2 class="text-2xl text-gray-300 indent-2" role="heading" aria-level="2">| Photography</h2>
+  </div>
+  <div class="flex flex-col items-center" role="img" aria-label="Pendjari Elephant">
+    <img src="../assets/preview/preview3.jpg" alt="Pendjari Elephant" class="w-2/3 h-full"/>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import Footer from '../components/footer.vue';
-
-export default defineComponent({
-  components: {
-    Footer,
-  },
-});
-</script>
+<script lang="ts"></script>
 
 <style>
-h1, h2 {
-  font-family: 'Avenir', sans-serif;
-}
-.drop-shadow-xl {
-  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.45), 0px 0px 10px rgba(255, 255, 255, 0.45);
-}
+  body {
+    background-color: black;
+  }
+
+  h1, h2 {
+    font-family: 'Avenir', sans-serif;
+  }
+
+  .drop-shadow-xl {
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.45), 0px 0px 10px rgba(255, 255, 255, 0.45);
+  }
 </style>

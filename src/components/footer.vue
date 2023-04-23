@@ -1,5 +1,5 @@
 <template>
-  <footer class="text-center py-4 w-screen" :style="{ backgroundColor: backgroundColor }">
+  <footer class="text-center py-4 w-screen drop-shadow-xl" :style="{ backgroundColor: backgroundColor }">
     <p style="color: white">© Nicola Corradini | Photographer, {{ currentYear }}</p>
     <font-awesome-icon
       :icon="faJediOrder"
@@ -42,5 +42,8 @@ footer {
   bottom: 0;
   left: 0;
   font-family: 'Avenir', sans-serif;
+}
+.drop-shadow-xl {
+  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.45), 0px 0px 10px rgba(255, 255, 255, 0.45);
 }
 </style>

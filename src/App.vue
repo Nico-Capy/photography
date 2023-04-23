@@ -1,11 +1,10 @@
 <template>
-  <div>
-    <Navbar />
-    <router-view />
-    <Footer />
+  <div role="main">
+    <Navbar aria-label="Navigation" />
+    <router-view aria-label="Page content" />
+    <Footer aria-label="Footer" />
   </div>
 </template>
-
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Navbar from '../src/components/navbar.vue'
@@ -20,7 +19,6 @@ export default defineComponent({
   },
 })
 </script>
-
 <style>
 footer {
   position: fixed;
