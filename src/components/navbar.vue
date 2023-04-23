@@ -1,6 +1,6 @@
 <template>
   <nav class="bg-black py-2">
-    <button class="text-white hover:bg-white hover:text-black px-1 py-1 m-3 p-3 ml-6" @click="showDrawer = true" :style="buttonStyle">
+    <button class="text-white hover:bg-white hover:text-black px-1 py-1 m-2 ml-6" @click="showDrawer = true" :style="buttonStyle">
       Menu
     </button>
     <div class="drawer" v-if="showDrawer" :style="drawerStyle">
@@ -82,7 +82,7 @@ button:hover {
 }
 
 .drawer button {
-  margin: 1rem;
+  margin: 0.5rem; /* Updated margin */
   padding: 0.5rem 1rem;
   font-size: 1rem;
 }
@@ -130,7 +130,11 @@ button:hover {
     height: 42vh;
     top: 0;
     left: 0;
-    animation-name: slideFromTop;
+    animation-name: slideFromLeft;
+  }
+
+  .drawer-buttons {
+    margin-right: 0.1rem;
   }
 }
 
