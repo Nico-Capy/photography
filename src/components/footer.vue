@@ -1,9 +1,9 @@
 <template>
   <footer class="text-center py-4 w-screen" :style="{ backgroundColor: backgroundColor }">
-    <p :style="{ color: textColor }">© Nicola Corradini | Photographer, {{ currentYear }}</p>
+    <p style="color: white">© Nicola Corradini | Photographer, {{ currentYear }}</p>
     <font-awesome-icon
       :icon="faJediOrder"
-      style="color: #000000; cursor: pointer; height: 3vh;"
+      style="color: white; cursor: pointer; height: 3vh;"
       @click="redirectToVideo"
     />
   </footer>
@@ -21,7 +21,7 @@ export default defineComponent({
   data() {
     return {
       currentYear: new Date().getFullYear(),
-      backgroundColor: "transparent",
+      backgroundColor: "black",
     };
   },
   methods: {
@@ -33,26 +33,12 @@ export default defineComponent({
     faJediOrder() {
       return faJediOrder;
     },
-    textColor() {
-      if (this.backgroundColor === "black") {
-        return "white";
-      } else {
-        return "black";
-      }
-    },
-    iconColor() {
-      if (this.backgroundColor === "black") {
-        return "white";
-      } else {
-        return "black";
-      }
-    },
   },
 });
 </script>
 <style scoped>
 footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   font-family: 'Avenir', sans-serif;
