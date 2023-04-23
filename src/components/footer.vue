@@ -1,49 +1,64 @@
 <template>
-    <footer class="text-center py-4 text-white w-screen">
-      <p>© Nicola Corradini | Photographer, {{ currentYear }}</p>
-      <font-awesome-icon
-        :icon="faRebel"
-        style="color: #ffffff; cursor: pointer;"
-        @click="redirectToVideo"
-      />
-    </footer>
-  </template>
-  
-  <script lang="ts">
-  import { defineComponent } from "vue";
-  import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-  import { faRebel } from "@fortawesome/free-brands-svg-icons";
-  
-  export default defineComponent({
-    name: "Footer",
-    components: {
-      FontAwesomeIcon,
+  <footer class="text-center py-4 w-screen" :style="{ backgroundColor: backgroundColor }">
+    <p :style="{ color: textColor }">© Nicola Corradini | Photographer, {{ currentYear }}</p>
+    <font-awesome-icon
+      :icon="faRebel"
+      :style="{ color: iconColor, cursor: 'pointer' }"
+      @click="redirectToVideo"
+    />
+  </footer>
+</template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faRebel } from "@fortawesome/free-brands-svg-icons";
+
+export default defineComponent({
+  name: "Footer",
+  components: {
+    FontAwesomeIcon,
+  },
+  data() {
+    return {
+      currentYear: new Date().getFullYear(),
+      backgroundColor: "transparent", // change this to the background color of your footer
+    };
+  },
+  methods: {
+    redirectToVideo() {
+      window.open("https://www.youtube.com/watch?v=bWXazVhlyxQ", "_blank");
     },
-    data() {
-      return {
-        currentYear: new Date().getFullYear(),
-      };
+  },
+  computed: {
+    faRebel() {
+      return faRebel;
     },
-    methods: {
-      redirectToVideo() {
-        window.open("https://www.youtube.com/watch?v=bWXazVhlyxQ", "_blank");
-      },
+    textColor() {
+      if (this.backgroundColor === "black") {
+        return "white";
+      } else {
+        return "black";
+      }
     },
-    computed: {
-      faRebel() {
-        return faRebel;
-      },
+    iconColor() {
+      if (this.backgroundColor === "black") {
+        return "white";
+      } else {
+        return "black";
+      }
     },
-  });
-  </script>
-  
-  <style scoped>
-  footer {
-    background-color: transparent !important;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    font-family: 'Avenir', sans-serif;
-  }
-  </style>
-  
+  },
+});
+</script>
+
+<style scoped>
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-family: 'Avenir', sans-serif;
+}
+
+/* add your footer background color here */
+</style>
