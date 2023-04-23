@@ -2,17 +2,16 @@
   <footer class="text-center py-4 w-screen" :style="{ backgroundColor: backgroundColor }">
     <p :style="{ color: textColor }">© Nicola Corradini | Photographer, {{ currentYear }}</p>
     <font-awesome-icon
-      :icon="faRebel"
-      :style="{ color: iconColor, cursor: 'pointer' }"
+      :icon="faJediOrder"
+      style="color: #000000; cursor: pointer; height: 3vh;"
       @click="redirectToVideo"
     />
   </footer>
 </template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faRebel } from "@fortawesome/free-brands-svg-icons";
+import { faJediOrder } from "@fortawesome/free-brands-svg-icons";
 
 export default defineComponent({
   name: "Footer",
@@ -22,17 +21,17 @@ export default defineComponent({
   data() {
     return {
       currentYear: new Date().getFullYear(),
-      backgroundColor: "transparent", // change this to the background color of your footer
+      backgroundColor: "transparent",
     };
   },
   methods: {
     redirectToVideo() {
-      window.open("https://www.youtube.com/watch?v=bWXazVhlyxQ", "_blank");
+      window.open("https://www.youtube.com/watch?v=usQTt-y2Idk", "_blank");
     },
   },
   computed: {
-    faRebel() {
-      return faRebel;
+    faJediOrder() {
+      return faJediOrder;
     },
     textColor() {
       if (this.backgroundColor === "black") {
@@ -51,7 +50,6 @@ export default defineComponent({
   },
 });
 </script>
-
 <style scoped>
 footer {
   position: absolute;
@@ -59,6 +57,4 @@ footer {
   left: 0;
   font-family: 'Avenir', sans-serif;
 }
-
-/* add your footer background color here */
 </style>
