@@ -1,16 +1,18 @@
 <template>
   <div class="flex flex-col items-center drop-shadow-xl" role="banner" aria-label="Header">
-    <div class="flex flex-row sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row items-center">
-      <h1 class="text-2xl sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white" role="heading" aria-level="1">Nicola Corradini</h1>
-      <h2 class="text-lg text-gray-300" role="heading" aria-level="2">| Photography</h2>
+    <div class="flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row items-center pb-6">
+      <h1 class="text-4xl sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-white" role="heading" aria-level="1">Nicola Corradini</h1>
+      <h2 class="text-2xl text-gray-200 indent-6" role="heading" aria-level="2">| Photography</h2>
     </div>
-    <div class="flex items-center justify-center mt-6">
+    <div class="flex items-center justify-center">
       <explore-button />
     </div>
   </div>
-  <div class="w-11/12 m-4 flex items-center justify-center drop-shadow-lg">
-      <img src="../assets/preview/preview3.jpg" alt="Pendjari elephant" class="h-2/3 sm:h-1/3 md:h-1/3">
+  <div class="h-screen flex justify-center">
+    <div class="bg-red-800 w-screen p-3 flex justify-center sm:items-center md:items-center lg:items-center xl:items-center 2xl:items-center drop-shadow-lg" style="height: 63vh;">
+      <img src="../assets/preview/preview3.jpg" alt="Pendjari elephant" class="h-fit sm:h-fit md:h-fit lg:h-full xl:h-full 2xl:h-full">
     </div>
+  </div>
 </template>
 
 <script lang="ts">
