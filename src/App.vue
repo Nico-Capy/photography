@@ -17,6 +17,7 @@ export default defineComponent({
   },
 })
 </script>
+
 <style>
 footer {
   position: fixed;
