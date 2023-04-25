@@ -7,7 +7,7 @@
   </div>
   <div class="flex justify-center bg-transparent h-auto">
     <div class="bg-transparent w-screen p-3 flex justify-center sm:items-center md:items-center lg:items-center xl:items-center 2xl:items-center drop-shadow-lg" style="height: 63vh; display: flex; align-items: center; justify-content: center;">
-      <img :src="currentImageSrc" alt="Preview image" :class="imageClass" class="h-fit sm:h-fit md:h-fit lg:h-full xl:h-full 2xl:h-full">
+      <img :src="currentImageSrc" alt="Preview image" class="h-fit sm:h-fit md:h-fit lg:h-full xl:h-full 2xl:h-full">
     </div>
   </div>
 </template>
@@ -39,15 +39,9 @@ direction: 'right'
 };
 },
 computed: {
-currentImageSrc(): string {
-  return `src/assets/preview/${this.imageSources[this.currentImageIndex]}`;
-
-},
-imageClass(): object {
-return {
-// empty object as fading is removed
-};
-}
+  currentImageSrc(): string {
+    return `src/assets/preview/${this.imageSources[this.currentImageIndex]}`;
+  },
 },
 created() {
 setInterval(() => {
@@ -56,6 +50,7 @@ this.currentImageIndex = (this.currentImageIndex + 1) % this.imageSources.length
 }
 });
 </script>
+
 <style>
   body {
     background-color: black;
