@@ -18,7 +18,7 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   data() {
     return {
-      currentImageIndex: 0, // start with the first image
+      currentImageIndex: 0,
       imageSources: [
         'preview1.jpg',
         'preview2.jpg',
