@@ -13,52 +13,49 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-
 export default defineComponent({
-  data() {
-    return {
-      currentImageIndex: 0, // start with the first image
-      imageSources: [
-        'preview1.jpg',
-        'preview2.jpg',
-        'preview3.jpg',
-        'preview4.jpg',
-        'preview5.jpg',
-        'preview6.jpg',
-        'preview7.jpg',
-        'preview8.jpg',
-        'preview9.jpg',
-        'preview10.jpg',
-        'preview11.jpg'
-      ],
-      direction: 'right'
-    };
-  },
-  computed: {
-    currentImageSrc(): string {
-      return `/src/assets/preview/${this.imageSources[this.currentImageIndex]}`;
-    },
-    imageClass(): object {
-      return {
-        'slide-in-left': this.direction === 'left',
-        'slide-in-right': this.direction === 'right',
-        'slide-out-left': this.direction === 'right',
-        'slide-out-right': this.direction === 'left'
-      };
-    }
-  },
-  created() {
-    setInterval(() => {
-      this.direction = 'left'; // slide the image to the left
-      setTimeout(() => {
-        this.currentImageIndex = (this.currentImageIndex + 1) % this.imageSources.length;
-        this.direction = 'right'; // slide the next image to the right
-      }, 1600);
-    }, 4200);
-  }
+data() {
+return {
+currentImageIndex: 0, // start with the first image
+imageSources: [
+'preview1.jpg',
+'preview2.jpg',
+'preview3.jpg',
+'preview4.jpg',
+'preview5.jpg',
+'preview6.jpg',
+'preview7.jpg',
+'preview8.jpg',
+'preview9.jpg',
+'preview10.jpg',
+'preview11.jpg',
+'preview12.jpg',
+'preview13.jpg',
+'preview14.jpg',
+'preview15.jpg',
+'preview16.jpg',
+],
+direction: 'right'
+};
+},
+computed: {
+currentImageSrc(): string {
+  return `src/assets/preview/${this.imageSources[this.currentImageIndex]}`;
+
+},
+imageClass(): object {
+return {
+// empty object as fading is removed
+};
+}
+},
+created() {
+setInterval(() => {
+this.currentImageIndex = (this.currentImageIndex + 1) % this.imageSources.length;
+}, 5132);
+}
 });
 </script>
-
 <style>
   body {
     background-color: black;
