@@ -1,13 +1,11 @@
 <template>
-  <div role="main">
-    <Navbar aria-label="Navigation" />
-    <router-view aria-label="Page content" />
-    <Footer aria-label="Footer" />
-  </div>
+  <Navbar aria-label="Navigation" />
+  <router-view aria-label="Page content" />
+  <Footer aria-label="Footer" />
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
-import Navbar from '../src/components/navbar.vue'
+import Navbar from './components/navbar.vue'
 import Footer from '../src/components/footer.vue'
 import Home from "../src/view/home.vue"
 
