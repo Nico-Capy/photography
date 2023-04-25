@@ -1,6 +1,6 @@
 <template>
-  <footer class="text-center py-4 w-screen drop-shadow-xl" :style="{ backgroundColor: backgroundColor }">
-    <p style="color: white">© Nicola Corradini | Photographer, {{ currentYear }}</p>
+  <footer class="flex flex-row p-1 bg-transparent text-center w-screen drop-shadow-xl align-center justify-center" :style="{ backgroundColor: backgroundColor }">
+    <p class="px-4 py-1" style="color: white">© Nicola Corradini | Photographer, {{ currentYear }}</p>
     <font-awesome-icon
       :icon="faJediOrder"
       style="color: white; cursor: pointer; height: 3vh;"
