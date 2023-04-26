@@ -145,7 +145,7 @@
           (this.selectedPhoto + this.photos.length - 1) %
           this.photos.length;
       },
-      handleKeyDown(event) {
+      handleKeyDown(event: { key: string; }) {
         if (event.key === "ArrowRight") {
           this.showNextPhoto();
         } else if (event.key === "ArrowLeft") {
