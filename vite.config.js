@@ -1,12 +1,13 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import image from '@vitejs/plugin-image'
+import image from 'vite-image'
 
-// https://vitejs.dev/config/
 export default defineConfig({
+  plugins: [
+    vue(),
+    image()
+  ],
   server: {
-    port: 3020,
-  },
-  plugins: [vue(),
-    image()],
+    port: 3020
+  }
 })
