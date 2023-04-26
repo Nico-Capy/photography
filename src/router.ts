@@ -7,7 +7,7 @@ import Studio from './view/studio.vue';
 import Drone from './view/drone.vue';
 import Infrared from './view/infrared.vue';
 import Pinhole from './view/pinhole.vue';
-import Others from './view/others.vue';
+import Others from '../src/view/others.vue';
 
 const routes = [
   { path: '/', component: Home },

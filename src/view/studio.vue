@@ -1,175 +1,149 @@
 <template>
-    <div class="flex items-center p-3">
-      <h1 class="text-white text-4xl drop-shadow-xl mx-auto">Galleries</h1>
-    </div>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      <div v-for="(photo, index) in photos" :key="index">
-        <img
-          v-lazy="require(`@/assets/portraits/portrait${index + 1 < 10 ? `0${index + 1}` : index + 1}.jpg`)"
-          alt="photo"
-          @click="showPhoto(index)"
-          class="cursor-pointer hover:opacity-75 transition duration-300 ease-in-out"
-          v-lazy:scroll="1"
-        />
+  <div class="flex flex-col items-center justify-center">
+    <h2 class="text-3xl text-gray-200 drop-shadow-xl m-6" role="heading" aria-level="2">Portraits</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
+      <div v-for="(photo, index) in photos" :key="index" class="relative">
+        <img :src="photo.src" class="mx-auto w-full h-full object-cover shadow-md" @click="showPhoto(index)" />
       </div>
-      <div v-if="showModal" class="fixed inset-0 z-50 flex items-center justify-center">
-  <div
-    class="absolute inset-0 bg-black opacity-50"
-    @click="closeModal"
-  ></div>
-  <div class="bg-white w-full max-w-lg p-3 rounded-lg shadow-lg">
-    <img
-      v-swipe:left="nextPhoto"
-      v-swipe:right="previousPhoto"
-      :src="require(`@/assets/portraits/portrait${currentIndex + 1 < 10 ? `0${currentIndex + 1}` : currentIndex + 1}.jpg`)"
-      alt="photo"
-      class="max-h-96 mx-auto"
-    />
-
-    <div class="flex justify-between mt-2">
-      <button
-        @click="previousPhoto"
-        :disabled="currentIndex === 0"
-        class="bg-gray-900 hover:bg-gray-800 text-white px-2 py-1 rounded focus:outline-none"
-      >
-        Previous
-      </button>
-      <button
-        @click="closeModal"
-        class="bg-gray-900 hover:bg-gray-800 text-white px-2 py-1 rounded focus:outline-none"
-      >
-        Close
-      </button>
-      <button
-        @click="nextPhoto"
-        :disabled="currentIndex === photos.length - 1"
-        class="bg-gray-900 hover:bg-gray-800 text-white px-2 py-1 rounded focus:outline-none"
-      >
-        Next
-      </button>
+    </div>
+    <div v-if="showModal" class="fixed bg-black/50 inset-0 flex items-center justify-center z-50">
+      <div class="fixed inset-0"></div>
+      <div class="bg-transparent p-2 w-11/12">
+        <div class="absolute top-0 right-0 m-4 mt-0">
+          <button @click="showModal = false" class="text-4xl text-white hover:text-black bg-transparent hover:bg-white cursor-pointer m-3 mt-5 p-2">&times;</button>
+        </div>
+        <div class="relative">
+          <button
+            class="absolute top-1/2 left-0 transform -translate-y-1/2 text-white hover:text-black bg-black hover:bg-white cursor-pointer m-1 p-2 text-2xl"
+            @click="showPreviousPhoto()"
+          >
+            &larr;
+          </button>
+          <img :src="photos[selectedPhoto].src" class="w-11/12 h-fill object-contain mx-auto" />
+          <button
+            class="absolute top-1/2 right-0 transform -translate-y-1/2 text-white hover:text-black bg-black hover:bg-white cursor-pointer m-1 p-2 text-2xl"
+            @click="showNextPhoto()"
+          >
+            &rarr;
+          </button>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-</div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
-import VueLazyload from 'vue-lazyload';
-import VueTouch from 'vue-touch';
+import { defineComponent } from "vue";
+
+import portrait01 from "../assets/portraits/portrait01.jpg";
+import portrait02 from "../assets/portraits/portrait02.jpg";
+import portrait03 from "../assets/portraits/portrait03.jpg";
+import portrait04 from "../assets/portraits/portrait04.jpg";
+import portrait05 from "../assets/portraits/portrait05.jpg";
+import portrait06 from "../assets/portraits/portrait06.jpg";
+import portrait07 from "../assets/portraits/portrait07.jpg";
+import portrait08 from "../assets/portraits/portrait08.jpg";
+import portrait09 from "../assets/portraits/portrait09.jpg";
+import portrait10 from "../assets/portraits/portrait10.jpg";
+import portrait11 from "../assets/portraits/portrait11.jpg";
+import portrait12 from "../assets/portraits/portrait12.jpg";
+import portrait13 from "../assets/portraits/portrait13.jpg";
+import portrait14 from "../assets/portraits/portrait14.jpg";
+import portrait15 from "../assets/portraits/portrait15.jpg";
+import portrait16 from "../assets/portraits/portrait16.jpg";
+import portrait17 from "../assets/portraits/portrait17.jpg";
+import portrait18 from "../assets/portraits/portrait18.jpg";
+import portrait19 from "../assets/portraits/portrait19.jpg";
+import portrait20 from "../assets/portraits/portrait20.jpg";
+import portrait21 from "../assets/portraits/portrait21.jpg";
+import portrait22 from "../assets/portraits/portrait22.jpg";
+import portrait23 from "../assets/portraits/portrait23.jpg";
+import portrait24 from "../assets/portraits/portrait24.jpg";
+import portrait25 from "../assets/portraits/portrait25.jpg";
+import portrait26 from "../assets/portraits/portrait26.jpg";
+import portrait27 from "../assets/portraits/portrait27.jpg";
+import portrait28 from "../assets/portraits/portrait28.jpg";
+import portrait29 from "../assets/portraits/portrait29.jpg";
+import portrait30 from "../assets/portraits/portrait30.jpg";
+import portrait31 from "../assets/portraits/portrait31.jpg";
+import portrait32 from "../assets/portraits/portrait32.jpg";
+import portrait33 from "../assets/portraits/portrait33.jpg";
+import portrait34 from "../assets/portraits/portrait34.jpg";
+import portrait35 from "../assets/portraits/portrait35.jpg";
+import portrait36 from "../assets/portraits/portrait36.jpg";
+import portrait37 from "../assets/portraits/portrait37.jpg";
+import portrait38 from "../assets/portraits/portrait38.jpg";
+import portrait39 from "../assets/portraits/portrait39.jpg";
+import portrait40 from "../assets/portraits/portrait40.jpg";
+import portrait41 from "../assets/portraits/portrait41.jpg";
 
 export default defineComponent({
-  name: 'Gallery',
-  setup() {
-    const state = reactive({
-      photos: [...Array(41)].map((_, i) => i),
-      showModal: false,
-      currentIndex: 0,
-    });
-
-    const showPhoto = (index: number) => {
-      state.currentIndex = index;
-      state.showModal = true;
-    };
-
-    const closeModal = () => {
-      state.showModal = false;
-    };
-
-    const previousPhoto = () => {
-      state.currentIndex--;
-    };
-
-    const nextPhoto = () => {
-      state.currentIndex++;
-    };
-
+  name: "PhotoGallery",
+  data() {
     return {
-      ...state,
-      showPhoto,
-      closeModal,
-      previousPhoto,
-      nextPhoto,
+      showModal: false,
+      selectedPhoto: 0,
+      photos: [
+        { src: portrait01 },
+        { src: portrait02 },
+        { src: portrait03 },
+        { src: portrait04 },
+        { src: portrait05 },
+        { src: portrait06 },
+        { src: portrait07 },
+        { src: portrait08 },
+        { src: portrait09 },
+        { src: portrait10 },
+        { src: portrait11 },
+        { src: portrait12 },
+        { src: portrait13 },
+        { src: portrait14 },
+        { src: portrait15 },
+        { src: portrait16 },
+        { src: portrait17 },
+        { src: portrait18 },
+        { src: portrait19 },
+        { src: portrait20 },
+        { src: portrait20 },
+        { src: portrait21 },
+        { src: portrait22 },
+        { src: portrait23 },
+        { src: portrait24 },
+        { src: portrait25 },
+        { src: portrait26 },
+        { src: portrait27 },
+        { src: portrait28 },
+        { src: portrait29 },
+        { src: portrait30 },
+        { src: portrait31 },
+        { src: portrait32 },
+        { src: portrait33 },
+        { src: portrait34 },
+        { src: portrait35 },
+        { src: portrait36 },
+        { src: portrait37 },
+        { src: portrait38 },
+        { src: portrait39 },
+        { src: portrait40 },
+        { src: portrait41 },
+      ],
     };
   },
-  directives: {
-    touch: VueTouch.directive,
-  },
-  components: {
-    lazyload: VueLazyload,
+  methods: {
+    showNextPhoto() {
+      if (this.selectedPhoto < this.photos.length - 1) {
+        this.selectedPhoto++;
+      }
+    },
+    showPreviousPhoto() {
+      if (this.selectedPhoto > 0) {
+        this.selectedPhoto--;
+      }
+    },
+    showPhoto(index) {
+      this.selectedPhoto = index;
+      this.showModal = true;
+    },
   },
 });
 </script>
-
-<style>
-@import "~vue-touch/dist/vue-touch.css";
-
-</style>
-
-<style>
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-
-  .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.75);
-  }
-
-  .modal-content {
-    position: relative;
-    max-width: 100%;
-    max-height: 100%;
-    width: 800px;
-    height: 600px;
-    background-color: #fff;
-    border-radius: 0;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.75);
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .modal-content img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-  }
-
-  .modal-controls {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .modal-button {
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    outline: none;
-  }
-
-  .modal-button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-</style> 
