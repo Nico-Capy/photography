@@ -2,29 +2,30 @@
   <div class="flex flex-col items-center justify-center">
     <h2 role="heading" aria-level="2" class="text-3xl text-gray-200 drop-shadow-xl m-6">Portraits</h2>
     <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
-      <div v-for="(photo, index) in photos" :key="index" class="relative">
+      <div v-for="(photo, index) in photos" :key="index" class="relative m-2">
         <img :src="photo.src" class="mx-auto w-full h-full object-cover shadow-md" style="height: 100%; width: auto;" @click="showPhoto(index)" aria-label="Open photo {{ index + 1 }}" />
       </div>
     </div>
     <div v-if="showModal" class="fixed bg-black/50 inset-0 flex items-center justify-center z-50 h-screen max-h-90vh">
       <div class="bg-transparent p-2 w-11/12">
-        <div class="absolute top-0 right-0 m-4 mt-0">
-          <button @click="showModal = false" class="text-4xl text-white hover:text-black bg-transparent hover:bg-white cursor-pointer m-3 mt-5 p-2" aria-label="Close">&times;</button>
-        </div>
+        <button
+            @click="showModal = false"
+            class="absolute top-0 right-0 m-4 text-4xl w-fit h-fit text-black hover:text-white bg-white hover:bg-black cursor-pointer p-2 z-10"
+            aria-label="Close">
+            &times;
+          </button>
         <div class="relative">
           <button
             class="absolute top-1/2 left-0 transform -translate-y-1/2 text-white hover:text-black bg-black hover:bg-white cursor-pointer m-1 p-2 text-2xl"
             @click="showPreviousPhoto()"
-            aria-label="Previous photo"
-          >
+            aria-label="Previous photo">
             &larr;
           </button>
           <img :src="photos[selectedPhoto].src" class="object-contain mx-auto" aria-label="Selected photo" style="height: 47rem;" />
           <button
             class="absolute top-1/2 right-0 transform -translate-y-1/2 text-white hover:text-black bg-black hover:bg-white cursor-pointer m-1 p-2 text-2xl"
             @click="showNextPhoto()"
-            aria-label="Next photo"
-          >
+            aria-label="Next photo">
             &rarr;
           </button>
         </div>
@@ -98,7 +99,6 @@
           { src: portrait11 },
           { src: portrait12 },
           { src: portrait13 },
-          { src: portrait14 },
           { src: portrait15 },
           { src: portrait16 },
           { src: portrait17 },
@@ -114,6 +114,7 @@
           { src: portrait26 },
           { src: portrait27 },
           { src: portrait28 },
+          { src: portrait14 },
           { src: portrait29 },
           { src: portrait30 },
           { src: portrait31 },
@@ -160,3 +161,9 @@
     },
   });
 </script>
+
+<style>
+  h2 {
+    font-family: 'Avenir', sans-serif;
+  }
+</style>
