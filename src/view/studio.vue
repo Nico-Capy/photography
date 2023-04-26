@@ -19,7 +19,7 @@
           >
             &larr;
           </button>
-          <img :src="photos[selectedPhoto].src" class="w-11/12 max-h-80vh object-contain mx-auto" aria-label="Selected photo" />
+          <img :src="photos[selectedPhoto].src" class="object-contain mx-auto" aria-label="Selected photo" style="height: 47rem;" />
           <button
             class="absolute top-1/2 right-0 transform -translate-y-1/2 text-white hover:text-black bg-black hover:bg-white cursor-pointer m-1 p-2 text-2xl"
             @click="showNextPhoto()"

@@ -48,7 +48,7 @@ export default defineComponent({
   created() {
     setInterval(() => {
       this.currentImageIndex = (this.currentImageIndex + 1) % this.imageSources.length;
-    }, 5132);
+    }, 4206);
   }
 });
 </script>
