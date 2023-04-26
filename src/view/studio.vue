@@ -3,11 +3,10 @@
     <h2 class="text-3xl text-gray-200 drop-shadow-xl m-6" role="heading" aria-level="2">Portraits</h2>
     <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
       <div v-for="(photo, index) in photos" :key="index" class="relative">
-        <img :src="photo.src" class="mx-auto w-full h-full object-cover shadow-md" @click="showPhoto(index)" />
+        <img :src="photo.src" class="mx-auto w-full h-full object-cover shadow-md" style="height: 100%; width: auto;" @click="showPhoto(index)" />
       </div>
     </div>
     <div v-if="showModal" class="fixed bg-black/50 inset-0 flex items-center justify-center z-50">
-      <div class="fixed inset-0"></div>
       <div class="bg-transparent p-2 w-11/12">
         <div class="absolute top-0 right-0 m-4 mt-0">
           <button @click="showModal = false" class="text-4xl text-white hover:text-black bg-transparent hover:bg-white cursor-pointer m-3 mt-5 p-2">&times;</button>
@@ -19,7 +18,7 @@
           >
             &larr;
           </button>
-          <img :src="photos[selectedPhoto].src" class="w-11/12 h-fill object-contain mx-auto" />
+          <img :src="photos[selectedPhoto].src" class="w-11/12 h-fit object-contain mx-auto" />
           <button
             class="absolute top-1/2 right-0 transform -translate-y-1/2 text-white hover:text-black bg-black hover:bg-white cursor-pointer m-1 p-2 text-2xl"
             @click="showNextPhoto()"
@@ -31,6 +30,7 @@
     </div>
   </div>
 </template>
+
 
 <script lang="ts">
 import { defineComponent } from "vue";
@@ -130,20 +130,32 @@ export default defineComponent({
     };
   },
   methods: {
-    showNextPhoto() {
-      if (this.selectedPhoto < this.photos.length - 1) {
-        this.selectedPhoto++;
-      }
-    },
-    showPreviousPhoto() {
-      if (this.selectedPhoto > 0) {
-        this.selectedPhoto--;
-      }
-    },
     showPhoto(index) {
       this.selectedPhoto = index;
       this.showModal = true;
     },
+    showNextPhoto() {
+      this.selectedPhoto =
+        (this.selectedPhoto + 1) % this.photos.length;
+    },
+    showPreviousPhoto() {
+      this.selectedPhoto =
+        (this.selectedPhoto + this.photos.length - 1) %
+        this.photos.length;
+    },
+    handleKeyDown(event) {
+      if (event.key === "ArrowRight") {
+        this.showNextPhoto();
+      } else if (event.key === "ArrowLeft") {
+        this.showPreviousPhoto();
+      }
+    },
+  },
+  mounted() {
+    document.addEventListener("keydown", this.handleKeyDown);
+  },
+  beforeUnmount() {
+    document.removeEventListener("keydown", this.handleKeyDown);
   },
 });
 </script>
