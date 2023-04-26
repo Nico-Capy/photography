@@ -1,6 +1,6 @@
 <template>
   <footer class="flex flex-row p-1 bg-transparent text-center w-screen drop-shadow-xl align-center justify-center" :style="{ backgroundColor: backgroundColor }">
-    <p class="px-4 py-1" style="color: white">© Nicola Corradini | Photographer, {{ currentYear }}</p>
+    <p class="px-4 py-1" style="color: white">© Nicola Corradini | Photography, {{ currentYear }}</p>
     <font-awesome-icon
       :icon="faJediOrder"
       style="color: white; cursor: pointer; height: 3vh;"
@@ -36,8 +36,10 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped>
 footer {
+  background: transparent;
   position: fixed;
   bottom: 0;
   left: 0;

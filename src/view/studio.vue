@@ -132,7 +132,7 @@
       };
     },
     methods: {
-      showPhoto(index) {
+      showPhoto(index: number) {
         this.selectedPhoto = index;
         this.showModal = true;
       },
@@ -163,7 +163,12 @@
 </script>
 
 <style>
-  h2 {
-    font-family: 'Avenir', sans-serif;
-  }
-</style>
+    h2 {
+      font-family: 'Avenir', sans-serif;
+    }
+
+    .drop-shadow-lg {
+        text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7),
+                     0px 0px 10px rgba(255, 255, 255, 0.7);
+    }
+  </style>
