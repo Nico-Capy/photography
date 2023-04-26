@@ -13,22 +13,22 @@
             <img src="../assets/thumbnails/thumbnail7.jpg" alt="Drone Shot" class="p-4 h-fit"/>
         </router-link>
 
-        <button class="m-2 w-11/12 h-90 text-white hover:text-black bg-transparent hover:bg-white shadow-white">
+        <router-link to='/pinhole' class="m-2 w-11/12 h-90 text-white hover:text-black bg-transparent hover:bg-white shadow-white">
             <h2 class="text-2xl drop-shadow-xl p-3">Pinhole</h2>
             <img src="../assets/thumbnails/thumbnail3.jpg" alt="London By Pinhole" class="p-4 h-fit"/>
-        </button>
+        </router-link>
 
         <router-link to="/infrared" class="m-2 w-11/12 h-90 text-white hover:text-black hover:bg-white shadow-white">
             <h2 class="text-2xl drop-shadow-xl p-3">Infrared</h2>
-            <img src="../assets/thumbnails/thumbnail1.jpg" alt="Pinhole House" class="p-4 h-fit"/>
+            <img src="../assets/thumbnails/thumbnail1.jpg" alt="Infrared Tree" class="p-4 h-fit"/>
         </router-link>
     </div>
 
     <div class="flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row w-11/12 h-11/12 mx-auto my-16 bg-transparent justify-center align-center overflow-scroll">
-        <button class="m-2 w-11/12 h-90 text-white hover:text-black hover:bg-white shadow-white">
+        <router-link to="/animals" class="m-2 w-11/12 h-90 text-white hover:text-black hover:bg-white shadow-white">
             <h2 class="text-2xl drop-shadow-xl p-3">Animals</h2>
             <img src="../assets/thumbnails/thumbnail5.jpg" alt="Meerkat" class="p-4 pt-2" />
-        </button>
+        </router-link>
 
         <router-link to="/street" class="m-2 w-11/12 h-90 text-white hover:text-black hover:bg-white shadow-white">
             <h2 class="text-2xl drop-shadow-xl p-3">Street</h2>
@@ -40,10 +40,10 @@
             <img src="../assets/thumbnails/thumbnail8.jpg" alt='Studio Flower' class='p-2'/>
         </router-link>
 
-        <button class="m-2 w-11/12 h-90 text-white hover:text-black hover:bg-white shadow-white">
+        <router-link to="/others" class="m-2 w-11/12 h-90 text-white hover:text-black hover:bg-white shadow-white">
             <h2 class="text-2xl drop-shadow-xl p-3">Other</h2>
             <img src="../assets/thumbnails/thumbnail2.jpg" alt='Studio Flower' class='p-2'/>
-        </button>
+        </router-link>
     </div>
 </template>
 

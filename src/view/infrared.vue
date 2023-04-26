@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col items-center justify-center">
-      <h2 role="heading" aria-level="2" class="text-3xl text-white drop-shadow-xl m-6">Drone</h2>
+      <h2 role="heading" aria-level="2" class="text-3xl text-white drop-shadow-xl m-6">Infrared</h2>
       <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
         <div v-for="(photo, index) in photos" :key="index" class="relative m-2">
           <img :src="photo.src" class="mx-auto w-full h-full object-cover shadow-md" style="height: 100%; width: auto;" @click="showPhoto(index)" aria-label="Open photo {{ index + 1 }}" />
