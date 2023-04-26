@@ -25,8 +25,8 @@
     </div>
 
     <div class="flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row w-11/12 h-11/12 mx-auto my-16 bg-transparent justify-center align-center overflow-scroll">
-        <router-link to="/animals" class="m-2 w-11/12 h-90 text-white hover:text-black hover:bg-white shadow-white">
-            <h2 class="text-2xl drop-shadow-xl p-3">Animals</h2>
+        <router-link to="/nature" class="m-2 w-11/12 h-90 text-white hover:text-black hover:bg-white shadow-white">
+            <h2 class="text-2xl drop-shadow-xl p-3">Nature</h2>
             <img src="../assets/thumbnails/thumbnail5.jpg" alt="Meerkat" class="p-4 pt-2" />
         </router-link>
 

@@ -8,7 +8,8 @@ import Drone from './view/drone.vue';
 import Infrared from './view/infrared.vue';
 import Pinhole from './view/pinhole.vue';
 import Others from '../src/view/others.vue';
-import Analog from "../src/view/analog.vue"
+import Analog from "../src/view/analog.vue";
+import Nature from "../src/view/animals.vue"
 
 const routes = [
   { path: '/', component: Home },
@@ -21,6 +22,7 @@ const routes = [
   { path: '/pinhole', component: Pinhole },
   { path: '/others', component: Others },
   { path: '/analog', component: Analog },
+  { path: '/nature', component: Nature },
 ]
 
 const router = createRouter({
