@@ -13,6 +13,7 @@ This is a front only web app, fashioned solo. These are the tools I utilized:
 - [Chakra UI](https://chakra-ui.com)
 - [Typescript](https://www.typescriptlang.org)
 - [Vite](https://vitejs.dev)
+- [Font Awesome](https://fontawesome.com)
 
 ## Want a quick preview of some photos and the project?
 
