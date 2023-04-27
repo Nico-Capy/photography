@@ -1,7 +1,7 @@
 <template>
-  <Navbar aria-label="Navigation" />
-  <router-view aria-label="Page content" />
-  <Footer aria-label="Footer" />
+  <Navbar />
+  <router-view />
+  <Footer />
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
@@ -24,5 +24,6 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
+  background: transparent;
 }
 </style>
