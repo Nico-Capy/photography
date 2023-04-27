@@ -7,7 +7,7 @@
   </div>
   <div class="flex justify-center bg-transparent h-auto">
     <div class="bg-transparent w-screen p-3 flex justify-center sm:items-center md:items-center lg:items-center xl:items-center 2xl:items-center drop-shadow-lg" style="height: 63vh; display: flex; align-items: center; justify-content: center;">
-        <img :key="currentImageIndex" :src="currentImageSrc" alt="Preview image" class="h-fit sm:h-fit md:h-fit lg:h-full xl:h-full 2xl:h-full backshadow my-auto">
+        <img :key="currentImageIndex" :src="currentImageSrc" alt="Preview image" class="h-fit sm:h-fit md:h-fit lg:h-full xl:h-full 2xl:h-full my-auto">
     </div>
   </div>
 </template>
@@ -64,9 +64,5 @@ export default defineComponent({
 
   .drop-shadow-xl {
     text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.45), 0px 0px 10px rgba(255, 255, 255, 0.45);
-  }
-
-  .backshadow {
-    box-shadow: 0 0 16px 2px rgba(255, 255, 255, 0.3);
   }
 </style>

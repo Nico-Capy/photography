@@ -31,6 +31,8 @@
   </div>
 </template>
 
+<script lang="js"></script>
+
 <script lang="ts">
   import { defineComponent } from "vue";
 

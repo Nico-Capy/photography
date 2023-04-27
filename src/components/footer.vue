@@ -1,6 +1,6 @@
 <template>
   <footer class="flex flex-row p-1 bg-transparent text-center w-screen drop-shadow-xl align-center justify-center" :style="{ backgroundColor: backgroundColor }">
-    <p class="px-4 py-1" style="color: white">© Nicola Corradini | Photography, {{ currentYear }}</p>
+    <p class="px-4 py-1" style="color: white">© Nicola Corradini | Photography, {{ currentDate }}</p>
     <font-awesome-icon
       :icon="faJediOrder"
       style="color: white; cursor: pointer; height: 3vh;"
@@ -8,6 +8,7 @@
     />
   </footer>
 </template>
+
 <script lang="ts">
 import { defineComponent } from "vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -20,7 +21,7 @@ export default defineComponent({
   },
   data() {
     return {
-      currentYear: new Date().getFullYear(),
+      currentDate: new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" }),
       backgroundColor: "black",
     };
   },

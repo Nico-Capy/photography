@@ -1,7 +1,25 @@
-# Vue 3 + Vite
+# Nicola Corradini | Photography
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+I've been capturing images for a spell. It's part of why I took up coding — to fashion an online gallery. I tinkered with techniques and gear, amassing a substantial assortment of photographs. The timing feels impeccable to unveil it to the masses!
 
-## Recommended IDE Setup
+    Here I am:
+![Me](./src/assets/DJI_0970.jpg)
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## How did I do it?
+
+This is a front only web app, fashioned solo. These are the tools I utilized:
+
+- [Vue.js](https://vuejs.org)
+- [Chakra UI](https://chakra-ui.com)
+- [Typescript](https://www.typescriptlang.org)
+- [Vite](https://vitejs.dev)
+
+## Want a quick preview of some photos and the project?
+
+![Drone](./src/assets/preview/preview2.jpg)
+![Mountain](./src/assets/nature/nature12.jpg)
+![Pinhole](./src/assets/pinhole/pinhole10.jpg)
+![Infrared](./src/assets/infrared/infrared05.jpg)
+![Gallery](./public/Screenshotgallery.png)
+![Galleries](./public/Screenshotgalleries.png)
+![FullScreen](./public/Screenshotfullscreen.png)
