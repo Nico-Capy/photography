@@ -2,6 +2,9 @@
     <div class="flex items-center p-3">
       <h1 class="text-white text-4xl drop-shadow-xl mx-auto">Galleries</h1>
     </div>
+    <div class="flex justify-center align-center">
+      <drone-button></drone-button>
+    </div>
     <div class="flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row w-11/12 h-11/12 mx-auto bg-transparent justify-center align-center overflow-visible">
         <router-link to="/studio" class="m-2 w-11/12 h-90 text-white hover:text-black bg-transparent hover:bg-white shadow-white justify-center">
           <h2 class="text-2xl drop-shadow-xl p-3">Portraits</h2>
@@ -49,10 +52,13 @@
 
 <script lang="ts">
 import { RouterLink } from 'vue-router'
+import DroneButton from '../components/dronebutton.vue'
+
 export default {
   name: 'Galleries',
   components: {
-    RouterLink
+    RouterLink,
+    DroneButton
   },
 }
 </script>

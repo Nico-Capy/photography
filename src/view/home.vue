@@ -5,17 +5,24 @@
       <h2 class="text-2xl text-gray-200 indent-6" role="heading">Photography</h2>
     </div>
   </div>
+
   <div class="flex justify-center bg-transparent h-auto">
-    <div class="bg-transparent w-screen p-3 flex justify-center sm:items-center md:items-center lg:items-center xl:items-center 2xl:items-center drop-shadow-lg" style="height: 63vh; display: flex; align-items: center; justify-content: center;">
-        <img :key="currentImageIndex" :src="currentImageSrc" alt="Preview image" class="h-fit sm:h-fit md:h-fit lg:h-full xl:h-full 2xl:h-full my-auto">
+    <div class="bg-transparent w-screen p-3 flex flex-col justify-center items-center drop-shadow-lg" style="height: 63vh;">
+      <img :key="currentImageIndex" :src="currentImageSrc" alt="Preview image" class="h-fit sm:h-fit md:h-fit lg:h-full xl:h-full 2xl:h-full my-auto">
+
+      <drone-button></drone-button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import DroneButton from '../components/dronebutton.vue';
 
 export default defineComponent({
+  components: {
+    DroneButton
+  },
   data() {
     return {
       currentImageIndex: 0,
@@ -58,7 +65,7 @@ export default defineComponent({
     background-color: black;
   }
 
-  h1, h2 {
+  h1, h2, p {
     font-family: 'Avenir', sans-serif;
   }
 
