@@ -5,7 +5,7 @@ I've been capturing images for a spell. It's part of why I took up coding — to
 Here I am:
 ![Me](./src/assets/DJI_0970.jpg)
 
-## How did I do it?
+## What did I use?
 
 This is a front only web app, fashioned solo. These are the tools I utilized:
 
