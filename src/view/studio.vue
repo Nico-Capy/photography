@@ -1,31 +1,28 @@
 <template>
   <div class="flex flex-col items-center justify-center">
-    <h2 role="heading" aria-level="2" class="text-3xl text-white drop-shadow-xl m-6">Portraits</h2>
+    <h2 role="heading" class="text-3xl text-white drop-shadow-xl m-6">Portraits</h2>
     <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
       <div v-for="(photo, index) in photos" :key="index" class="relative m-2">
-        <img :src="photo.src" class="mx-auto w-full h-full object-cover shadow-md" style="height: 100%; width: auto;" @click="showPhoto(index)" aria-label="Open photo {{ index + 1 }}" />
+        <img :src="photo.src" class="mx-auto w-full h-full object-cover shadow-md" style="height: 100%; width: auto;" @click="showPhoto(index)" />
       </div>
     </div>
     <div v-if="showModal" class="fixed bg-black/50 inset-0 flex items-center justify-center z-50 h-screen max-h-90vh">
       <div class="bg-transparent p-2 w-11/12">
         <button
             @click="showModal = false"
-            class="absolute top-0 right-0 m-4 text-4xl w-fit h-fit text-black hover:text-white bg-white hover:bg-black cursor-pointer p-2 z-10"
-            aria-label="Close">
+            class="absolute top-0 right-0 m-4 text-4xl w-fit h-fit text-black hover:text-white bg-white hover:bg-black cursor-pointer p-2 z-10">
             &times;
           </button>
         <div class="relative">
           <button
             class="absolute top-1/2 left-0 transform -translate-y-1/2 text-white hover:text-black bg-black hover:bg-white cursor-pointer m-1 p-2 text-2xl"
-            @click="showPreviousPhoto()"
-            aria-label="Previous photo">
+            @click="showPreviousPhoto()">
             &larr;
           </button>
-          <img :src="photos[selectedPhoto].src" class="object-contain mx-auto" aria-label="Selected photo" style="height: 47rem;" />
+          <img :src="photos[selectedPhoto].src" class="object-contain mx-auto" style="height: 47rem;" />
           <button
             class="absolute top-1/2 right-0 transform -translate-y-1/2 text-white hover:text-black bg-black hover:bg-white cursor-pointer m-1 p-2 text-2xl"
-            @click="showNextPhoto()"
-            aria-label="Next photo">
+            @click="showNextPhoto()">
             &rarr;
           </button>
         </div>

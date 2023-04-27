@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col items-center justify-center">
-      <h2 role="heading" aria-level="2" class="text-3xl text-white drop-shadow-xl m-6">About</h2>
+      <h2 role="heading" class="text-3xl text-white drop-shadow-xl m-6">About</h2>
     </div>
     <div class="flex flex-col text-white drop-shadow-xl">
         <h3 class="text-3xl p-4 indent-4">Hi, I'm Nico</h3>
@@ -13,9 +13,8 @@
     </div>
     <div>
     <div class="flex justify-center align-center">
-      <img src="../assets/nico.jpg" alt="Admiral Nico, flying his drone" class="w-2/4 justify-center align-center m-2" @click="openVideoModal" />
+      <img src="../assets/nico.jpg" alt="Admiral Nico, flying his drone" class="w-2/4 justify-center align-center m-2" />
     </div>
-    <vue-modal-video :video-id="'montagne'" :autoplay="true" :modal-options="{ showClose: true }"></vue-modal-video>
   </div>
 </template>
 

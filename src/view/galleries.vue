@@ -47,7 +47,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import { RouterLink } from 'vue-router'
 export default {
   name: 'Galleries',
