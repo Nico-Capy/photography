@@ -2,7 +2,7 @@
 
 I've been capturing images for a spell. It's part of why I took up coding — to fashion an online gallery. I tinkered with techniques and gear, amassing a substantial assortment of photographs. The timing feels impeccable to unveil it to the masses!
 
-    Here I am:
+Here I am:
 ![Me](./src/assets/DJI_0970.jpg)
 
 ## How did I do it?
