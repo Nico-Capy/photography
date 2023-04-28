@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col items-center justify-center">
-      <h2 role="heading" class="text-3xl text-white drop-shadow-xl m-6 mb-0">About</h2>
+      <h2 class="text-3xl text-white drop-shadow-xl m-6 mb-0">About</h2>
     </div>
     <div class="flex flex-row text-white m-0 p-4">
         <h3 class="text-3xl indent-14 drop-shadow-xl">Hi, I'm</h3>

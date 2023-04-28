@@ -9,8 +9,6 @@
   <div class="flex justify-center bg-transparent h-auto">
     <div class="bg-transparent w-screen p-3 flex flex-col justify-center items-center drop-shadow-lg" style="height: 63vh;">
       <img :key="currentImageIndex" :src="currentImageSrc" alt="Preview image" class="h-fit sm:h-fit md:h-fit lg:h-full xl:h-full 2xl:h-full my-auto">
-
-      <drone-button></drone-button>
     </div>
   </div>
 </template>
