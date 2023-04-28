@@ -35,7 +35,6 @@
 
 <script lang="ts">
   import { defineComponent } from "vue";
-
   import portrait01 from "../assets/portraits/portrait01.jpg";
   import portrait02 from "../assets/portraits/portrait02.jpg";
   import portrait03 from "../assets/portraits/portrait03.jpg";
