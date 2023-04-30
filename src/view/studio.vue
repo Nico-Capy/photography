@@ -51,8 +51,6 @@
   import portrait14 from "../assets/portraits/portrait14.jpg";
   import portrait15 from "../assets/portraits/portrait15.jpg";
   import portrait16 from "../assets/portraits/portrait16.jpg";
-  import portrait17 from "../assets/portraits/portrait17.jpg";
-  import portrait18 from "../assets/portraits/portrait18.jpg";
   import portrait19 from "../assets/portraits/portrait19.jpg";
   import portrait20 from "../assets/portraits/portrait20.jpg";
   import portrait21 from "../assets/portraits/portrait21.jpg";
@@ -99,8 +97,6 @@
           { src: portrait13 },
           { src: portrait15 },
           { src: portrait16 },
-          { src: portrait17 },
-          { src: portrait18 },
           { src: portrait19 },
           { src: portrait20 },
           { src: portrait20 },
