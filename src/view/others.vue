@@ -59,24 +59,7 @@
         return {
           showModal: false,
           selectedPhoto: 0,
-          photos: [
-            { src: other01 },
-            { src: other02 },
-            { src: other03 },
-            { src: other04 },
-            { src: other05 },
-            { src: other06 },
-            { src: other07 },
-            { src: other08 },
-            { src: other09 },
-            { src: other10 },
-            { src: other11 },
-            { src: other12 },
-            { src: other13 },
-            { src: other14 },
-            { src: other15 },
-            { src: other16 },
-          ],
+          
         };
       },
       methods: {

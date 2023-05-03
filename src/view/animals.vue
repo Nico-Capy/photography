@@ -59,24 +59,6 @@
         return {
           showModal: false,
           selectedPhoto: 0,
-          photos: [
-            { src: nature09 },
-            { src: nature10 },
-            { src: nature11 },
-            { src: nature12 },
-            { src: nature13 },
-            { src: nature14 },
-            { src: nature16 },
-            { src: nature15 },
-            { src: nature07 },
-            { src: nature08 },
-            { src: nature01 },
-            { src: nature02 },
-            { src: nature03 },
-            { src: nature04 },
-            { src: nature05 },
-            { src: nature06 },
-          ],
         };
       },
       methods: {

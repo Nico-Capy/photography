@@ -67,26 +67,7 @@
         return {
           showModal: false,
           selectedPhoto: 0,
-          photos: [
-            { src: drone01 },
-            { src: drone02 },
-            { src: drone03 },
-            { src: drone04 },
-            { src: drone05 },
-            { src: drone06 },
-            { src: drone07 },
-            { src: drone08 },
-            { src: drone09 },
-            { src: drone10 },
-            { src: drone11 },
-            { src: drone12 },
-            { src: drone15 },
-            { src: drone16 },
-            { src: drone17 },
-            { src: drone13 },
-            { src: drone14 },
-            { src: drone18 },
-          ],
+          
         };
       },
       methods: {
