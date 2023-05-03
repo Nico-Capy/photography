@@ -36,7 +36,28 @@
   <script lang="ts">
     import { defineComponent } from "vue";
   
-    
+  //  import street01 from "../assets/street/street01.jpg";
+  //  import street02 from "../assets/street/street02.jpg";
+  //  import street03 from "../assets/street/street03.jpg";
+  //  import street04 from "../assets/street/street04.jpg";
+  //  import street05 from "../assets/street/street05.jpg";
+  //  import street06 from "../assets/street/street06.jpg";
+  //  import street07 from "../assets/street/street07.jpg";
+  //  import street08 from "../assets/street/street08.jpg";
+  //  import street09 from "../assets/street/street09.jpg";
+  //  import street10 from "../assets/street/street10.jpg";
+  //  import street11 from "../assets/street/street11.jpg";
+  //  import street12 from "../assets/street/street12.jpg";
+  //  import street13 from "../assets/street/street13.jpg";
+  //  import street14 from "../assets/street/street14.jpg";
+  //  import street15 from "../assets/street/street15.jpg";
+  //  import street16 from "../assets/street/street16.jpg";
+  //  import street17 from "../assets/street/street17.jpg";
+  //  import street18 from "../assets/street/street18.jpg";
+  //  import street19 from "../assets/street/street19.jpg";
+  //  import street20 from "../assets/street/street20.jpg";
+  //  import street21 from "../assets/street/street21.jpg";
+  //  import street22 from "../assets/street/street22.jpg";
   
     export default defineComponent({
       name: "PhotoGallery",
@@ -44,6 +65,30 @@
         return {
           showModal: false,
           selectedPhoto: 0,
+        //  photos: [
+        //    { src: street01 },
+        //    { src: street02 },
+        //    { src: street03 },
+        //    { src: street04 },
+        //    { src: street05 },
+        //    { src: street06 },
+        //    { src: street07 },
+        //    { src: street08 },
+        //    { src: street09 },
+        //    { src: street10 },
+        //    { src: street11 },
+        //    { src: street12 },
+        //    { src: street13 },
+        //    { src: street14 },
+        //    { src: street15 },
+        //    { src: street16 },
+        //    { src: street17 },
+        //    { src: street18 },
+        //    { src: street19 },
+        //    { src: street20 },
+        //    { src: street21 },
+        //    { src: street22 },
+        //  ],
         };
       },
       methods: {

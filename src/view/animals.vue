@@ -36,22 +36,22 @@
   <script lang="ts">
     import { defineComponent } from "vue";
   
-    import nature01 from "../assets/nature/nature01.jpg";
-    import nature02 from "../assets/nature/nature02.jpg";
-    import nature03 from "../assets/nature/nature03.jpg";
-    import nature04 from "../assets/nature/nature04.jpg";
-    import nature05 from "../assets/nature/nature05.jpg";
-    import nature06 from "../assets/nature/nature06.jpg";
-    import nature07 from "../assets/nature/nature07.jpg";
-    import nature08 from "../assets/nature/nature08.jpg";
-    import nature09 from "../assets/nature/nature09.jpg";
-    import nature10 from "../assets/nature/nature10.jpg";
-    import nature11 from "../assets/nature/nature11.jpg";
-    import nature12 from "../assets/nature/nature12.jpg";
-    import nature13 from "../assets/nature/nature13.jpg";
-    import nature14 from "../assets/nature/nature14.jpg";
-    import nature15 from "../assets/nature/nature15.jpg";
-    import nature16 from "../assets/nature/nature16.jpg";
+  //  import nature01 from "../assets/nature/nature01.jpg";
+  //  import nature02 from "../assets/nature/nature02.jpg";
+  //  import nature03 from "../assets/nature/nature03.jpg";
+  //  import nature04 from "../assets/nature/nature04.jpg";
+  //  import nature05 from "../assets/nature/nature05.jpg";
+  //  import nature06 from "../assets/nature/nature06.jpg";
+  //  import nature07 from "../assets/nature/nature07.jpg";
+  //  import nature08 from "../assets/nature/nature08.jpg";
+  //  import nature09 from "../assets/nature/nature09.jpg";
+  //  import nature10 from "../assets/nature/nature10.jpg";
+  //  import nature11 from "../assets/nature/nature11.jpg";
+  //  import nature12 from "../assets/nature/nature12.jpg";
+  //  import nature13 from "../assets/nature/nature13.jpg";
+  //  import nature14 from "../assets/nature/nature14.jpg";
+  //  import nature15 from "../assets/nature/nature15.jpg";
+  //  import nature16 from "../assets/nature/nature16.jpg";
   
     export default defineComponent({
       name: "PhotoGallery",
@@ -59,6 +59,24 @@
         return {
           showModal: false,
           selectedPhoto: 0,
+        //  photos: [
+        //    { src: nature09 },
+        //    { src: nature10 },
+        //    { src: nature11 },
+        //    { src: nature12 },
+        //    { src: nature13 },
+        //    { src: nature14 },
+        //    { src: nature16 },
+        //    { src: nature15 },
+        //    { src: nature07 },
+        //    { src: nature08 },
+        //    { src: nature01 },
+        //    { src: nature02 },
+        //    { src: nature03 },
+        //    { src: nature04 },
+        //    { src: nature05 },
+        //    { src: nature06 },
+        //  ],
         };
       },
       methods: {

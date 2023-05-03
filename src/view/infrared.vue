@@ -35,15 +35,26 @@
   
   <script lang="ts">
     import { defineComponent } from "vue";
-
-    
+  
+    // import infrared01 from "../assets/infrared/infrared01.jpg";
+    // import infrared02 from "../assets/infrared/infrared02.jpg";
+    // import infrared03 from "../assets/infrared/infrared03.jpg";
+    // import infrared04 from "../assets/infrared/infrared04.jpg";
+    // import infrared05 from "../assets/infrared/infrared05.jpg";
+  
     export default defineComponent({
       name: "PhotoGallery",
       data() {
         return {
           showModal: false,
           selectedPhoto: 0,
-         
+          // photos: [
+          //   { src: infrared01 },
+          //   { src: infrared02 },
+          //   { src: infrared03 },
+          //   { src: infrared04 },
+          //   { src: infrared05 },
+          // ],
         };
       },
       methods: {
