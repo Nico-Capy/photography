@@ -2,7 +2,7 @@
   <div class="flex justify-center items-center w-3/12">
     <a href="https://www.youtube.com/watch?v=ZrF7MEWojQ0" target="_blank" rel="noopener" class="text-2xl bg-black text-white py-2 px-4 transition duration-320 ease-in-out hover:text-black hover:bg-white m-4 drop-shadow-lg">
       Drone Video
-      <img src="../assets/dronevideo.png" alt="Drone Video Screenshot" class="w-fit hidden transition duration-1600 ease-in-out" />
+      <img src="/dronevideo.png" alt="Drone Video Screenshot" class="w-fit hidden transition duration-1600 ease-in-out" />
     </a>
   </div>
 </template>

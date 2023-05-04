@@ -40,7 +40,7 @@ export default defineComponent({
 
 <style scoped>
 footer {
-  background: transparent;
+  background-color: transparent;
   position: fixed;
   bottom: 0;
   left: 0;
