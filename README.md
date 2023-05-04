@@ -16,10 +16,10 @@ This is a front only web app, fashioned solo. These are the tools I utilized:
 
 ## Want a quick preview of some photos and the project?
 
-![Drone](./src/assets/preview/preview2.jpg)
-![Mountain](./src/assets/nature/nature12.jpg)
-![Pinhole](./src/assets/pinhole/pinhole10.jpg)
-![Infrared](./src/assets/infrared/infrared05.jpg)
+![Drone](/preview/preview2.jpg)
+![Mountain](/nature/nature12.jpg)
+![Pinhole](/pinhole/pinhole10.jpg)
+![Infrared](/infrared/infrared05.jpg)
 ![Gallery](./public/Screenshotgallery.png)
 ![Galleries](./public/Screenshotgalleries.png)
 ![FullScreen](./public/Screenshotfullscreen.png)
