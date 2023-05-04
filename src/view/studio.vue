@@ -34,45 +34,6 @@
 <script lang="ts">
   import { defineComponent } from "vue";
 
-  import portrait01 from "../assets/portraits/portrait01.jpg";
-  import portrait02 from "../assets/portraits/portrait02.jpg";
-  import portrait03 from "../assets/portraits/portrait03.jpg";
-  import portrait04 from "../assets/portraits/portrait04.jpg";
-  import portrait05 from "../assets/portraits/portrait05.jpg";
-  import portrait06 from "../assets/portraits/portrait06.jpg";
-  import portrait07 from "../assets/portraits/portrait07.jpg";
-  import portrait08 from "../assets/portraits/portrait08.jpg";
-  import portrait09 from "../assets/portraits/portrait09.jpg";
-  import portrait10 from "../assets/portraits/portrait10.jpg";
-  import portrait11 from "../assets/portraits/portrait11.jpg";
-  import portrait12 from "../assets/portraits/portrait12.jpg";
-  import portrait13 from "../assets/portraits/portrait13.jpg";
-  import portrait14 from "../assets/portraits/portrait14.jpg";
-  import portrait15 from "../assets/portraits/portrait15.jpg";
-  import portrait16 from "../assets/portraits/portrait16.jpg";
-  import portrait17 from "../assets/portraits/portrait17.jpg";
-  import portrait18 from "../assets/portraits/portrait18.jpg";
-  import portrait19 from "../assets/portraits/portrait19.jpg";
-  import portrait20 from "../assets/portraits/portrait20.jpg";
-  import portrait21 from "../assets/portraits/portrait21.jpg";
-  import portrait22 from "../assets/portraits/portrait22.jpg";
-  import portrait23 from "../assets/portraits/portrait23.jpg";
-  import portrait24 from "../assets/portraits/portrait24.jpg";
-  import portrait25 from "../assets/portraits/portrait25.jpg";
-  import portrait26 from "../assets/portraits/portrait26.jpg";
-  import portrait29 from "../assets/portraits/portrait29.jpg";
-  import portrait30 from "../assets/portraits/portrait30.jpg";
-  import portrait31 from "../assets/portraits/portrait31.jpg";
-  import portrait32 from "../assets/portraits/portrait32.jpg";
-  import portrait33 from "../assets/portraits/portrait33.jpg";
-  import portrait34 from "../assets/portraits/portrait34.jpg";
-  import portrait35 from "../assets/portraits/portrait35.jpg";
-  import portrait36 from "../assets/portraits/portrait36.jpg";
-  import portrait37 from "../assets/portraits/portrait37.jpg";
-  import portrait38 from "../assets/portraits/portrait38.jpg";
-  import portrait39 from "../assets/portraits/portrait39.jpg";
-  import portrait40 from "../assets/portraits/portrait40.jpg";
-  import portrait41 from "../assets/portraits/portrait41.jpg";
 
   export default defineComponent({
     name: "PhotoGallery",
@@ -81,46 +42,46 @@
         showModal: false,
         selectedPhoto: 0,
         photos: [
-          { src: portrait01 },
-          { src: portrait02 },
-          { src: portrait03 },
-          { src: portrait04 },
-          { src: portrait05 },
-          { src: portrait06 },
-          { src: portrait07 },
-          { src: portrait08 },
-          { src: portrait09 },
-          { src: portrait10 },
-          { src: portrait11 },
-          { src: portrait12 },
-          { src: portrait13 },
-          { src: portrait15 },
-          { src: portrait16 },
-          { src: portrait17 },
-          { src: portrait18 },
-          { src: portrait19 },
-          { src: portrait20 },
-          { src: portrait20 },
-          { src: portrait21 },
-          { src: portrait22 },
-          { src: portrait23 },
-          { src: portrait24 },
-          { src: portrait25 },
-          { src: portrait26 },
-          { src: portrait14 },
-          { src: portrait29 },
-          { src: portrait30 },
-          { src: portrait31 },
-          { src: portrait32 },
-          { src: portrait33 },
-          { src: portrait34 },
-          { src: portrait35 },
-          { src: portrait36 },
-          { src: portrait37 },
-          { src: portrait38 },
-          { src: portrait39 },
-          { src: portrait40 },
-          { src: portrait41 },
+          { src: "/portraits/portrait01.jpg" },
+          { src: "/portraits/portrait02.jpg" },
+          { src: "/portraits/portrait03.jpg" },
+          { src: "/portraits/portrait04.jpg" },
+          { src: "/portraits/portrait05.jpg" },
+          { src: "/portraits/portrait06.jpg" },
+          { src: "/portraits/portrait07.jpg" },
+          { src: "/portraits/portrait08.jpg" },
+          { src: "/portraits/portrait09.jpg" },
+          { src: "/portraits/portrait10.jpg" },
+          { src: "/portraits/portrait11.jpg" },
+          { src: "/portraits/portrait12.jpg" },
+          { src: "/portraits/portrait13.jpg" },
+          { src: "/portraits/portrait15.jpg" },
+          { src: "/portraits/portrait16.jpg" },
+          { src: "/portraits/portrait17.jpg" },
+          { src: "/portraits/portrait18.jpg" },
+          { src: "/portraits/portrait19.jpg" },
+          { src: "/portraits/portrait20.jpg" },
+          { src: "/portraits/portrait20.jpg" },
+          { src: "/portraits/portrait21.jpg" },
+          { src: "/portraits/portrait22.jpg" },
+          { src: "/portraits/portrait23.jpg" },
+          { src: "/portraits/portrait24.jpg" },
+          { src: "/portraits/portrait25.jpg" },
+          { src: "/portraits/portrait26.jpg" },
+          { src: "/portraits/portrait14.jpg" },
+          { src: "/portraits/portrait29.jpg" },
+          { src: "/portraits/portrait30.jpg" },
+          { src: "/portraits/portrait31.jpg" },
+          { src: "/portraits/portrait32.jpg" },
+          { src: "/portraits/portrait33.jpg" },
+          { src: "/portraits/portrait34.jpg" },
+          { src: "/portraits/portrait35.jpg" },
+          { src: "/portraits/portrait36.jpg" },
+          { src: "/portraits/portrait37.jpg" },
+          { src: "/portraits/portrait38.jpg" },
+          { src: "/portraits/portrait39.jpg" },
+          { src: "/portraits/portrait40.jpg" },
+          { src: "/portraits/portrait41.jpg" },
         ],
       };
     },

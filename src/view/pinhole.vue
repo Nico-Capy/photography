@@ -34,21 +34,6 @@
   <script lang="ts">
     import { defineComponent } from "vue";
   
-    import pinhole01 from "../assets/pinhole/pinhole01.jpg";
-    import pinhole02 from "../assets/pinhole/pinhole02.jpg";
-    import pinhole03 from "../assets/pinhole/pinhole03.jpg";
-    import pinhole04 from "../assets/pinhole/pinhole04.jpg";
-    import pinhole05 from "../assets/pinhole/pinhole05.jpg";
-    import pinhole06 from "../assets/pinhole/pinhole06.jpg";
-    import pinhole07 from "../assets/pinhole/pinhole07.jpg";
-    import pinhole08 from "../assets/pinhole/pinhole08.jpg";
-    import pinhole09 from "../assets/pinhole/pinhole09.jpg";
-    import pinhole10 from "../assets/pinhole/pinhole10.jpg";
-    import pinhole11 from "../assets/pinhole/pinhole11.jpg";
-    import pinhole12 from "../assets/pinhole/pinhole12.jpg";
-    import pinhole13 from "../assets/pinhole/pinhole13.jpg";
-    import pinhole14 from "../assets/pinhole/pinhole14.jpg";
-    import pinhole15 from "../assets/pinhole/pinhole15.jpg";
   
     export default defineComponent({
       name: "PhotoGallery",
@@ -57,21 +42,21 @@
           showModal: false,
           selectedPhoto: 0,
           photos: [
-            { src: pinhole01 },
-            { src: pinhole02 },
-            { src: pinhole03 },
-            { src: pinhole04 },
-            { src: pinhole05 },
-            { src: pinhole06 },
-            { src: pinhole07 },
-            { src: pinhole08 },
-            { src: pinhole09 },
-            { src: pinhole10 },
-            { src: pinhole11 },
-            { src: pinhole12 },
-            { src: pinhole13 },
-            { src: pinhole14 },
-            { src: pinhole15 },
+            { src: "/pinhole/pinhole01.jpg" },
+            { src: "/pinhole/pinhole02.jpg" },
+            { src: "/pinhole/pinhole03.jpg" },
+            { src: "/pinhole/pinhole04.jpg" },
+            { src: "/pinhole/pinhole05.jpg" },
+            { src: "/pinhole/pinhole06.jpg" },
+            { src: "/pinhole/pinhole07.jpg" },
+            { src: "/pinhole/pinhole08.jpg" },
+            { src: "/pinhole/pinhole09.jpg" },
+            { src: "/pinhole/pinhole10.jpg" },
+            { src: "/pinhole/pinhole11.jpg" },
+            { src: "/pinhole/pinhole12.jpg" },
+            { src: "/pinhole/pinhole13.jpg" },
+            { src: "/pinhole/pinhole14.jpg" },
+            { src: "/pinhole/pinhole15.jpg" },
           ],
         };
       },

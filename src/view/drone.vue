@@ -37,24 +37,6 @@
 <script lang="ts">
   import { defineComponent } from "vue";
   import DroneButton from '../components/dronebutton.vue';
-  import drone01 from "../assets/drone/drone01.jpg";
-  import drone02 from "../assets/drone/drone02.jpg";
-  import drone03 from "../assets/drone/drone03.jpg";
-  import drone04 from "../assets/drone/drone04.jpg";
-  import drone05 from "../assets/drone/drone05.jpg";
-  import drone06 from "../assets/drone/drone06.jpg";
-  import drone07 from "../assets/drone/drone07.jpg";
-  import drone08 from "../assets/drone/drone08.jpg";
-  import drone09 from "../assets/drone/drone09.jpg";
-  import drone10 from "../assets/drone/drone10.jpg";
-  import drone11 from "../assets/drone/drone11.jpg";
-  import drone12 from "../assets/drone/drone12.jpg";
-  import drone13 from "../assets/drone/drone13.jpg";
-  import drone14 from "../assets/drone/drone14.jpg";
-  import drone15 from "../assets/drone/drone15.jpg";
-  import drone16 from "../assets/drone/drone16.jpg";
-  import drone17 from "../assets/drone/drone17.jpg";
-  import drone18 from "../assets/drone/drone18.jpg";
 
   export default defineComponent({
     components: {
@@ -66,24 +48,24 @@
         showModal: false,
         selectedPhoto: 0,
         photos: [
-          { src: drone01 },
-          { src: drone02 },
-          { src: drone03 },
-          { src: drone04 },
-          { src: drone05 },
-          { src: drone06 },
-          { src: drone07 },
-          { src: drone08 },
-          { src: drone09 },
-          { src: drone10 },
-          { src: drone11 },
-          { src: drone12 },
-          { src: drone15 },
-          { src: drone16 },
-          { src: drone17 },
-          { src: drone13 },
-          { src: drone14 },
-          { src: drone18 },
+          { src: "/drone/drone01.jpg" },
+          { src: "/drone/drone02.jpg" },
+          { src: "/drone/drone03.jpg" },
+          { src: "/drone/drone04.jpg" },
+          { src: "/drone/drone05.jpg" },
+          { src: "/drone/drone06.jpg" },
+          { src: "/drone/drone07.jpg" },
+          { src: "/drone/drone08.jpg" },
+          { src: "/drone/drone09.jpg" },
+          { src: "/drone/drone10.jpg" },
+          { src: "/drone/drone11.jpg" },
+          { src: "/drone/drone12.jpg" },
+          { src: "/drone/drone15.jpg" },
+          { src: "/drone/drone16.jpg" },
+          { src: "/drone/drone17.jpg" },
+          { src: "/drone/drone13.jpg" },
+          { src: "/drone/drone14.jpg" },
+          { src: "/drone/drone18.jpg" },
         ],
       };
     },
