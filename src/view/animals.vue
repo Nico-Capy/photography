@@ -31,8 +31,8 @@
   </div>
 </template>
 
-<script lang="js">
-  import { defineComponent } from "vue";
+<script lang="ts">
+import { defineComponent } from "vue";
 
 import nature01 from "../assets/nature/nature01.jpg";
 import nature02 from "../assets/nature/nature02.jpg";
@@ -52,59 +52,59 @@ import nature15 from "../assets/nature/nature15.jpg";
 import nature16 from "../assets/nature/nature16.jpg";
 
 export default defineComponent({
-name: "PhotoGallery",
-data() {
-return {
-showModal: false,
-selectedPhoto: 0,
-photos: [
-{ src: nature09 },
-{ src: nature10 },
-{ src: nature11 },
-{ src: nature12 },
-{ src: nature13 },
-{ src: nature14 },
-{ src: nature16 },
-{ src: nature15 },
-{ src: nature07 },
-{ src: nature08 },
-{ src: nature01 },
-{ src: nature02 },
-{ src: nature03 },
-{ src: nature04 },
-{ src: nature05 },
-{ src: nature06 },
-];
-};
-},
-methods: {
-showPhoto(index) {
-this.selectedPhoto = index;
-this.showModal = true;
-},
-showNextPhoto() {
-this.selectedPhoto =
-(this.selectedPhoto + 1) % this.photos.length;
-},
-showPreviousPhoto() {
-this.selectedPhoto =
-(this.selectedPhoto + this.photos.length - 1) %
-this.photos.length;
-},
-handleKeyDown(event) {
-if (event.key === "ArrowRight") {
-this.showNextPhoto();
-} else if (event.key === "ArrowLeft") {
-this.showPreviousPhoto();
-}
-},
-},
-mounted() {
-document.addEventListener("keydown", this.handleKeyDown);
-},
-beforeUnmount() {
-document.removeEventListener("keydown", this.handleKeyDown);
-},
+  name: "PhotoGallery",
+  data() {
+    return {
+      showModal: false,
+      selectedPhoto: 0,
+      photos: [
+        { src: nature09 },
+        { src: nature10 },
+        { src: nature11 },
+        { src: nature12 },
+        { src: nature13 },
+        { src: nature14 },
+        { src: nature16 },
+        { src: nature15 },
+        { src: nature07 },
+        { src: nature08 },
+        { src: nature01 },
+        { src: nature02 },
+        { src: nature03 },
+        { src: nature04 },
+        { src: nature05 },
+        { src: nature06 },
+      ],
+    };
+  },
+  methods: {
+    showPhoto(index: number) {
+      this.selectedPhoto = index;
+      this.showModal = true;
+    },
+    showNextPhoto() {
+      this.selectedPhoto =
+        (this.selectedPhoto + 1) % this.photos.length;
+    },
+    showPreviousPhoto() {
+      this.selectedPhoto =
+        (this.selectedPhoto + this.photos.length - 1) %
+        this.photos.length;
+    },
+    handleKeyDown(event: { key: string; }) {
+      if (event.key === "ArrowRight") {
+        this.showNextPhoto();
+      } else if (event.key === "ArrowLeft") {
+        this.showPreviousPhoto();
+      }
+    },
+  },
+  mounted() {
+    document.addEventListener("keydown", this.handleKeyDown);
+  },
+  beforeUnmount() {
+    document.removeEventListener("keydown", this.handleKeyDown);
+  },
 });
 </script>
 

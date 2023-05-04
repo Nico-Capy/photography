@@ -31,60 +31,59 @@
   </div>
 </template>
 
-<script lang="js">
-  import { defineComponent } from "vue";
-
-import infrared01 from "../assets/infrared/infrared01.jpg";
-import infrared02 from "../assets/infrared/infrared02.jpg";
-import infrared03 from "../assets/infrared/infrared03.jpg";
-import infrared04 from "../assets/infrared/infrared04.jpg";
-import infrared05 from "../assets/infrared/infrared05.jpg";
+<script lang="ts">
+import { defineComponent } from "vue";
+  
+  import infrared01 from "../assets/infrared/infrared01.jpg";
+  import infrared02 from "../assets/infrared/infrared02.jpg";
+  import infrared03 from "../assets/infrared/infrared03.jpg";
+  import infrared04 from "../assets/infrared/infrared04.jpg";
+  import infrared05 from "../assets/infrared/infrared05.jpg";
 
   export default defineComponent({
-  name: "PhotoGallery",
-  data() {
-  return {
-    showModal: false,
-    selectedPhoto: 0,
-    photos: [
-      { src: infrared01 },
-      { src: infrared02 },
-      { src: infrared03 },
-      { src: infrared04 },
-      { src: infrared05 },
-    ],
-  };
-  },
-
+    name: "PhotoGallery",
+    data() {
+      return {
+        showModal: false,
+        selectedPhoto: 0,
+         photos: [
+           { src: infrared01 },
+           { src: infrared02 },
+           { src: infrared03 },
+           { src: infrared04 },
+           { src: infrared05 },
+         ],
+      };
+    },
     methods: {
-      showPhoto(index) {
-      this.selectedPhoto = index;
-      this.showModal = true;
-    },
+      showPhoto(index: number) {
+        this.selectedPhoto = index;
+        this.showModal = true;
+      },
       showNextPhoto() {
-      this.selectedPhoto =
-      (this.selectedPhoto + 1) % this.photos.length;
-    },
+        this.selectedPhoto =
+          (this.selectedPhoto + 1) % this.photos.length;
+      },
       showPreviousPhoto() {
-      this.selectedPhoto =
-      (this.selectedPhoto + this.photos.length - 1) %
-      this.photos.length;
+        this.selectedPhoto =
+          (this.selectedPhoto + this.photos.length - 1) %
+          this.photos.length;
+      },
+      handleKeyDown(event: { key: string; }) {
+        if (event.key === "ArrowRight") {
+          this.showNextPhoto();
+        } else if (event.key === "ArrowLeft") {
+          this.showPreviousPhoto();
+        }
+      },
     },
-      handleKeyDown(event) {
-      if (event.key === "ArrowRight") {
-      this.showNextPhoto();
-      } else if (event.key === "ArrowLeft") {
-      this.showPreviousPhoto();
-    }
-    },
-    },
-      mounted() {
+    mounted() {
       document.addEventListener("keydown", this.handleKeyDown);
     },
-      beforeUnmount() {
+    beforeUnmount() {
       document.removeEventListener("keydown", this.handleKeyDown);
     },
-    });
+  });
 </script>
 
 <style>

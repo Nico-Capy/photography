@@ -31,7 +31,7 @@
   </div>
 </template>
 
-<script lang="js">
+<script lang="ts">
   import { defineComponent } from "vue";
 
   import portrait01 from "../assets/portraits/portrait01.jpg";
@@ -125,35 +125,34 @@
       };
     },
     methods: {
-  showPhoto(index) {
-    this.selectedPhoto = index;
-    this.showModal = true;
-  },
-  showNextPhoto() {
-    this.selectedPhoto =
-      (this.selectedPhoto + 1) % this.photos.length;
-  },
-  showPreviousPhoto() {
-    this.selectedPhoto =
-      (this.selectedPhoto + this.photos.length - 1) %
-      this.photos.length;
-  },
-  handleKeyDown(event) {
-    if (event.key === "ArrowRight") {
-      this.showNextPhoto();
-    } else if (event.key === "ArrowLeft") {
-      this.showPreviousPhoto();
-    }
-  },
-},
-
-mounted() {
-  document.addEventListener("keydown", this.handleKeyDown);
-},
-beforeUnmount() {
-  document.removeEventListener("keydown", this.handleKeyDown);
-},
-});
+      showPhoto(index: number) {
+        this.selectedPhoto = index;
+        this.showModal = true;
+      },
+      showNextPhoto() {
+        this.selectedPhoto =
+          (this.selectedPhoto + 1) % this.photos.length;
+      },
+      showPreviousPhoto() {
+        this.selectedPhoto =
+          (this.selectedPhoto + this.photos.length - 1) %
+          this.photos.length;
+      },
+      handleKeyDown(event: { key: string; }) {
+        if (event.key === "ArrowRight") {
+          this.showNextPhoto();
+        } else if (event.key === "ArrowLeft") {
+          this.showPreviousPhoto();
+        }
+      },
+    },
+    mounted() {
+      document.addEventListener("keydown", this.handleKeyDown);
+    },
+    beforeUnmount() {
+      document.removeEventListener("keydown", this.handleKeyDown);
+    },
+  });
 </script>
 
 <style>

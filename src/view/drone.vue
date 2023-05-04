@@ -34,7 +34,7 @@
   </div>
 </template>
 
-<script lang="js">
+<script lang="ts">
   import { defineComponent } from "vue";
   import DroneButton from '../components/dronebutton.vue';
   import drone01 from "../assets/drone/drone01.jpg";
@@ -58,56 +58,56 @@
 
   export default defineComponent({
     components: {
-    DroneButton
+      DroneButton
     },
     name: "PhotoGallery",
     data() {
-    return {
-      showModal: false,
-      selectedPhoto: 0,
-      photos: [
-        { src: drone01 },
-        { src: drone02 },
-        { src: drone03 },
-        { src: drone04 },
-        { src: drone05 },
-        { src: drone06 },
-        { src: drone07 },
-        { src: drone08 },
-        { src: drone09 },
-        { src: drone10 },
-        { src: drone11 },
-        { src: drone12 },
-        { src: drone15 },
-        { src: drone16 },
-        { src: drone17 },
-        { src: drone13 },
-        { src: drone14 },
-      { src: drone18 }  ,
-    ],
-    };
+      return {
+        showModal: false,
+        selectedPhoto: 0,
+        photos: [
+          { src: drone01 },
+          { src: drone02 },
+          { src: drone03 },
+          { src: drone04 },
+          { src: drone05 },
+          { src: drone06 },
+          { src: drone07 },
+          { src: drone08 },
+          { src: drone09 },
+          { src: drone10 },
+          { src: drone11 },
+          { src: drone12 },
+          { src: drone15 },
+          { src: drone16 },
+          { src: drone17 },
+          { src: drone13 },
+          { src: drone14 },
+          { src: drone18 },
+        ],
+      };
     },
     methods: {
-      showPhoto(index) {
-      this.selectedPhoto = index;
-      this.showModal = true;
-    },
+      showPhoto(index: number) {
+        this.selectedPhoto = index;
+        this.showModal = true;
+      },
       showNextPhoto() {
-      this.selectedPhoto =
-      (this.selectedPhoto + 1) % this.photos.length;
-    },
-    showPreviousPhoto() {
-      this.selectedPhoto =
-      (this.selectedPhoto + this.photos.length - 1) %
-      this.photos.length;
-    },
-    handleKeyDown(event) {
-      if (event.key === "ArrowRight") {
-      this.showNextPhoto();
-      } else if (event.key === "ArrowLeft") {
-      this.showPreviousPhoto();
-    }
-    },
+        this.selectedPhoto =
+          (this.selectedPhoto + 1) % this.photos.length;
+      },
+      showPreviousPhoto() {
+        this.selectedPhoto =
+          (this.selectedPhoto + this.photos.length - 1) %
+          this.photos.length;
+      },
+      handleKeyDown(event: { key: string; }) {
+        if (event.key === "ArrowRight") {
+          this.showNextPhoto();
+        } else if (event.key === "ArrowLeft") {
+          this.showPreviousPhoto();
+        }
+      },
     },
     mounted() {
       document.addEventListener("keydown", this.handleKeyDown);
@@ -115,7 +115,7 @@
     beforeUnmount() {
       document.removeEventListener("keydown", this.handleKeyDown);
     },
-    });
+  });
 </script>
 
 <style>
