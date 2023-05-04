@@ -15,12 +15,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import DroneButton from '../components/dronebutton.vue';
 
 export default defineComponent({
-  components: {
-    DroneButton
-  },
+  
   data() {
     return {
       currentImageIndex: 0,

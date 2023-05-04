@@ -11,10 +11,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.0",
-    "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
-    "@fortawesome/free-solid-svg-icons": "^6.4.0",
-    "@fortawesome/vue-fontawesome": "^3.0.3",
     "lodash": "^4.17.21",
     "serve": "^14.2.0",
     "vite-image": "^1.0.2",
@@ -23,11 +20,16 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/vue-fontawesome": "^3.0.3",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/typography": "^0.5.9",
     "@types/node": "^18.16.0",
     "@vitejs/plugin-vue": "^4.1.0",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",
-    "tailwindcss": "^3.3.1",
+    "tailwindcss": "^3.3.2",
     "vite": "^4.3.0",
     "vite-plugin-fonts": "^0.7.0"
   }

@@ -11,7 +11,6 @@ import Pinhole from '../src/view/pinhole.vue';
 import Others from '../src/view/others.vue';
 import Analog from '../src/view/analog.vue';
 import Nature from '../src/view/animals.vue';
-import { Script } from 'vm';
 
 const routes: Array<RouteRecordRaw> = [
   {
