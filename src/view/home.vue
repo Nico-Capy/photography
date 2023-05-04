@@ -44,7 +44,7 @@ export default defineComponent({
   },
   computed: {
     currentImageSrc(): string {
-      return `src/assets/preview/${this.imageSources[this.currentImageIndex]}`;
+      return `/preview/${this.imageSources[this.currentImageIndex]}`;
     },
   },
   created() {
