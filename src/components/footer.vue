@@ -36,13 +36,12 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped>
 footer {
-  background-color: transparent;
   position: fixed;
   bottom: 0;
-  left: 0;
-  font-family: 'Avenir', sans-serif;
+  width: 100%;
 }
 .drop-shadow-xl {
   text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.45), 0px 0px 10px rgba(255, 255, 255, 0.45);
