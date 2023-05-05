@@ -68,6 +68,8 @@ import { defineComponent } from "vue";
           this.showNextPhoto();
         } else if (event.key === "ArrowLeft") {
           this.showPreviousPhoto();
+        } else if (event.key === "Escape") {
+          this.showModal = false;
         }
       },
     },

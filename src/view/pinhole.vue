@@ -34,7 +34,6 @@
   <script lang="ts">
     import { defineComponent } from "vue";
   
-  
     export default defineComponent({
       name: "PhotoGallery",
       data() {
@@ -80,6 +79,9 @@
           } else if (event.key === "ArrowLeft") {
             this.showPreviousPhoto();
           }
+          else if (event.key === "Escape") {
+          this.showModal = false;
+        }
         },
       },
       mounted() {

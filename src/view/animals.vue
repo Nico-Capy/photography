@@ -79,6 +79,8 @@ export default defineComponent({
         this.showNextPhoto();
       } else if (event.key === "ArrowLeft") {
         this.showPreviousPhoto();
+      } else if (event.key === "Escape") {
+        this.showModal = false;
       }
     },
   },
@@ -90,6 +92,7 @@ export default defineComponent({
   },
 });
 </script>
+
 
 <style>
     h2 {
