@@ -18,7 +18,7 @@
   </div>
 
   <div class="flex justify-center align-center">
-    <img src="/DJI_0970.jpg" alt="Admiral Nico, flying his drone" class="w-2/5 justify-center align-center m-2 mb-10" />
+    <img src="/DJI_0970.jpg" alt="Admiral Nico, flying his drone" class="w-3/5 justify-center align-center m-2 mb-10" />
   </div>
 </template>
 
