@@ -21,7 +21,7 @@ export default defineComponent({
   data() {
     return {
       currentDate: new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" }),
-      backgroundColor: "rgba(0, 0, 0, 0.3)",
+      backgroundColor: "rgba(0, 0, 0, 0.16)",
     };
   },
   methods: {
