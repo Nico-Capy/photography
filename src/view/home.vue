@@ -8,7 +8,7 @@
 
   <div class="flex justify-center bg-transparent h-2/3">
     <div class="bg-transparent w-fit lg:w-screen xl:w-screen 2xl:w-screen p-3 flex flex-col justify-center items-center drop-shadow-lg" style="height: 63vh;">
-      <img :key="currentImageIndex" :src="currentImageSrc" alt="Preview image" class="h-fit sm:h-fit md:h-fit lg:h-full xl:h-full 2xl:h-full my-auto">
+      <img :key="currentImageIndex" :src="currentImageSrc" alt="Preview image" id="nostretch" class="h-fit sm:h-fit md:h-fit lg:h-full xl:h-full 2xl:h-full my-auto">
     </div>
   </div>
 </template>
@@ -66,5 +66,9 @@ export default defineComponent({
 
   .drop-shadow-xl {
     text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.45), 0px 0px 10px rgba(255, 255, 255, 0.45);
+  }
+
+  #nostretch{
+    object-fit: cover;
   }
 </style>
