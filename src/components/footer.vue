@@ -1,5 +1,5 @@
 <template>
-  <footer class="flex flex-col lg:flex-row xl:flex-row 2xl:flew-row p-1 bg-transparent text-center w-2/3 drop-shadow-xl sm:fa-align-center" :style="{ backgroundColor: backgroundColor }">
+  <footer class="flex flex-col lg:flex-row xl:flex-row 2xl:flew-row p-1 bg-transparent text-center w-fit drop-shadow-xl sm:fa-align-center" :style="{ backgroundColor: backgroundColor }">
     <p class="px-4 py-1" style="color: white">© Nicola Corradini | Photography, {{ currentDate }}</p>
     <font-awesome-icon
       :icon="faJediOrder"
