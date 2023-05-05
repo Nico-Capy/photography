@@ -11,6 +11,7 @@ import Pinhole from '../src/view/pinhole.vue';
 import Others from '../src/view/others.vue';
 import Analog from '../src/view/analog.vue';
 import Nature from '../src/view/animals.vue';
+import Random from '../src/view/random.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -56,6 +57,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/nature',
     component: Nature,
+  },
+  {
+    path: '/random',
+    component: Random,
   },
 ];
 
