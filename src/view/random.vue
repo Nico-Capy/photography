@@ -4,7 +4,7 @@
         Random Photo Generator
       </h2>
         <div class="bg-transparent lg:w-1/3 xl:w-2/4 2xl:w-1/3 p-2 flex flex-col justify-center items-center drop-shadow-lg" style="height: 63vh;">
-            <img :src="currentImage" class="w-fit" id="nostretch" />
+            <img :src="currentImage" class="h-5/6" id="nostretch" />
             <button
         class="bg-white hover:bg-transparent text-black hover:text-white drop-shadow-xl text-xl font-light p-4 mt-4"
         @click="showRandomPhoto"
