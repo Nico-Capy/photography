@@ -72,8 +72,6 @@
           { src: "/portraits/portrait13.jpg" },
           { src: "/portraits/portrait15.jpg" },
           { src: "/portraits/portrait16.jpg" },
-          { src: "/portraits/portrait17.jpg" },
-          { src: "/portraits/portrait18.jpg" },
           { src: "/portraits/portrait19.jpg" },
           { src: "/portraits/portrait20.jpg" },
           { src: "/portraits/portrait20.jpg" },
