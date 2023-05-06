@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-
 import Home from '../src/view/home.vue';
 import About from '../src/view/about.vue';
 import Gallery from '../src/view/galleries.vue';
@@ -12,6 +11,7 @@ import Others from '../src/view/others.vue';
 import Analog from '../src/view/analog.vue';
 import Nature from '../src/view/animals.vue';
 import Random from '../src/view/random.vue'
+import NotFound from '@/views/NotFound.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -61,6 +61,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/random',
     component: Random,
+  },
+  {
+    path: '/:path(.*)',
+    component: NotFound,
   },
 ];
 
