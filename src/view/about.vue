@@ -3,13 +3,13 @@
     <h2 class="text-3xl text-white drop-shadow-xl m-6 mb-0">About</h2>
   </div>
 
-  <div class="flex flex-row m-6 w-4/5 items-center text-center">
+  <div class="mx-auto flex flex-row m-2 w-4/5 items-center text-center">
     <h3 class="text-3xl text-white indent-14 drop-shadow-xl">Hi, I'm</h3>
     <h3 class="text-3xl text-black bg-white px-3 ml-6 shadow">Nico</h3>
   </div>
 
   <div class="mx-auto flex flex-row w-4/5 justify-center align-center">
-    <div class="flex flex-col text-white drop-shadow-xl m-6">
+    <div class="flex flex-col text-white drop-shadow-xl m-2">
       <p class="text-xl p-4">I'm a developer, photographer, drone pilot, videographer, and brewer. Sometimes, I merge these pursuits. Behold, an online photo gallery!</p>
       <br />
       <br />
@@ -18,7 +18,7 @@
   </div>
 
   <div class="flex justify-center align-center">
-    <img src="/DJI_0970.jpg" alt="Admiral Nico, flying his drone" class="w-3/5 justify-center align-center m-2 mb-10" />
+    <img src="/DJI_0970.jpg" alt="Admiral Nico, flying his drone" class="w-4/5 justify-center align-center m-2 mb-10" />
   </div>
 </template>
 

@@ -10,10 +10,14 @@
 </template>
 
 <script lang="ts">
+import router from '../router';
+
 export default {
   name: 'Navbar',
+  router
 }
 </script>
+
 
 <style scoped>
 nav {
