@@ -18,7 +18,7 @@
   </div>
 
   <div class="flex justify-center align-center">
-    <img src="/DJI_0970.jpg" alt="Admiral Nico, flying his drone" class="w-4/5 justify-center align-center m-2 mb-10" />
+    <video src="/nico.mp4" alt="Admiral Nico, flying his drone" class="w-3/5 justify-center align-center m-2 mb-10" autoplay loop muted preload="auto"></video>
   </div>
 </template>
 
@@ -34,5 +34,37 @@ p {
 
 .shadow {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Hide the video controls */
+video::-webkit-media-controls {
+  display:none !important;
+}
+video::-webkit-media-controls-enclosure {
+  display:none !important;
+}
+video::-webkit-media-controls-overlay-play-button {
+  display:none !important;
+}
+video::-webkit-media-controls-play-button {
+  display:none !important;
+}
+video::-webkit-media-controls-start-playback-button {
+  display:none !important;
+}
+video::-webkit-media-controls-current-time-display {
+  display:none !important;
+}
+video::-webkit-media-controls-time-remaining-display {
+  display:none !important;
+}
+video::-webkit-media-controls-mute-button {
+  display:none !important;
+}
+video::-webkit-media-controls-volume-slider-container {
+  display:none !important;
+}
+video::-webkit-media-controls-fullscreen-button {
+  display:none !important;
 }
 </style>
