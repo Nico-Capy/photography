@@ -11,7 +11,7 @@ import Others from '../src/view/others.vue';
 import Analog from '../src/view/analog.vue';
 import Nature from '../src/view/animals.vue';
 import Random from '../src/view/random.vue'
-import NotFound from '@/views/NotFound.vue';
+import NotFound from '../src/views/NotFound.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
