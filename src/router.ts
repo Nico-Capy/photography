@@ -1,53 +1,66 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
+const Home = () => import('../src/view/home.vue');
+const About = () => import('../src/view/about.vue');
+const Gallery = () => import('../src/view/galleries.vue');
+const Street = () => import('../src/view/street.vue');
+const Studio = () => import('../src/view/studio.vue');
+const Drone = () => import('../src/view/drone.vue');
+const Infrared = () => import('../src/view/infrared.vue');
+const Pinhole = () => import('../src/view/pinhole.vue');
+const Others = () => import('../src/view/others.vue');
+const Analog = () => import('../src/view/analog.vue');
+const Nature = () => import('../src/view/animals.vue');
+const Random = () => import('../src/view/random.vue');
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    component: () => import(/* webpackChunkName: "Home" */ '../src/view/home.vue'),
+    component: Home,
   },
   {
     path: '/about',
-    component: () => import(/* webpackChunkName: "About" */ '../src/view/about.vue'),
+    component: About,
   },
   {
     path: '/galleries',
-    component: () => import(/* webpackChunkName: "Gallery" */ '../src/view/galleries.vue'),
+    component: Gallery,
   },
   {
     path: '/street',
-    component: () => import(/* webpackChunkName: "Street" */ '../src/view/street.vue'),
+    component: Street,
   },
   {
     path: '/studio',
-    component: () => import(/* webpackChunkName: "Studio" */ '../src/view/studio.vue'),
+    component: Studio,
   },
   {
     path: '/drone',
-    component: () => import(/* webpackChunkName: "Drone" */ '../src/view/drone.vue'),
+    component: Drone,
   },
   {
     path: '/infrared',
-    component: () => import(/* webpackChunkName: "Infrared" */ '../src/view/infrared.vue'),
+    component: Infrared,
   },
   {
     path: '/pinhole',
-    component: () => import(/* webpackChunkName: "Pinhole" */ '../src/view/pinhole.vue'),
+    component: Pinhole,
   },
   {
     path: '/others',
-    component: () => import(/* webpackChunkName: "Others" */ '../src/view/others.vue'),
+    component: Others,
   },
   {
     path: '/analog',
-    component: () => import(/* webpackChunkName: "Analog" */ '../src/view/analog.vue'),
+    component: Analog,
   },
   {
     path: '/nature',
-    component: () => import(/* webpackChunkName: "Nature" */ '../src/view/animals.vue'),
+    component: Nature,
   },
   {
     path: '/random',
-    component: () => import(/* webpackChunkName: "Random" */ '../src/view/random.vue'),
+    component: Random,
   },
 ];
 
