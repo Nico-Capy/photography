@@ -37,12 +37,12 @@
 
       <router-link to="/analog" class="m-2 w-11/12 h-90 text-white hover:text-black hover:bg-white shadow-white">
           <h2 class="text-2xl drop-shadow-xl p-3">Analog</h2>
-          <img src="/thumbnails/thumbnail8.jpg" alt='Studio Flower' class='p-2'/>
+          <img src="/thumbnails/thumbnail8.jpg" alt='Anal Log' class='p-2'/>
       </router-link>
 
       <router-link to="/others" class="m-2 w-11/12 h-90 text-white hover:text-black hover:bg-white shadow-white">
           <h2 class="text-2xl drop-shadow-xl p-3">Other</h2>
-          <img src="/thumbnails/thumbnail2.jpg" alt='Studio Flower' class='p-2'/>
+          <img src="/thumbnails/thumbnail2.jpg" alt='Other' class='p-2'/>
       </router-link>
   </div>
 </template>
