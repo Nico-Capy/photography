@@ -3,7 +3,7 @@
     <h2 class="text-3xl text-white drop-shadow-xl m-6 mb-0">About</h2>
   </div>
 
-  <div class="mx-auto flex flex-row m-2 mt-6 w-4/5 items-center text-center">
+  <div class="mx-auto flex flex-row m-2 mt-6 w-10/12 items-center text-center">
     <h3 class="text-3xl text-white indent-14 drop-shadow-xl">Hi, I'm</h3>
     <a href="https://www.youtube.com/watch?v=5rr0zAtdEvw" target="_blank" rel="noopener noreferrer">
       <h3 class="text-3xl text-black bg-white px-3 ml-6 shadow cursor-pointer">Nico</h3>
