@@ -4,7 +4,7 @@ const Home = () => import('../src/view/home.vue');
 const About = () => import('../src/view/about.vue');
 const Gallery = () => import('../src/view/galleries.vue');
 const Street = () => import('../src/view/street.vue');
-const Studio = () => import('../src/view/studio.vue');
+const Portraits = () => import('../src/view/studio.vue');
 const Drone = () => import('../src/view/drone.vue');
 const Infrared = () => import('../src/view/infrared.vue');
 const Pinhole = () => import('../src/view/pinhole.vue');
@@ -32,8 +32,8 @@ const routes: Array<RouteRecordRaw> = [
     component: Street,
   },
   {
-    path: '/studio',
-    component: Studio,
+    path: '/portraits',
+    component: Portraits,
   },
   {
     path: '/drone',

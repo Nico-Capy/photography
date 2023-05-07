@@ -25,48 +25,47 @@
 </template>
 
 <style>
-h2,
-p {
-  font-family: 'Avenir', sans-serif;
-}
-
-.drop-shadow-lg {
-  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.4), 0px 0px 6px rgba(255, 255, 255, 0.4);
-}
-
-.shadow {
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-}
-
-/* Hide the video controls */
-video::-webkit-media-controls {
-  display:none !important;
-}
-video::-webkit-media-controls-enclosure {
-  display:none !important;
-}
-video::-webkit-media-controls-overlay-play-button {
-  display:none !important;
-}
-video::-webkit-media-controls-play-button {
-  display:none !important;
-}
-video::-webkit-media-controls-start-playback-button {
-  display:none !important;
-}
-video::-webkit-media-controls-current-time-display {
-  display:none !important;
-}
-video::-webkit-media-controls-time-remaining-display {
-  display:none !important;
-}
-video::-webkit-media-controls-mute-button {
-  display:none !important;
-}
-video::-webkit-media-controls-volume-slider-container {
-  display:none !important;
-}
-video::-webkit-media-controls-fullscreen-button {
-  display:none !important;
-}
+  h2, p {
+    font-family: 'Avenir', sans-serif;
+  }
+  
+  .drop-shadow-lg {
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.4), 0px 0px 6px rgba(255, 255, 255, 0.4);
+  }
+  
+  .shadow {
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  }
+  
+  /* Hide the video controls */
+  video::-webkit-media-controls {
+    display:none !important;
+  }
+  video::-webkit-media-controls-enclosure {
+    display:none !important;
+  }
+  video::-webkit-media-controls-overlay-play-button {
+    display:none !important;
+  }
+  video::-webkit-media-controls-play-button {
+    display:none !important;
+  }
+  video::-webkit-media-controls-start-playback-button {
+    display:none !important;
+  }
+  video::-webkit-media-controls-current-time-display {
+    display:none !important;
+  }
+  video::-webkit-media-controls-time-remaining-display {
+    display:none !important;
+  }
+  video::-webkit-media-controls-mute-button {
+    display:none !important;
+  }
+  video::-webkit-media-controls-volume-slider-container {
+    display:none !important;
+  }
+  video::-webkit-media-controls-fullscreen-button {
+    display:none !important;
+  }
 </style>
