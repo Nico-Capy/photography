@@ -18,7 +18,7 @@ This is a front only web app, fashioned solo. These are the tools I utilized:
 
 ## Want a quick preview of some photos and the project?
 
-![Drone](./public/preview2.png)
+![Drone](/preview2.png)
 ![Mountain](./public/nature12.jpg)
 ![Pinhole](./public/pinhole10.jpg)
 ![Infrared](./public/infrared05.jpg)
