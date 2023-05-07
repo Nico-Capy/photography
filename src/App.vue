@@ -9,12 +9,14 @@
   import Navbar from './components/navbar.vue'
   import Footer from '../src/components/footer.vue'
   import Home from "../src/view/home.vue"
+  import About from "../src/view/about.vue"
 
   export default defineComponent({
     components: {
       Navbar,
       Footer,
       Home,
+      About,
     },
   })
 </script>
