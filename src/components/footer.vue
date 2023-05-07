@@ -1,6 +1,8 @@
 <template>
   <footer class="flex flex-col lg:flex-row xl:flex-row 2xl:flew-row p-1 bg-transparent text-center w-fit drop-shadow-xl sm:fa-align-center" :style="{ backgroundColor: backgroundColor }">
-    <p class="px-4 py-1" style="color: white">© Nicola Corradini | Photography, {{ currentDate }}</p>
+    <a href="https://github.com/Nico-Capy/photography" target="_blank" rel="noopener noreferrer">
+      <p class="px-4 py-1" style="color: white">© Nicola Corradini | Photography, {{ currentDate }}</p>
+    </a>
     <font-awesome-icon
       :icon="faJediOrder"
       style="color: white; cursor: pointer; height: 3vh;"

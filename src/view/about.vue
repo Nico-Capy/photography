@@ -3,9 +3,11 @@
     <h2 class="text-3xl text-white drop-shadow-xl m-6 mb-0">About</h2>
   </div>
 
-  <div class="mx-auto flex flex-row m-2 w-4/5 items-center text-center">
+  <div class="mx-auto flex flex-row m-2 mt-6 w-4/5 items-center text-center">
     <h3 class="text-3xl text-white indent-14 drop-shadow-xl">Hi, I'm</h3>
-    <h3 class="text-3xl text-black bg-white px-3 ml-6 shadow">Nico</h3>
+    <a href="https://www.youtube.com/watch?v=5rr0zAtdEvw" target="_blank" rel="noopener noreferrer">
+      <h3 class="text-3xl text-black bg-white px-3 ml-6 shadow cursor-pointer">Nico</h3>
+    </a>
   </div>
 
   <div class="mx-auto flex flex-row w-4/5 justify-center align-center">
@@ -18,7 +20,7 @@
   </div>
 
   <div class="flex justify-center align-center">
-    <video src="/nico.mp4" alt="Admiral Nico, flying his drone" class="w-3/5 justify-center align-center m-2 mb-10" autoplay loop muted preload='auto'></video>
+    <video src="/nico.mp4" alt="Admiral Nico, flying his drone" class="w-3/5 justify-center align-center m-2 mb-20" autoplay loop muted preload='auto'></video>
   </div>
 </template>
 
