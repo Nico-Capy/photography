@@ -58,11 +58,11 @@ import { defineComponent } from "vue";
         showModal: false,
         selectedPhoto: 0,
          photos: [
-           { src: "/infrared/infrared01.jpg" },
-           { src: "/infrared/infrared02.jpg" },
-           { src: "/infrared/infrared03.jpg" },
-           { src: "/infrared/infrared04.jpg" },
-           { src: "/infrared/infrared05.jpg" },
+           { src: "/infrared01.jpg" },
+           { src: "/infrared02.jpg" },
+           { src: "/infrared03.jpg" },
+           { src: "/infrared04.jpg" },
+           { src: "/infrared05.jpg" },
          ],
       };
     },
