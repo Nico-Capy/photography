@@ -12,10 +12,10 @@
 
   <div class="mx-auto flex flex-row w-4/5 justify-center align-center">
     <div class="flex flex-col text-white drop-shadow-xl m-2">
-      <p class="text-xl p-4">I'm a developer, photographer, drone pilot, videographer, and brewer. Sometimes, I merge these pursuits. Behold, an online photo gallery!</p>
+      <p class="text-xl p-4">I am a developer, photographer, videographer, drone pilot, and brewer. Sometimes, I combine these pursuits. Behold, my online photo gallery!</p>
       <br />
       <br />
-      <p class="text-xl p-4">Photography was not my calling. I stumbled into it as a means to escape the tedium of school. But I realized that the answer was to innovate. And experiment, I did. From drones to pinhole lenses, from infrared to analog, from street photography to studio portraits — I explored it all. Suffice to say, I reveled in the thrill of discovery.</p>
+      <p class="text-xl p-4">Photography was not my calling; I stumbled into it as a means of escaping the tedium of school. However, I soon realized that the answer was to innovate. And experiment, I did. From drones to pinhole lenses, from infrared to analog, from street photography to studio portraits, I explored it all. Suffice it to say, I reveled in the thrill of discovery.</p>
     </div>
   </div>
 
