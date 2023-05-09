@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="flex justify-center align-center">
-      <video src="/nico.mp4" alt="Admiral Nico, flying his drone" class="w-3/5 justify-center align-center m-2 mb-20" preload='auto' autoplay loop playsinline muted></video>
+      <video src="/nico.mp4" alt="Admiral Nico, flying his drone" class="w-4/5 justify-center align-center m-2 mb-16" preload='auto' autoplay loop playsinline muted></video>
     </div>
   </div>
 </template>
