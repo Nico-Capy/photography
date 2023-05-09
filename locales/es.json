@@ -1,0 +1,32 @@
+
+{
+    "analog": "Analógico",
+    "error": "¡Vaya! Lo siento mucho que te hayas perdido por aquí, no era mi intención. Es un poco incómodo. Te prometo que estoy trabajando en ello.",
+    "nature": "Naturaleza",
+    "galleries": "Galerías",
+    "portrait": "Retratos",
+    "pinhole": "Pinhole",
+    "drone": "Drone",
+    "infrared": "Infrarrojo",
+    "street": "Fotografía urbana",
+    "other": "Otras",
+    "photography": "Fotografía",
+    "dronevideo": "Vídeo con drone",
+    "randomgen": "Generador de fotos al azar",
+    "random": "Al azar",
+    "randbut": "Haz clic aquí para ver una foto al azar",
+    "home": "Inicio",
+    "aboot": "Acerca de",
+    "about": {
+    "title": "Acerca de",
+    "subtitle": {
+    "start": "Hola, soy ",
+    "end": ""
+    },
+    "paragraph1": "Soy desarrollador, fotógrafo, videógrafo, piloto de drones y cervecero. A veces, combino estas pasiones. ¡Aquí tienes mi galería de fotos en línea!",
+    "paragraph2": "La fotografía no fue mi vocación; me tropecé con ella como medio de escapar del tedio de la escuela. Sin embargo, pronto me di cuenta de que la respuesta era innovar. Y experimentar, lo hice. Desde drones hasta lentes pinhole, desde infrarrojos hasta analógicos, desde fotografía urbana hasta retratos de estudio, lo exploré todo. Basta decir que me deleité en la emoción del descubrimiento.",
+    "video": {
+    "alt": "El Almirante Nico volando su drone"
+    }
+    }
+}

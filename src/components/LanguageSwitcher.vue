@@ -7,12 +7,11 @@
     </select>
   </div>
 </template>
-
 <script lang="ts">
 export default {
   data() {
     return {
-      supportedLanguages: ['en', 'fr', 'it'],
+      supportedLanguages: ['en', 'fr', 'it', 'es', 'de', 'la'],
       selectedLanguage: this.$i18n.locale,
     };
   },
@@ -23,7 +22,6 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 .language-switcher {
   display: flex;
@@ -39,4 +37,4 @@ select {
   color: white;
   cursor: pointer;
 }
-</style>
+</style> 

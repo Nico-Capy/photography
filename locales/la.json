@@ -1,0 +1,32 @@
+{
+    "analog": "Pelliculam Argentico",
+    "error": "Salve! Me paenitet te huc errare fecisse, non eras iturus. Hoc quod agitur quasi molestum est. Promitto, tibi auxilio venire.",
+    "nature": "Natura",
+    "galleries": "Galeriae",
+    "portrait": "Picturae Effigiales",
+    "pinhole": "Photographia Foraminis Puncti",
+    "drone": "Volans Camera",
+    "infrared": "Infrarubrum",
+    "street": "Via",
+    "other": "Alius",
+    "photography": "Photographia",
+    "dronevideo": "Volans Camera Vidēo",
+    "randomgen": "Generātor Phōtōrum Aleātōrius",
+    "random": "Aleātōrius",
+    "randbut": "Hic clicca ut aleatoriam imaginem videas",
+    "home": "Domus",
+    "aboot": "De Nobis",
+    "about": {
+      "title": "De Nobis",
+      "subtitle": {
+        "start": "Salve, ego sum ",
+        "end": ""
+      },
+      "paragraph1": "Web developer, photographus, pelliculifer, pellicularius, director machinae volatilis, et coquus sum. Interdum, hos studia commisceo. Ecce, mea photographica theca online!",
+      "paragraph2": "Photographia non fuit meum studium; in ea quasi ad scholae fastidium fugiendum incidere. Celeriter tamen intellexi respondendum esse novationibus. Et experientiam feci, ab apibus volantibus ad lentibus stenopeicis, ab infrarubro ad analogicum, ab urbis ad studiose imaginibus, omnia perquisivi. Sufficit dicere me in investigando gaudium invenisse.",
+      "video": {
+        "alt": "Admiral Nico, volans suum dirigibilem vidēns"
+      }
+    }
+  }
+  
