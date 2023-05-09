@@ -1,0 +1,30 @@
+{
+  "analog": "Film",
+  "nature": "Natura",
+  "galleries": "Gallerie",
+  "portrait": "Ritratti",
+  "pinhole": "Stenopeica",
+  "drone": "Drone",
+  "infrared": "Infrarosso",
+  "street": "Street",
+  "other": "Altro",
+  "photography": "Fotografia",
+  "dronevideo": "Video al Drone",
+  "home": "Casa",
+  "randomgen": "Foto a Caso",
+  "random": "Caso",
+  "aboot": "A Proposito",
+  "randbut": "Clicca qui per una foto a caso",
+  "about": {
+    "title": "Chi Sono",
+    "subtitle": {
+      "start": "Ciao, sono ",
+      "end": ""
+    },
+    "paragraph1": "Sono uno web developer, fotografo, videomaker, pilota di droni e birraio. A volte combino queste attività. Ecco la mia galleria fotografica online!",
+    "paragraph2": "La fotografia non era la mia chiamata; ci sono finito come mezzo per sfuggire alla noia della scuola. Tuttavia, ho presto capito che la risposta era innovare. Ed ho sperimentato. Dai droni alle lenti pinhole, dall'infrarosso all'analogico, dalla fotografia di strada ai ritratti in studio, ho esplorato tutto. Basti dire che mi sono divertito nella scoperta.",
+    "video": {
+      "alt": "Ammiraglio Nico, pilotando il suo drone"
+    }
+  }
+}

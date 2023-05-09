@@ -2,7 +2,7 @@
   <div class="flex flex-col items-center drop-shadow-xl mt-6 bg-transparent">
     <div class="flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row items-center pb-6">
       <h1 class="text-4xl sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-white" role="heading">Nicola Corradini |</h1>
-      <h2 class="text-2xl text-gray-200 indent-6">Photography</h2>
+      <h2 class="text-2xl text-gray-200 indent-6">{{ $t('photography') }}</h2>
     </div>
   </div>
 

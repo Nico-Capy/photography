@@ -1,28 +1,28 @@
 <template>
   <div class="flex flex-col items-center justify-center">
-    <h2 class="text-3xl text-white drop-shadow-xl m-6 mb-0">About</h2>
-  </div>
-
-  <div class="mx-auto flex flex-row m-2 mt-6 w-10/12 items-center text-center">
-    <h3 class="text-3xl text-white indent-14 drop-shadow-xl">Hi, I'm</h3>
-    <a href="https://www.youtube.com/watch?v=5rr0zAtdEvw" target="_blank" rel="noopener noreferrer">
-      <h3 class="text-3xl text-black bg-white px-3 ml-6 shadow cursor-pointer">Nico</h3>
-    </a>
-  </div>
-
-  <div class="mx-auto flex flex-row w-4/5 justify-center align-center">
-    <div class="flex flex-col text-white drop-shadow-xl m-2">
-      <p class="text-xl p-4">I am a developer, photographer, videographer, drone pilot, and brewer. Sometimes, I combine these pursuits. Behold, my online photo gallery!</p>
-      <br />
-      <br />
-      <p class="text-xl p-4">Photography was not my calling; I stumbled into it as a means of escaping the tedium of school. However, I soon realized that the answer was to innovate. And experiment, I did. From drones to pinhole lenses, from infrared to analog, from street photography to studio portraits, I explored it all. Suffice it to say, I reveled in the thrill of discovery.</p>
+    <h2 class="text-3xl text-white drop-shadow-xl m-6 mb-0">{{$t('about.title')}}</h2>
+    <div class="mx-auto flex flex-row m-2 mt-6 w-10/12 items-center text-center">
+      <h3 class="text-3xl text-white indent-14 drop-shadow-xl">{{$t('about.subtitle.start')}}<a href="https://www.youtube.com/watch?v=5rr0zAtdEvw" target="_blank" rel="noopener noreferrer"><span class="text-3xl text-black bg-white px-3 ml-1 shadow cursor-pointer">Nico</span></a></h3>
+    </div>
+    <div class="mx-auto flex flex-row w-4/5 justify-center align-center">
+      <div class="flex flex-col text-white drop-shadow-xl m-2">
+        <p class="text-xl p-4">{{$t('about.paragraph1')}}</p>
+        <br />
+        <br />
+        <p class="text-xl p-4">{{$t('about.paragraph2')}}</p>
+      </div>
+    </div>
+    <div class="flex justify-center align-center">
+      <video src="/nico.mp4" alt="Admiral Nico, flying his drone" class="w-3/5 justify-center align-center m-2 mb-20" preload='auto' autoplay loop playsinline muted></video>
     </div>
   </div>
-
-  <div class="flex justify-center align-center">
-    <video src="/nico.mp4" alt="Admiral Nico, flying his drone" class="w-3/5 justify-center align-center m-2 mb-20" preload='auto' autoplay loop playsinline muted></video>
-  </div>
 </template>
+
+<script lang="ts">
+export default {
+  name: 'About',
+}
+</script>
 
 <style>
   h2, p {

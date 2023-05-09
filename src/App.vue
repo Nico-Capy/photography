@@ -1,4 +1,5 @@
 <template>
+  <LanguageSwitcher />
   <Navbar />
   <router-view />
   <Footer />
@@ -22,9 +23,11 @@
   import Street from '../src/view/street.vue'
   import Pinhole from "../src/view/pinhole.vue"
   import Random from "../src/view/random.vue"
+  import LanguageSwitcher from '../src/components/LanguageSwitcher.vue'
 
   export default defineComponent({
     components: {
+      LanguageSwitcher,
       Navbar,
       Footer,
       Home,

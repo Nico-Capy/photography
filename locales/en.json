@@ -1,0 +1,30 @@
+{
+  "analog": "Analog",
+  "nature": "Nature",
+  "galleries": "Galleries",
+  "portrait": "Portraits",
+  "pinhole": "Pinhole",
+  "drone": "Drone",
+  "infrared": "Infrared",
+  "street": "Street",
+  "other": "Other",
+  "photography": "Photography",
+  "dronevideo": "Drone Video",
+  "randomgen": "Random Photo Generator",
+  "random": "Caso",
+  "randbut": "Click here for a random photo",
+  "home": "Home",
+  "aboot": "About",
+  "about": {
+    "title": "About",
+    "subtitle": {
+      "start": "Hi, I'm ",
+      "end": ""
+    },
+    "paragraph1": "I am a developer, photographer, videographer, drone pilot, and brewer. Sometimes, I combine these pursuits. Behold, my online photo gallery!",
+    "paragraph2": "Photography was not my calling; I stumbled into it as a means of escaping the tedium of school. However, I soon realized that the answer was to innovate. And experiment, I did. From drones to pinhole lenses, from infrared to analog, from street photography to studio portraits, I explored it all. Suffice it to say, I reveled in the thrill of discovery.",
+    "video": {
+      "alt": "Admiral Nico, flying his drone"
+    }
+  }
+}
