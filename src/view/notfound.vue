@@ -1,7 +1,7 @@
 <template>
   <div class="h-11/12 flex flex-col items-center justify-center bg-black text-white">
     <h2 class="text-3xl drop-shadow-lg m-6">Ooops, 404</h2>
-    <p class="text-xl w-3/6 m-2 drop-shadow-lg">Hey! I'm sorry you got lost down here, you weren't supposed to. This is kind of awkward. I promise, I'm working on it. If I were you, I'd click on one of the menu items rather than refreshing.</p>
+    <p class="text-xl w-3/6 m-2 drop-shadow-lg">Hey! I'm sorry you got lost down here, you weren't supposed to. This is kind of awkward. I promise, I'm working on it.</p>
     <button @click="changeGif" class="drop-shadow-lg m-2 py-2 px-4 bg-white text-black hover:text-white hover:bg-transparent focus:outline-none focus:shadow-outline text-xl">Amuse me, coder boy</button>
     <img :src="currentGifSrc" alt="Gif" class="h-96 w-auto" />
   </div>
