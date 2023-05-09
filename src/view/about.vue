@@ -37,7 +37,6 @@ export default {
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
   }
   
-  /* Hide the video controls */
   video::-webkit-media-controls {
     display:none !important;
   }
