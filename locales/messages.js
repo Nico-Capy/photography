@@ -16,3 +16,4 @@ const locales = ["en", "fr", "it", "la"];
 })();
 
 export default messages;
+
