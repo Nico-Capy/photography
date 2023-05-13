@@ -1,13 +1,18 @@
-import en from './en.json';
-import fr from './fr.json';
-import it from './it.json';
-import la from "./la.json";
+const messages: Record<string, object> = {};
 
-const messages = {
-  en,
-  fr,
-  it,
-  la,
-};
+async function loadMessages(locale: string) {
+  const module = await import(`./${locale}.json`);
+  messages[locale] = module.default;
+}
+
+const locales = ["en", "fr", "it", "la"];
+
+(async () => {
+  for (const locale of locales) {
+    await loadMessages(locale);
+  }
+
+  console.log(messages);
+})();
 
 export default messages;
