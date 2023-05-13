@@ -14,7 +14,7 @@ export default {
       supportedLanguages: ['en',
 														'fr',
 														'it',
-												// 'la',
+														 'la',
 														],
       selectedLanguage: this.$i18n.locale,
     };
