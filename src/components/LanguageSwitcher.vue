@@ -11,11 +11,7 @@
 export default {
   data() {
     return {
-      supportedLanguages: ['en', 
-														'fr',
-														'it',
-													// 'la',
-														],
+      supportedLanguages: ['en', 'fr', 'it', 'la' who],
       selectedLanguage: this.$i18n.locale,
     };
   },
