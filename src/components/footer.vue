@@ -1,7 +1,7 @@
 <template>
   <footer class="flex flex-col lg:flex-row xl:flex-row 2xl:flew-row p-1 bg-transparent text-center w-fit drop-shadow-xl sm:fa-align-center" :style="{ backgroundColor: backgroundColor }">
     <a href="https://github.com/Nico-Capy/photography" target="_blank" rel="noopener noreferrer">
-      <p class="px-4 py-1" style="color: white">© Nicola Corradini | {{ $t('photography') }}, {{ currentDate }}</p>
+      <p class="px-4 py-1" style="color: white">© Nicola Corradini | {{ currentDate }}</p>
     </a>
     <font-awesome-icon
       :icon="faJediOrder"
@@ -10,6 +10,7 @@
     />
   </footer>
 </template>
+
 <script lang="ts">
 import { defineComponent } from "vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -22,13 +23,43 @@ export default defineComponent({
   },
   data() {
     return {
-      currentDate: new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" }),
+      currentDate: this.getCurrentDate(),
       backgroundColor: "transparent",
     };
   },
   methods: {
     redirectToVideo() {
       window.open("https://www.youtube.com/watch?v=usQTt-y2Idk", "_blank");
+    },
+    getCurrentDate() {
+      const date = new Date();
+      const day = date.getDate();
+      let daySuffix: string;
+
+      if (day >= 11 && day <= 13) {
+        daySuffix = "th";
+      } else {
+        switch (day % 10) {
+          case 1:
+            daySuffix = "st";
+            break;
+          case 2:
+            daySuffix = "nd";
+            break;
+          case 3:
+            daySuffix = "rd";
+            break;
+          default:
+            daySuffix = "th";
+        }
+      }
+
+      const options: Intl.DateTimeFormatOptions = { month: "long", day: "numeric", year: "numeric" };
+      const formatter = new Intl.DateTimeFormat("en-US", options);
+      const formattedDate: string = formatter.format(date);
+      const formattedDay = `${day}${daySuffix}`;
+
+      return `${this.$t('photography')}, ${formattedDate.replace(day.toString(), formattedDay)}`;
     },
   },
   computed: {
