@@ -47,9 +47,9 @@
   </div>
 </template>
 
-
 <script lang="ts">
 import { defineComponent } from "vue";
+import { gsap } from "gsap";
 
 export default defineComponent({
   name: "PhotoGallery",
@@ -83,15 +83,13 @@ export default defineComponent({
       this.showModal = true;
     },
     showNextPhoto() {
-      this.selectedPhoto =
-        (this.selectedPhoto + 1) % this.photos.length;
+      this.selectedPhoto = (this.selectedPhoto + 1) % this.photos.length;
     },
     showPreviousPhoto() {
       this.selectedPhoto =
-        (this.selectedPhoto + this.photos.length - 1) %
-        this.photos.length;
+        (this.selectedPhoto + this.photos.length - 1) % this.photos.length;
     },
-    handleKeyDown(event: { key: string; }) {
+    handleKeyDown(event: { key: string }) {
       if (event.key === "ArrowRight") {
         this.showNextPhoto();
       } else if (event.key === "ArrowLeft") {
@@ -103,6 +101,20 @@ export default defineComponent({
   },
   mounted() {
     document.addEventListener("keydown", this.handleKeyDown);
+
+    gsap.from(".relative", {
+      opacity: 0,
+      y: 100,
+      duration: 1,
+      stagger: 0.6,
+    });
+
+    gsap.from("h2", {
+      opacity: 0,
+      y: 100,
+      duration: 0.8,
+      delay: 0.3,
+    });
   },
   beforeUnmount() {
     document.removeEventListener("keydown", this.handleKeyDown);
@@ -110,15 +122,13 @@ export default defineComponent({
 });
 </script>
 
-
 <style>
-    h2 {
-      font-family: 'Avenir', sans-serif;
-    }
+  h2 {
+    font-family: 'Avenir', sans-serif;
+  }
 
-    .drop-shadow-lg {
-        text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7),
-                     0px 0px 10px rgba(255, 255, 255, 0.7);
-    }
-  </style>
-  
+  .drop-shadow-xl {
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7),
+                 0px 0px 10px rgba(255, 255, 255, 0.7);
+  }
+</style>

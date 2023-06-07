@@ -49,6 +49,7 @@
 
 <script lang="ts">
   import { defineComponent } from "vue";
+  import { gsap } from "gsap";
 
   export default defineComponent({
     name: "PhotoGallery",
@@ -56,27 +57,27 @@
       return {
         showModal: false,
         selectedPhoto: 0,
-         photos: [
-           { src: "/analog01.jpg" },
-           { src: "/analog02.jpg" },
-           { src: "/analog03.jpg" },
-           { src: "/analog04.jpg" },
-           { src: "/analog05.jpg" },
-           { src: "/analog06.jpg" },
-           { src: "/analog07.jpg" },
-           { src: "/analog08.jpg" },
-           { src: "/analog09.jpg" },
-           { src: "/analog10.jpg" },
-           { src: "/analog11.jpg" },
-           { src: "/analog12.jpg" },
-           { src: "/analog13.jpg" },
-           { src: "/analog14.jpg" },
-           { src: "/analog15.jpg" },
-           { src: "/analog16.jpg" },
-           { src: "/analog17.jpg" },
-           { src: "/analog18.jpg" },
-           { src: "/analog19.jpg" },
-         ],
+        photos: [
+          { src: "/analog01.jpg" },
+          { src: "/analog02.jpg" },
+          { src: "/analog03.jpg" },
+          { src: "/analog04.jpg" },
+          { src: "/analog05.jpg" },
+          { src: "/analog06.jpg" },
+          { src: "/analog07.jpg" },
+          { src: "/analog08.jpg" },
+          { src: "/analog09.jpg" },
+          { src: "/analog10.jpg" },
+          { src: "/analog11.jpg" },
+          { src: "/analog12.jpg" },
+          { src: "/analog13.jpg" },
+          { src: "/analog14.jpg" },
+          { src: "/analog15.jpg" },
+          { src: "/analog16.jpg" },
+          { src: "/analog17.jpg" },
+          { src: "/analog18.jpg" },
+          { src: "/analog19.jpg" },
+        ],
       };
     },
     methods: {
@@ -85,15 +86,13 @@
         this.showModal = true;
       },
       showNextPhoto() {
-        this.selectedPhoto =
-          (this.selectedPhoto + 1) % this.photos.length;
+        this.selectedPhoto = (this.selectedPhoto + 1) % this.photos.length;
       },
       showPreviousPhoto() {
         this.selectedPhoto =
-          (this.selectedPhoto + this.photos.length - 1) %
-          this.photos.length;
+          (this.selectedPhoto + this.photos.length - 1) % this.photos.length;
       },
-      handleKeyDown(event: { key: string; }) {
+      handleKeyDown(event: { key: string }) {
         if (event.key === "ArrowRight") {
           this.showNextPhoto();
         } else if (event.key === "ArrowLeft") {
@@ -104,11 +103,21 @@
       },
     },
     mounted() {
-      document.addEventListener("keydown", this.handleKeyDown);
-    },
-    beforeUnmount() {
-      document.removeEventListener("keydown", this.handleKeyDown);
-    },
+  document.addEventListener("keydown", this.handleKeyDown);
+  gsap.from(".relative", {
+    opacity: 0,
+    y: 100,
+    duration: 1,
+    stagger: 0.6,
+  });
+
+  gsap.from("h2", {
+    opacity: 0,
+    y: 100,
+    duration: 0.8,
+    delay: 0.3,
+  });
+},
   });
 </script>
 
@@ -117,8 +126,8 @@
     font-family: 'Avenir', sans-serif;
   }
 
-  .drop-shadow-lg {
-      text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7),
-                   0px 0px 10px rgba(255, 255, 255, 0.7);
+  .drop-shadow-xl {
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7),
+                 0px 0px 10px rgba(255, 255, 255, 0.7);
   }
 </style>
