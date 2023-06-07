@@ -1,7 +1,7 @@
 <template>
   <footer class="flex flex-col lg:flex-row xl:flex-row 2xl:flew-row p-1 bg-transparent text-center w-fit drop-shadow-xl sm:fa-align-center" :style="{ backgroundColor: backgroundColor }">
     <a href="https://github.com/Nico-Capy/photography" target="_blank" rel="noopener noreferrer">
-      <p class="px-4 py-1" style="color: white">© Nicola Corradini | {{ currentDate }}</p>
+      <p class="px-4 py-1" style="color: white">© Nicola Corradini | <span v-html="formattedDate"></span></p>
     </a>
     <font-awesome-icon
       :icon="faJediOrder"
@@ -36,35 +36,32 @@ export default defineComponent({
       const day = date.getDate();
       let daySuffix: string;
 
-      if (day >= 11 && day <= 13) {
-        daySuffix = "th";
+      if (day === 1 || day === 21 || day === 31) {
+        daySuffix = "st";
+      } else if (day === 2 || day === 22) {
+        daySuffix = "nd";
+      } else if (day === 3 || day === 23) {
+        daySuffix = "rd";
       } else {
-        switch (day % 10) {
-          case 1:
-            daySuffix = "st";
-            break;
-          case 2:
-            daySuffix = "nd";
-            break;
-          case 3:
-            daySuffix = "rd";
-            break;
-          default:
-            daySuffix = "th";
-        }
+        daySuffix = "th";
       }
 
       const options: Intl.DateTimeFormatOptions = { month: "long", day: "numeric", year: "numeric" };
       const formatter = new Intl.DateTimeFormat("en-US", options);
       const formattedDate: string = formatter.format(date);
-      const formattedDay = `${day}${daySuffix}`;
+      const formattedDay = `${day}<sup>${daySuffix}</sup>`;
 
-      return `${this.$t('photography')}, ${formattedDate.replace(day.toString(), formattedDay)}`;
+      const photographyText = this.$t('photography');
+
+      return `${photographyText}, ${formattedDate.replace(day.toString(), formattedDay)}`;
     },
   },
   computed: {
     faJediOrder() {
       return faJediOrder;
+    },
+    formattedDate() {
+      return this.getCurrentDate();
     },
   },
 });
