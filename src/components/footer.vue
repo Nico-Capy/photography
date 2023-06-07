@@ -53,7 +53,7 @@ export default defineComponent({
 
       const photographyText = this.$t('photography');
 
-      return `${photographyText}, ${formattedDate.replace(day.toString(), formattedDay)}`;
+      return `${photographyText}. ${formattedDate.replace(day.toString(), formattedDay)}`;
     },
   },
   computed: {
