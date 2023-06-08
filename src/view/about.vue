@@ -1,15 +1,15 @@
 <template>
   <div class="flex flex-col items-center justify-center">
     <h2 class="text-3xl text-white drop-shadow-xl m-6 mb-0">{{$t('about.title')}}</h2>
-    <div class="mx-auto flex flex-row m-2 mt-6 w-10/12 items-center text-center">
+    <div class="mx-auto flex flex-row m-2 mt-6 w-10/12 items-center text-center dwight">
       <h3 class="text-3xl text-white indent-14 drop-shadow-xl">{{$t('about.subtitle.start')}}<a href="https://www.youtube.com/watch?v=5rr0zAtdEvw" target="_blank" rel="noopener noreferrer"><span class="text-3xl text-black bg-white px-3 ml-1 shadow cursor-pointer">Nico</span></a></h3>
     </div>
     <div class="mx-auto flex flex-row w-4/5 justify-center align-center">
       <div class="flex flex-col text-white drop-shadow-xl m-2">
-        <p class="text-xl p-4">{{$t('about.paragraph1')}}</p>
+        <p class="text-xl p-4 dwight">{{$t('about.paragraph1')}}</p>
         <br />
         <br />
-        <p class="text-xl p-4">{{$t('about.paragraph2')}}</p>
+        <p class="text-xl p-4 dwight">{{$t('about.paragraph2')}}</p>
       </div>
     </div>
     <div class="flex justify-center align-center">
@@ -19,10 +19,36 @@
 </template>
 
 <script lang="ts">
+import { gsap } from 'gsap';
+
 export default {
   name: 'About',
+  mounted() {
+    this.animateElements();
+  },
+  methods: {
+    animateElements() {
+      gsap.from("h2", {
+        opacity: 0,
+        y: 100,
+        duration: 1,
+        delay: 0,
+        ease: "power1.in",
+      });
+
+      gsap.from(".dwight", {
+        opacity: 0,
+        y: 100,
+        duration: 0.6,
+        stagger: 0.6,
+        delay: 0.3,
+        ease: "power1.in",  
+      });
+    }
+  }
 }
 </script>
+
 
 <style>
   h2, p {

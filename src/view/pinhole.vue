@@ -48,7 +48,8 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from "vue";
+  import { defineComponent, onMounted, onUnmounted } from "vue";
+  import { gsap } from "gsap";
 
   export default defineComponent({
     name: "PhotoGallery",
@@ -57,21 +58,21 @@
         showModal: false,
         selectedPhoto: 0,
         photos: [
-          { src: "/pinhole01.jpg" },
-          { src: "/pinhole02.jpg" },
-          { src: "/pinhole03.jpg" },
-          { src: "/pinhole04.jpg" },
-          { src: "/pinhole05.jpg" },
-          { src: "/pinhole06.jpg" },
-          { src: "/pinhole07.jpg" },
-          { src: "/pinhole08.jpg" },
-          { src: "/pinhole09.jpg" },
-          { src: "/pinhole10.jpg" },
-          { src: "/pinhole11.jpg" },
-          { src: "/pinhole12.jpg" },
-          { src: "/pinhole13.jpg" },
-          { src: "/pinhole14.jpg" },
-          { src: "/pinhole15.jpg" },
+          { src: "/pinhole01.jpg", loaded: false },
+          { src: "/pinhole02.jpg", loaded: false },
+          { src: "/pinhole03.jpg", loaded: false },
+          { src: "/pinhole04.jpg", loaded: false },
+          { src: "/pinhole05.jpg", loaded: false },
+          { src: "/pinhole06.jpg", loaded: false },
+          { src: "/pinhole07.jpg", loaded: false },
+          { src: "/pinhole08.jpg", loaded: false },
+          { src: "/pinhole09.jpg", loaded: false },
+          { src: "/pinhole10.jpg", loaded: false },
+          { src: "/pinhole11.jpg", loaded: false },
+          { src: "/pinhole12.jpg", loaded: false },
+          { src: "/pinhole13.jpg", loaded: false },
+          { src: "/pinhole14.jpg", loaded: false },
+          { src: "/pinhole15.jpg", loaded: false },
         ],
       };
     },
@@ -86,26 +87,84 @@
       },
       showPreviousPhoto() {
         this.selectedPhoto =
-          (this.selectedPhoto + this.photos.length - 1) %
-          this.photos.length;
+          (this.selectedPhoto + this.photos.length - 1) % this.photos.length;
       },
       handleKeyDown(event: { key: string; }) {
         if (event.key === "ArrowRight") {
           this.showNextPhoto();
         } else if (event.key === "ArrowLeft") {
           this.showPreviousPhoto();
+        } else if (event.key === "Escape") {
+          this.showModal = false;
         }
-        else if (event.key === "Escape") {
-        this.showModal = false;
-      }
+      },
+      applyButtonTransition() {
+        gsap.from(this.$refs.previousBtn, {
+          opacity: 0,
+          x: -100,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+
+        gsap.from(this.$refs.nextBtn, {
+          opacity: 0,
+          x: 100,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+      },
+      lazyLoadImage(photo: { src: string; loaded: boolean }) {
+        const options = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.1,
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              photo.loaded = true;
+              observer.unobserve(entry.target);
+            }
+          });
+        }, options);
+
+        this.$nextTick(() => {
+          const imageElement = document.querySelector(`img[src="${photo.src}"]`);
+          if (imageElement) {
+            observer.observe(imageElement);
+          }
+        });
       },
     },
     mounted() {
       document.addEventListener("keydown", this.handleKeyDown);
-    },
-    beforeUnmount() {
+
+      gsap.from(".relative", {
+        opacity: 0,
+        y: 100,
+        duration: 0.6,
+        stagger: 0.1,
+        delay: 0.6,
+        ease: "power1.in",  });
+
+      gsap.from("h2", {
+        opacity: 0,
+        y: 100,
+        duration: 1,
+        delay: 0,
+        ease: "power1.in",
+      });
+      
+      this.applyButtonTransition();
+      
+      this.photos.forEach(photo => {
+        this.lazyLoadImage(photo);
+      });
+      },
+      beforeUnmount() {
       document.removeEventListener("keydown", this.handleKeyDown);
-    },
+      },
   });
 </script>
 

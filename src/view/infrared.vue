@@ -47,9 +47,9 @@
   </div>
 </template>
 
-
 <script lang="ts">
-import { defineComponent } from "vue";
+  import { defineComponent, onMounted, onUnmounted } from "vue";
+  import { gsap } from "gsap";
 
   export default defineComponent({
     name: "PhotoGallery",
@@ -57,13 +57,13 @@ import { defineComponent } from "vue";
       return {
         showModal: false,
         selectedPhoto: 0,
-         photos: [
-           { src: "/infrared01.jpg" },
-           { src: "/infrared02.jpg" },
-           { src: "/infrared03.jpg" },
-           { src: "/infrared04.jpg" },
-           { src: "/infrared05.jpg" },
-         ],
+        photos: [
+        { src: "/infrared01.jpg", loaded: false },
+        { src: "/infrared02.jpg", loaded: false },
+        { src: "/infrared03.jpg", loaded: false },
+        { src: "/infrared04.jpg", loaded: false },
+        { src: "/infrared05.jpg", loaded: false },
+        ],
       };
     },
     methods: {
@@ -77,8 +77,7 @@ import { defineComponent } from "vue";
       },
       showPreviousPhoto() {
         this.selectedPhoto =
-          (this.selectedPhoto + this.photos.length - 1) %
-          this.photos.length;
+          (this.selectedPhoto + this.photos.length - 1) % this.photos.length;
       },
       handleKeyDown(event: { key: string; }) {
         if (event.key === "ArrowRight") {
@@ -89,14 +88,74 @@ import { defineComponent } from "vue";
           this.showModal = false;
         }
       },
+      applyButtonTransition() {
+        gsap.from(this.$refs.previousBtn, {
+          opacity: 0,
+          x: -100,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+
+        gsap.from(this.$refs.nextBtn, {
+          opacity: 0,
+          x: 100,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+      },
+      lazyLoadImage(photo: { src: string; loaded: boolean }) {
+        const options = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.1,
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              photo.loaded = true;
+              observer.unobserve(entry.target);
+            }
+          });
+        }, options);
+
+        this.$nextTick(() => {
+          const imageElement = document.querySelector(`img[src="${photo.src}"]`);
+          if (imageElement) {
+            observer.observe(imageElement);
+          }
+        });
+      },
     },
     mounted() {
       document.addEventListener("keydown", this.handleKeyDown);
-    },
-    beforeUnmount() {
+
+      gsap.from(".relative", {
+        opacity: 0,
+        y: 100,
+        duration: 0.6,
+        stagger: 0.1,
+        delay: 0.6,
+        ease: "power1.in",  });
+
+      gsap.from("h2", {
+        opacity: 0,
+        y: 100,
+        duration: 1,
+        delay: 0,
+        ease: "power1.in",
+      });
+      
+      this.applyButtonTransition();
+      
+      this.photos.forEach(photo => {
+        this.lazyLoadImage(photo);
+      });
+      },
+      beforeUnmount() {
       document.removeEventListener("keydown", this.handleKeyDown);
-    },
-  });
+      },
+});
 </script>
 
 <style>

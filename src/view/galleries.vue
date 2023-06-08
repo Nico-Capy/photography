@@ -49,7 +49,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { gsap } from "gsap";
+import { gsap } from 'gsap';
 
 export default defineComponent({
   name: "Galleries",
@@ -59,16 +59,18 @@ export default defineComponent({
       y: 100,
       duration: 1,
       delay: 0.3,
+      ease: "power1.in",
     });
 
     gsap.from(".gallery-link", {
       opacity: 0,
       y: 100,
-      duration: 1,
-      stagger: 0.4,
+      duration: 0.6,
+      stagger: 0.1,
       delay: 0.6,
+      ease: "power1.in",
     });
-  },
+  }
 });
 </script>
 

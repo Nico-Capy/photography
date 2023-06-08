@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center justify-center">
-    <h2 role="heading" class="text-3xl text-white drop-shadow-xl m-6">{{ $t('portrait') }}</h2>
+    <h2 role="heading" class="text-3xl text-white drop-shadow-lg m-6">{{ $t('portrait') }}</h2>
     <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 mb-20">
       <div v-for="(photo, index) in photos" :key="index" class="relative m-2">
         <img
@@ -48,7 +48,8 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from "vue";
+  import { defineComponent, onMounted, onUnmounted } from "vue";
+  import { gsap } from "gsap";
 
   export default defineComponent({
     name: "PhotoGallery",
@@ -57,46 +58,46 @@
         showModal: false,
         selectedPhoto: 0,
         photos: [
-          { src: "/portrait01.jpg" },
-          { src: "/portrait02.jpg" },
-          { src: "/portrait03.jpg" },
-          { src: "/portrait04.jpg" },
-          { src: "/portrait05.jpg" },
-          { src: "/portrait06.jpg" },
-          { src: "/portrait07.jpg" },
-          { src: "/portrait08.jpg" },
-          { src: "/portrait09.jpg" },
-          { src: "/portrait10.jpg" },
-          { src: "/portrait11.jpg" },
-          { src: "/portrait12.jpg" },
-          { src: "/portrait13.jpg" },
-          { src: "/portrait15.jpg" },
-          { src: "/portrait16.jpg" },
-					{ src: "/portrait17.jpg" },
-					{ src: "/portrait18.jpg" },
-          { src: "/portrait19.jpg" },
-          { src: "/portrait20.jpg" },
-          { src: "/portrait20.jpg" },
-          { src: "/portrait21.jpg" },
-          { src: "/portrait22.jpg" },
-          { src: "/portrait23.jpg" },
-          { src: "/portrait24.jpg" },
-          { src: "/portrait25.jpg" },
-          { src: "/portrait26.jpg" },
-          { src: "/portrait14.jpg" },
-          { src: "/portrait29.jpg" },
-          { src: "/portrait30.jpg" },
-          { src: "/portrait31.jpg" },
-          { src: "/portrait32.jpg" },
-          { src: "/portrait33.jpg" },
-          { src: "/portrait34.jpg" },
-          { src: "/portrait35.jpg" },
-          { src: "/portrait36.jpg" },
-          { src: "/portrait37.jpg" },
-          { src: "/portrait38.jpg" },
-          { src: "/portrait39.jpg" },
-          { src: "/portrait40.jpg" },
-          { src: "/portrait41.jpg" },
+          { src: "/portrait01.jpg", loaded: false },
+          { src: "/portrait02.jpg", loaded: false },
+          { src: "/portrait03.jpg", loaded: false },
+          { src: "/portrait04.jpg", loaded: false },
+          { src: "/portrait05.jpg", loaded: false },
+          { src: "/portrait06.jpg", loaded: false },
+          { src: "/portrait07.jpg", loaded: false },
+          { src: "/portrait08.jpg", loaded: false },
+          { src: "/portrait09.jpg", loaded: false },
+          { src: "/portrait10.jpg", loaded: false },
+          { src: "/portrait11.jpg", loaded: false },
+          { src: "/portrait12.jpg", loaded: false },
+          { src: "/portrait13.jpg", loaded: false },
+          { src: "/portrait15.jpg", loaded: false },
+          { src: "/portrait16.jpg", loaded: false },
+          { src: "/portrait17.jpg", loaded: false },
+          { src: "/portrait18.jpg", loaded: false },
+          { src: "/portrait19.jpg", loaded: false },
+          { src: "/portrait20.jpg", loaded: false },
+          { src: "/portrait20.jpg", loaded: false },
+          { src: "/portrait21.jpg", loaded: false },
+          { src: "/portrait22.jpg", loaded: false },
+          { src: "/portrait23.jpg", loaded: false },
+          { src: "/portrait24.jpg", loaded: false },
+          { src: "/portrait25.jpg", loaded: false },
+          { src: "/portrait26.jpg", loaded: false },
+          { src: "/portrait14.jpg", loaded: false },
+          { src: "/portrait29.jpg", loaded: false },
+          { src: "/portrait30.jpg", loaded: false },
+          { src: "/portrait31.jpg", loaded: false },
+          { src: "/portrait32.jpg", loaded: false },
+          { src: "/portrait33.jpg", loaded: false },
+          { src: "/portrait34.jpg", loaded: false },
+          { src: "/portrait35.jpg", loaded: false },
+          { src: "/portrait36.jpg", loaded: false },
+          { src: "/portrait37.jpg", loaded: false },
+          { src: "/portrait38.jpg", loaded: false },
+          { src: "/portrait39.jpg", loaded: false },
+          { src: "/portrait40.jpg", loaded: false },
+          { src: "/portrait41.jpg", loaded: false },
         ],
       };
     },
@@ -111,26 +112,84 @@
       },
       showPreviousPhoto() {
         this.selectedPhoto =
-          (this.selectedPhoto + this.photos.length - 1) %
-          this.photos.length;
+          (this.selectedPhoto + this.photos.length - 1) % this.photos.length;
       },
       handleKeyDown(event: { key: string; }) {
         if (event.key === "ArrowRight") {
           this.showNextPhoto();
         } else if (event.key === "ArrowLeft") {
           this.showPreviousPhoto();
+        } else if (event.key === "Escape") {
+          this.showModal = false;
         }
-        else if (event.key === "Escape") {
-        this.showModal = false;
-        }
+      },
+      applyButtonTransition() {
+        gsap.from(this.$refs.previousBtn, {
+          opacity: 0,
+          x: -100,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+
+        gsap.from(this.$refs.nextBtn, {
+          opacity: 0,
+          x: 100,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+      },
+      lazyLoadImage(photo: { src: string; loaded: boolean }) {
+        const options = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.1,
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              photo.loaded = true;
+              observer.unobserve(entry.target);
+            }
+          });
+        }, options);
+
+        this.$nextTick(() => {
+          const imageElement = document.querySelector(`img[src="${photo.src}"]`);
+          if (imageElement) {
+            observer.observe(imageElement);
+          }
+        });
       },
     },
     mounted() {
       document.addEventListener("keydown", this.handleKeyDown);
-    },
-    beforeUnmount() {
+
+      gsap.from(".relative", {
+        opacity: 0,
+        y: 100,
+        duration: 0.6,
+        stagger: 0.1,
+        delay: 0.6,
+        ease: "power1.in",  });
+
+      gsap.from("h2", {
+        opacity: 0,
+        y: 100,
+        duration: 1,
+        delay: 0,
+        ease: "power1.in",
+      });
+      
+      this.applyButtonTransition();
+      
+      this.photos.forEach(photo => {
+        this.lazyLoadImage(photo);
+      });
+      },
+      beforeUnmount() {
       document.removeEventListener("keydown", this.handleKeyDown);
-    },
+      },
   });
 </script>
 
