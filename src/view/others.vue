@@ -47,10 +47,9 @@
   </div>
 </template>
 
-
 <script lang="ts">
-  import { defineComponent } from "vue";
-
+  import { defineComponent, onMounted, onUnmounted } from "vue";
+  import { gsap } from "gsap";
 
   export default defineComponent({
     name: "PhotoGallery",
@@ -59,22 +58,22 @@
         showModal: false,
         selectedPhoto: 0,
         photos: [
-          { src: "other01.jpg" },
-          { src: "other02.jpg" },
-          { src: "other03.jpg" },
-          { src: "other04.jpg" },
-          { src: "other05.jpg" },
-          { src: "other06.jpg" },
-          { src: "other07.jpg" },
-          { src: "other08.jpg" },
-          { src: "other09.jpg" },
-          { src: "other10.jpg" },
-          { src: "other11.jpg" },
-          { src: "other12.jpg" },
-          { src: "other13.jpg" },
-          { src: "other14.jpg" },
-          { src: "other15.jpg" },
-          { src: "other16.jpg" },
+          { src: "other01.jpg", loaded: false },
+          { src: "other02.jpg", loaded: false },
+          { src: "other03.jpg", loaded: false },
+          { src: "other04.jpg", loaded: false },
+          { src: "other05.jpg", loaded: false },
+          { src: "other06.jpg", loaded: false },
+          { src: "other07.jpg", loaded: false },
+          { src: "other08.jpg", loaded: false },
+          { src: "other09.jpg", loaded: false },
+          { src: "other10.jpg", loaded: false },
+          { src: "other11.jpg", loaded: false },
+          { src: "other12.jpg", loaded: false },
+          { src: "other13.jpg", loaded: false },
+          { src: "other14.jpg", loaded: false },
+          { src: "other15.jpg", loaded: false },
+          { src: "other16.jpg", loaded: false },
         ],
       };
     },
@@ -89,27 +88,85 @@
       },
       showPreviousPhoto() {
         this.selectedPhoto =
-          (this.selectedPhoto + this.photos.length - 1) %
-          this.photos.length;
+          (this.selectedPhoto + this.photos.length - 1) % this.photos.length;
       },
       handleKeyDown(event: { key: string; }) {
         if (event.key === "ArrowRight") {
           this.showNextPhoto();
         } else if (event.key === "ArrowLeft") {
           this.showPreviousPhoto();
+        } else if (event.key === "Escape") {
+          this.showModal = false;
         }
-        else if (event.key === "Escape") {
-        this.showModal = false;
-        }
+      },
+      applyButtonTransition() {
+        gsap.from(this.$refs.previousBtn, {
+          opacity: 0,
+          x: -100,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+
+        gsap.from(this.$refs.nextBtn, {
+          opacity: 0,
+          x: 100,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+      },
+      lazyLoadImage(photo: { src: string; loaded: boolean }) {
+        const options = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.1,
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              photo.loaded = true;
+              observer.unobserve(entry.target);
+            }
+          });
+        }, options);
+
+        this.$nextTick(() => {
+          const imageElement = document.querySelector(`img[src="${photo.src}"]`);
+          if (imageElement) {
+            observer.observe(imageElement);
+          }
+        });
       },
     },
     mounted() {
       document.addEventListener("keydown", this.handleKeyDown);
-    },
-    beforeUnmount() {
+
+      gsap.from(".relative", {
+        opacity: 0,
+        y: 100,
+        duration: 0.6,
+        stagger: 0.1,
+        delay: 0.6,
+        ease: "power1.in",  });
+
+      gsap.from("h2", {
+        opacity: 0,
+        y: 100,
+        duration: 1,
+        delay: 0,
+        ease: "power1.in",
+      });
+      
+      this.applyButtonTransition();
+      
+      this.photos.forEach(photo => {
+        this.lazyLoadImage(photo);
+      });
+      },
+      beforeUnmount() {
       document.removeEventListener("keydown", this.handleKeyDown);
-    },
-  });
+      },
+});
 </script>
 
 <style>

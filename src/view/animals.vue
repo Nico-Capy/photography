@@ -4,7 +4,7 @@
     <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 mb-16">
       <div v-for="(photo, index) in photos" :key="index" class="relative m-2">
         <img
-          :src="photo.src"
+          v-lazy="photo.src"
           class="mx-auto w-full h-full object-cover shadow-md"
           style="height: 100%"
           @click="showPhoto(index)"
@@ -31,7 +31,7 @@
             &larr;
           </button>
           <img
-            :src="photos[selectedPhoto].src"
+            v-lazy="photos[selectedPhoto].src"
             class="object-contain mx-auto"
             style="height: 47rem;"
           />
@@ -47,78 +47,161 @@
   </div>
 </template>
 
-
 <script lang="ts">
 import { defineComponent } from "vue";
+import { gsap } from "gsap";
 
 export default defineComponent({
   name: "PhotoGallery",
+  directives: {
+    lazy: {
+      beforeMount(el, binding) {
+        const imageEl = el as HTMLImageElement;
+        imageEl.setAttribute('data-src', binding.value);
+        imageEl.onload = function () {
+          imageEl.src = imageEl.getAttribute('data-src') as string;
+        };
+      },
+      mounted(el) {
+        const observer = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const img = entry.target as HTMLImageElement;
+                img.src = img.getAttribute('data-src') as string;
+                observer.unobserve(img);
+              }
+            });
+          },
+          { rootMargin: "0px 0px 200px 0px" }
+        );
+        observer.observe(el);
+      },
+    }
+  },
   data() {
     return {
       showModal: false,
       selectedPhoto: 0,
       photos: [
-        { src: "/nature09.jpg" },
-        { src: "/nature10.jpg" },
-        { src: "/nature11.jpg" },
-        { src: "/nature12.jpg" },
-        { src: "/nature13.jpg" },
-        { src: "/nature14.jpg" },
-        { src: "/nature16.jpg" },
-        { src: "/nature15.jpg" },
-        { src: "/nature07.jpg" },
-        { src: "/nature08.jpg" },
-        { src: "/nature01.jpg" },
-        { src: "/nature02.jpg" },
-        { src: "/nature03.jpg" },
-        { src: "/nature04.jpg" },
-        { src: "/nature05.jpg" },
-        { src: "/nature06.jpg" },
+        { src: "/nature09.jpg", loaded: false },
+        { src: "/nature10.jpg", loaded: false },
+        { src: "/nature11.jpg", loaded: false },
+        { src: "/nature12.jpg", loaded: false },
+        { src: "/nature13.jpg", loaded: false },
+        { src: "/nature14.jpg", loaded: false },
+        { src: "/nature16.jpg", loaded: false },
+        { src: "/nature15.jpg", loaded: false },
+        { src: "/nature07.jpg", loaded: false },
+        { src: "/nature08.jpg", loaded: false },
+        { src: "/nature01.jpg", loaded: false },
+        { src: "/nature02.jpg", loaded: false },
+        { src: "/nature03.jpg", loaded: false },
+        { src: "/nature04.jpg", loaded: false },
+        { src: "/nature05.jpg", loaded: false },
+        { src: "/nature06.jpg", loaded: false },
       ],
     };
   },
   methods: {
-    showPhoto(index: number) {
-      this.selectedPhoto = index;
-      this.showModal = true;
+      showPhoto(index: number) {
+        this.selectedPhoto = index;
+        this.showModal = true;
+      },
+      showNextPhoto() {
+        this.selectedPhoto =
+          (this.selectedPhoto + 1) % this.photos.length;
+      },
+      showPreviousPhoto() {
+        this.selectedPhoto =
+          (this.selectedPhoto + this.photos.length - 1) % this.photos.length;
+      },
+      handleKeyDown(event: { key: string; }) {
+        if (event.key === "ArrowRight") {
+          this.showNextPhoto();
+        } else if (event.key === "ArrowLeft") {
+          this.showPreviousPhoto();
+        } else if (event.key === "Escape") {
+          this.showModal = false;
+        }
+      },
+      applyButtonTransition() {
+        gsap.from(this.$refs.previousBtn, {
+          opacity: 0,
+          x: -100,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+
+        gsap.from(this.$refs.nextBtn, {
+          opacity: 0,
+          x: 100,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+      },
+      lazyLoadImage(photo: { src: string; loaded: boolean }) {
+        const options = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.1,
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              photo.loaded = true;
+              observer.unobserve(entry.target);
+            }
+          });
+        }, options);
+
+        this.$nextTick(() => {
+          const imageElement = document.querySelector(`img[src="${photo.src}"]`);
+          if (imageElement) {
+            observer.observe(imageElement);
+          }
+        });
+      },
     },
-    showNextPhoto() {
-      this.selectedPhoto =
-        (this.selectedPhoto + 1) % this.photos.length;
-    },
-    showPreviousPhoto() {
-      this.selectedPhoto =
-        (this.selectedPhoto + this.photos.length - 1) %
-        this.photos.length;
-    },
-    handleKeyDown(event: { key: string; }) {
-      if (event.key === "ArrowRight") {
-        this.showNextPhoto();
-      } else if (event.key === "ArrowLeft") {
-        this.showPreviousPhoto();
-      } else if (event.key === "Escape") {
-        this.showModal = false;
-      }
-    },
-  },
-  mounted() {
-    document.addEventListener("keydown", this.handleKeyDown);
-  },
-  beforeUnmount() {
-    document.removeEventListener("keydown", this.handleKeyDown);
-  },
+    mounted() {
+      document.addEventListener("keydown", this.handleKeyDown);
+
+      gsap.from(".relative", {
+        opacity: 0,
+        y: 100,
+        duration: 0.6,
+        stagger: 0.1,
+        delay: 0.6,
+        ease: "power1.in",  });
+
+      gsap.from("h2", {
+        opacity: 0,
+        y: 100,
+        duration: 1,
+        delay: 0,
+        ease: "power1.in",
+      });
+      
+      this.applyButtonTransition();
+      
+      this.photos.forEach(photo => {
+        this.lazyLoadImage(photo);
+      });
+      },
+      beforeUnmount() {
+      document.removeEventListener("keydown", this.handleKeyDown);
+      },
 });
 </script>
 
-
 <style>
-    h2 {
-      font-family: 'Avenir', sans-serif;
-    }
+  h2 {
+    font-family: 'Avenir', sans-serif;
+  }
 
-    .drop-shadow-lg {
-        text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7),
-                     0px 0px 10px rgba(255, 255, 255, 0.7);
-    }
-  </style>
-  
+  .drop-shadow-xl {
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7),
+                 0px 0px 10px rgba(255, 255, 255, 0.7);
+  }
+</style>
