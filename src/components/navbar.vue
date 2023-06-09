@@ -4,7 +4,7 @@
       <router-link to="/" class="text-white drop-shadow-lg mx-2 p-1 hover:text-black hover:bg-white animated-link">{{ $t('home') }}</router-link>
       <router-link to="/galleries" class="text-white drop-shadow-lg mx-2 p-1 hover:text-black hover:bg-white animated-link">{{ $t('galleries') }}</router-link>
       <router-link to="/random" class="text-white drop-shadow-lg mx-2 p-1 hover:text-black hover:bg-white animated-link">{{ $t('random') }}</router-link>
-      <router-link to="/about" class="text-white drop-shadow-lg mx-2 p-1 hover:text-black hover:bg-white animated-link">{{ $t('about') }}</router-link>
+      <router-link to="/about" class="text-white drop-shadow-lg mx-2 p-1 hover:text-black hover:bg-white animated-link">{{ $t('about.title') }}</router-link>
     </div>
   </nav>
 </template>
