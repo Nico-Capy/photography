@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue';
+import { defineComponent, onMounted, nextTick } from 'vue';
 import { gsap } from 'gsap';
 
 export default defineComponent({
@@ -53,34 +53,19 @@ export default defineComponent({
     }, 3306);
   },
   mounted() {
-    const tl = gsap.timeline();
-    
-    const elements = gsap.utils.toArray('.animate-element');
-    elements.forEach((el: Element) => {
-        if (el.nodeName === 'H1' || el.nodeName === 'H2') {
-            tl.from(el, {
-                opacity: 0,
-                y: 100,
-                duration: 0.4,
-                ease: "power2.in",
-                delay: el.nodeName === 'H2' ? 0.4 : 0
-            });
-        } else {
-            tl.from(el, {
-                opacity: 0,
-                y: 100,
-                duration: 0.4,
-                stagger: 0.1,
-                delay: 0.2,
-                ease: "power2.in"
-            });
-        }
+    nextTick(() => {
+      gsap.from(".animate-element", {
+        opacity: 0,
+        y: 100,
+        duration: 1.6,
+        delay: 0.6,
+        stagger: 0.3,
+        ease: "power1.in",
+      });
     });
-}
-
+  },
 });
 </script>
-
 
 <style>
   body {

@@ -177,9 +177,9 @@ export default defineComponent({
         gsap.from(el, {
           opacity: 0,
           y: 100,
-          duration: 1.6,
+          duration: 1.4,
           stagger: 0.3,
-          delay: 0.3,
+          delay: 0.6,
           ease: "power2.in"
         });
       });
