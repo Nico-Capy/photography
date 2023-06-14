@@ -13,62 +13,16 @@
       </div>
     </div>
     <div class="flex justify-center align-center dwight">
-      <video src="/about.mp4" alt="Admiral Nico, flying his drone" class="w-4/5 justify-center align-center m-2 mb-16 img" preload='auto' autoplay loop playsinline muted></video>
+      <video src="/about.mp4" alt="Admiral Nico, flying his drone" class="w-4/5 justify-center align-center m-2 mb-16 img" preload='none' autoplay loop playsinline muted></video>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, nextTick } from 'vue';
+import { defineComponent, nextTick } from 'vue';
 import { gsap } from 'gsap';
 
 export default defineComponent({
-  data() {
-    return {
-      currentImageIndex: 0,
-      imageSources: [
-        'preview1.png',
-        'preview2.png',
-        'preview3.png',
-        'preview4.png',
-        'preview5.png',
-        'preview6.png',
-        'preview7.png',
-        'preview8.png',
-        'preview9.png',
-        'preview10.png',
-        'preview11.png',
-        'preview1.png',
-        'preview12.png',
-        'preview3.png',
-        'preview10.png',
-        'preview4.png',
-        'preview15.png',
-        'preview13.png',
-        'preview7.png',
-        'preview9.png',
-        'preview5.png',
-        'preview11.png',
-        'preview8.png',
-        'preview2.png',
-        'preview6.png',
-        'preview14.png',
-        'preview5.png',
-        'preview16.png',
-      ],
-      direction: 'right'
-    };
-  },
-  computed: {
-    currentImageSrc(): string {
-      return `/preview/${this.imageSources[this.currentImageIndex]}`;
-    },
-  },
-  created() {
-    setInterval(() => {
-      this.currentImageIndex = (this.currentImageIndex + 1) % this.imageSources.length;
-    }, 3306);
-  },
   mounted() {
     nextTick(() => {
       gsap.from(".dwight", {
@@ -84,20 +38,19 @@ export default defineComponent({
 });
 </script>
 
-
 <style>
   h2, p {
     font-family: 'Avenir', sans-serif;
   }
-  
+
   .drop-shadow-lg {
     text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.4), 0px 0px 6px rgba(255, 255, 255, 0.4);
   }
-  
+
   .shadow {
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
   }
-  
+
   video::-webkit-media-controls {
     display:none !important;
   }
