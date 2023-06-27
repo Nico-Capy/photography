@@ -13,17 +13,40 @@
       </div>
     </div>
     <div class="flex justify-center align-center dwight">
-      <video src="/about.mp4" alt="Admiral Nico, flying his drone" class="w-4/5 justify-center align-center m-2 mb-16 img" preload='none' autoplay loop playsinline muted></video>
+      <video v-if="loadVideo" src="/about.mp4" alt="Admiral Nico, flying his drone" class="w-4/5 justify-center align-center m-2 mb-16 img" preload='none' autoplay loop playsinline muted></video>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, nextTick } from 'vue';
+import { defineComponent, nextTick, ref, onMounted, onBeforeUnmount } from 'vue';
 import { gsap } from 'gsap';
 
 export default defineComponent({
+  data() {
+    return {
+      loadVideo: false,
+    };
+  },
   mounted() {
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            this.loadVideo = true;
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      }
+    );
+
+    observer.observe(this.$el);
+
     nextTick(() => {
       gsap.from(".dwight", {
         opacity: 0,
@@ -34,9 +57,10 @@ export default defineComponent({
         ease: "power1.in",
       });
     });
-  }
+  },
 });
 </script>
+
 
 <style>
   h2, p {
