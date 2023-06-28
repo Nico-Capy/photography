@@ -6,8 +6,8 @@
     </div>
   </div>
 
-  <div class="flex justify-center bg-transparent h-2/3 animate-element">
-    <div class="bg-transparent w-11/12 lg:w-screen xl:w-screen 2xl:w-screen p-3 mb-16 flex flex-col justify-center items-center drop-shadow-lg animate-element" style="height: 63vh;">
+  <div class="flex justify-center bg-transparent h-2/3 animate-element mb-16">
+    <div class="bg-transparent w-11/12 lg:w-screen xl:w-screen 2xl:w-screen p-3 flex flex-col justify-center items-center drop-shadow-lg animate-element" style="height: 63vh;">
       <img :key="currentImageIndex" v-lazy="currentImageSrc" alt="Preview image" id="nostretch" class="h-fit sm:h-fit md:h-fit lg:h-full xl:h-full 2xl:h-full my-auto animate-element">
     </div>
   </div>
