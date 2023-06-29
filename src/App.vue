@@ -7,6 +7,7 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue'
+  import axios from 'axios';
   import Navbar from './components/navbar.vue'
   import DroneButton from "../src/components/dronebutton.vue"
   import Footer from '../src/components/footer.vue'
@@ -45,7 +46,33 @@
       Random,
       DroneButton
     },
-  })
+    methods: {
+    async uploadPhoto(gallery, photo, metadata) {
+      const formData = new FormData();
+      formData.append('photo', photo);
+      for (let key in metadata) {
+        formData.append(key, metadata[key]);
+      }
+
+      const response = await axios.post(`/api/photos/${gallery}`, formData);
+      return response.data;
+    },
+    async updatePhotoMetadata(gallery, id, metadata) {
+      const response = await axios.put(`/api/photos/${gallery}/${id}`, metadata);
+      return response.data;
+    },
+    async login(username, password) {
+      const response = await axios.post('/login', { username, password });
+      const token = response.data;
+
+      // Save the token in local storage or in a Vuex store
+      localStorage.setItem('jwt', token);
+
+      // Set the default Authorization header
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+  }
+});
 </script>
 
 <style>
