@@ -60,25 +60,24 @@
         showModal: false,
         selectedPhoto: 0,
         photos: [
-          
-        { src: "/drone01.jpg", loaded: false },
-        { src: "/drone02.jpg", loaded: false },
-        { src: "/drone03.jpg", loaded: false },
-        { src: "/drone04.jpg", loaded: false },
-        { src: "/drone05.jpg", loaded: false },
-        { src: "/drone06.jpg", loaded: false },
-        { src: "/drone07.jpg", loaded: false },
-        { src: "/drone08.jpg", loaded: false },
-        { src: "/drone09.jpg", loaded: false },
-        { src: "/drone10.jpg", loaded: false },
-        { src: "/drone11.jpg", loaded: false },
-        { src: "/drone12.jpg", loaded: false },
-        { src: "/drone15.jpg", loaded: false },
-        { src: "/drone16.jpg", loaded: false },
-        { src: "/drone17.jpg", loaded: false },
-        { src: "/drone13.jpg", loaded: false },
-        { src: "/drone14.jpg", loaded: false },
-        { src: "/drone18.jpg", loaded: false },
+          { src: "/drone01.jpg" },
+          { src: "/drone02.jpg" },
+          { src: "/drone03.jpg" },
+          { src: "/drone04.jpg" },
+          { src: "/drone05.jpg" },
+          { src: "/drone06.jpg" },
+          { src: "/drone07.jpg" },
+          { src: "/drone08.jpg" },
+          { src: "/drone09.jpg" },
+          { src: "/drone10.jpg" },
+          { src: "/drone11.jpg" },
+          { src: "/drone12.jpg" },
+          { src: "/drone15.jpg" },
+          { src: "/drone16.jpg" },
+          { src: "/drone17.jpg" },
+          { src: "/drone13.jpg" },
+          { src: "/drone14.jpg" },
+          { src: "/drone18.jpg" },
         ],
       };
     },
@@ -119,29 +118,6 @@
           ease: "power2.out",
         });
       },
-      lazyLoadImage(photo: { src: string; loaded: boolean }) {
-        const options = {
-          root: null,
-          rootMargin: "0px",
-          threshold: 0.1,
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              photo.loaded = true;
-              observer.unobserve(entry.target);
-            }
-          });
-        }, options);
-
-        this.$nextTick(() => {
-          const imageElement = document.querySelector(`img[src="${photo.src}"]`);
-          if (imageElement) {
-            observer.observe(imageElement);
-          }
-        });
-      },
     },
     mounted() {
       document.addEventListener("keydown", this.handleKeyDown);
@@ -152,7 +128,8 @@
         duration: 0.6,
         stagger: 0.1,
         delay: 0.6,
-        ease: "power1.in",  });
+        ease: "power1.in",  
+      });
 
       gsap.from("h2", {
         opacity: 0,
@@ -163,14 +140,10 @@
       });
       
       this.applyButtonTransition();
-      
-      this.photos.forEach(photo => {
-        this.lazyLoadImage(photo);
-      });
-      },
-      beforeUnmount() {
+    },
+    beforeUnmount() {
       document.removeEventListener("keydown", this.handleKeyDown);
-      },
+    },
 });
 </script>
 

@@ -12,7 +12,7 @@ const Others = () => import('../src/view/others.vue');
 const Analog = () => import('../src/view/analog.vue');
 const Nature = () => import('../src/view/animals.vue');
 const Random = () => import('../src/view/random.vue');
-const NotFound = () => import('./view/notfound.vue');
+const NotFound = () => import('../src/view/notfound.vue');
 
 const routes: Array<RouteRecordRaw> = [
   {
