@@ -9,19 +9,13 @@ In my online gallery, you'll find a collection of my own photographs. Through ex
 
 ## What did I use?
 
-For the front-end, these are the tools I utilized:
+At the moment it's just the front-end. These are the tools I used:
 
 - [Vue.js](https://vuejs.org)
 - [Tailwind CSS](https://tailwindcss.com)
 - [Typescript](https://www.typescriptlang.org)
 - [Vite](https://vitejs.dev)
 - [GreenSock](https://greensock.com)
-
-I'm working on the back-end, I'm using:
-
-- [Expressjs](https://expressjs.com)
-- [MongoDB](https://www.mongodb.com)
-- [Google Cloud](https://cloud.google.com)
 
 ## Want a quick preview of some photos and the project?
 
