@@ -5,20 +5,19 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && tsc",
+    "build": "vite build",
     "preview": "vite preview",
-    "start": "serve dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "serve dist"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.0",
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@jridgewell/sourcemap-codec": "^1.4.15",
+    "@types/hammerjs": "^2.0.41",
     "gsap": "^3.12.1",
     "lodash": "^4.17.21",
-    "querystring": "^0.2.1",
     "serve": "^14.2.0",
-    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4",
     "vite-image": "^1.0.2",
     "vue": "^3.2.47",
     "vue-i18n": "^9.2.2",
@@ -40,13 +39,7 @@
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",
     "tailwindcss": "^3.3.2",
-    "typescript": "^5.1.6",
     "vite": "^4.3.0",
     "vite-plugin-fonts": "^0.7.0"
-  },
-  "description": "I've been capturing images for a spell. It's part of why I took up coding — to fashion an online gallery. I tinkered with techniques and gear, amassing a substantial assortment of photographs. The timing feels impeccable to unveil it to the masses!",
-  "main": "postcss.config.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  }
 }
