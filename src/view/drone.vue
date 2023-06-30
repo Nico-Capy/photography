@@ -1,10 +1,10 @@
 <template>
   <div class="flex flex-col items-center justify-center">
     <h2 role="heading" class="text-3xl text-white drop-shadow-lg m-6">{{ $t('drone') }}</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 mb-16">
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
       <div v-for="(photo, index) in photos" :key="index" class="relative m-2">
         <img
-          :src="photo.src"
+          :src="photo"
           class="mx-auto w-full h-full object-cover shadow-md"
           style="height: 100%"
           @click="showPhoto(index)"
@@ -32,7 +32,7 @@
             &larr;
           </button>
           <img
-            :src="photos[selectedPhoto].src"
+            :src="photos[selectedPhoto]"
             class="object-contain mx-auto"
             style="height: 47rem;"
           />
@@ -46,114 +46,119 @@
         </div>
       </div>
     </div>
+    <DroneButton class="mt-10 mb-16" />
   </div>
 </template>
 
 <script lang="ts">
-  import { defineComponent, onMounted, onUnmounted } from "vue";
-  import { gsap } from "gsap";
+import { defineComponent, onMounted, onUnmounted } from "vue";
+import { gsap } from "gsap";
 
-  export default defineComponent({
-    name: "PhotoGallery",
-    data() {
-      return {
-        showModal: false,
-        selectedPhoto: 0,
-        photos: [
-          { src: "/drone01.jpg" },
-          { src: "/drone02.jpg" },
-          { src: "/drone03.jpg" },
-          { src: "/drone04.jpg" },
-          { src: "/drone05.jpg" },
-          { src: "/drone06.jpg" },
-          { src: "/drone07.jpg" },
-          { src: "/drone08.jpg" },
-          { src: "/drone09.jpg" },
-          { src: "/drone10.jpg" },
-          { src: "/drone11.jpg" },
-          { src: "/drone12.jpg" },
-          { src: "/drone15.jpg" },
-          { src: "/drone16.jpg" },
-          { src: "/drone17.jpg" },
-          { src: "/drone13.jpg" },
-          { src: "/drone14.jpg" },
-          { src: "/drone18.jpg" },
-        ],
-      };
+import DroneButton from "../components/dronebutton.vue";
+
+export default defineComponent({
+  name: "PhotoGallery",
+  components: {
+    DroneButton,
+  },
+  data() {
+    return {
+      showModal: false,
+      selectedPhoto: 0,
+      photos: [
+        "/drone01.jpg",
+        "/drone02.jpg",
+        "/drone03.jpg",
+        "/drone04.jpg",
+        "/drone05.jpg",
+        "/drone06.jpg",
+        "/drone07.jpg",
+        "/drone08.jpg",
+        "/drone09.jpg",
+        "/drone10.jpg",
+        "/drone11.jpg",
+        "/drone12.jpg",
+        "/drone15.jpg",
+        "/drone16.jpg",
+        "/drone17.jpg",
+        "/drone13.jpg",
+        "/drone14.jpg",
+        "/drone18.jpg",
+      ],
+    };
+  },
+  methods: {
+    showPhoto(index: number) {
+      this.selectedPhoto = index;
+      this.showModal = true;
     },
-    methods: {
-      showPhoto(index: number) {
-        this.selectedPhoto = index;
-        this.showModal = true;
-      },
-      showNextPhoto() {
-        this.selectedPhoto =
-          (this.selectedPhoto + 1) % this.photos.length;
-      },
-      showPreviousPhoto() {
-        this.selectedPhoto =
-          (this.selectedPhoto + this.photos.length - 1) % this.photos.length;
-      },
-      handleKeyDown(event: { key: string; }) {
-        if (event.key === "ArrowRight") {
-          this.showNextPhoto();
-        } else if (event.key === "ArrowLeft") {
-          this.showPreviousPhoto();
-        } else if (event.key === "Escape") {
-          this.showModal = false;
-        }
-      },
-      applyButtonTransition() {
-        gsap.from(this.$refs.previousBtn, {
-          opacity: 0,
-          x: -100,
-          duration: 0.5,
-          ease: "power2.out",
-        });
-
-        gsap.from(this.$refs.nextBtn, {
-          opacity: 0,
-          x: 100,
-          duration: 0.5,
-          ease: "power2.out",
-        });
-      },
+    showNextPhoto() {
+      this.selectedPhoto = (this.selectedPhoto + 1) % this.photos.length;
     },
-    mounted() {
-      document.addEventListener("keydown", this.handleKeyDown);
-
-      gsap.from(".relative", {
+    showPreviousPhoto() {
+      this.selectedPhoto =
+        (this.selectedPhoto + this.photos.length - 1) % this.photos.length;
+    },
+    handleKeyDown(event: { key: string }) {
+      if (event.key === "ArrowRight") {
+        this.showNextPhoto();
+      } else if (event.key === "ArrowLeft") {
+        this.showPreviousPhoto();
+      } else if (event.key === "Escape") {
+        this.showModal = false;
+      }
+    },
+    applyButtonTransition() {
+      gsap.from(this.$refs.previousBtn, {
         opacity: 0,
-        y: 100,
-        duration: 0.6,
-        stagger: 0.1,
-        delay: 0.6,
-        ease: "power1.in",  
+        x: -100,
+        duration: 0.5,
+        ease: "power2.out",
       });
 
-      gsap.from("h2", {
+      gsap.from(this.$refs.nextBtn, {
         opacity: 0,
-        y: 100,
-        duration: 1,
-        delay: 0,
-        ease: "power1.in",
+        x: 100,
+        duration: 0.5,
+        ease: "power2.out",
       });
-      
-      this.applyButtonTransition();
     },
-    beforeUnmount() {
-      document.removeEventListener("keydown", this.handleKeyDown);
-    },
+  },
+  mounted() {
+    document.addEventListener("keydown", this.handleKeyDown);
+
+    gsap.from(".relative", {
+      opacity: 0,
+      y: 100,
+      duration: 0.6,
+      stagger: 0.1,
+      delay: 0.6,
+      ease: "power1.in",
+    });
+
+    gsap.from("h2", {
+      opacity: 0,
+      y: 100,
+      duration: 1,
+      delay: 0,
+      ease: "power1.in",
+    });
+
+    this.applyButtonTransition();
+  },
+  beforeUnmount() {
+    document.removeEventListener("keydown", this.handleKeyDown);
+  },
 });
 </script>
 
 <style>
-  h2 {
-    font-family: 'Avenir', sans-serif;
-  }
+h2 {
+  font-family: 'Avenir', sans-serif;
+}
 
-  .drop-shadow-lg {
-    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7),
-                 0px 0px 10px rgba(255, 255, 255, 0.7);
-  }
+.drop-shadow-lg {
+  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7),
+    0px 0px 10px rgba(255, 255, 255, 0.7);
+}
 </style>
