@@ -6,34 +6,17 @@
         <img :src="photo.src" class="mx-auto w-full h-full object-cover shadow-md" style="height: 100%" @click="showPhoto(index)" />
       </div>
     </div>
-    <div
-      v-if="showModal"
-      class="fixed bg-black/50 inset-0 flex items-center justify-center z-50 h-screen max-h-90vh"
-      @click.self="showModal = false"
-    >
+    <div v-if="showModal" class="fixed bg-black/50 inset-0 flex items-center justify-center z-50 h-screen max-h-90vh" @click.self="showModal = false">
       <div class="bg-transparent p-2 w-11/12">
-        <button
-          @click="showModal = false"
-          class="absolute top-0 right-0 m-4 text-4xl w-fit h-fit text-black hover:text-white bg-white hover:bg-black cursor-pointer p-2 z-10"
-        >
+        <button @click="showModal = false" class="absolute top-0 right-0 m-4 text-4xl w-fit h-fit text-black hover:text-white bg-white hover:bg-black cursor-pointer p-2 z-10">
           &times;
         </button>
         <div class="relative">
-          <button
-            class="absolute top-1/2 left-0 transform -translate-y-1/2 text-white hover:text-black bg-black hover:bg-white cursor-pointer m-1 p-2 text-2xl"
-            @click="showPreviousPhoto()"
-          >
+          <button class="absolute top-1/2 left-0 transform -translate-y-1/2 text-white hover:text-black bg-black hover:bg-white cursor-pointer m-1 p-2 text-2xl" @click="showPreviousPhoto()">
             &larr;
           </button>
-          <img
-            :src="photos[selectedPhoto].src"
-            class="object-contain mx-auto"
-            style="height: 47rem;"
-          />
-          <button
-            class="absolute top-1/2 right-0 transform -translate-y-1/2 text-white hover:text-black bg-black hover:bg-white cursor-pointer m-1 p-2 text-2xl"
-            @click="showNextPhoto()"
-          >
+          <img :src="photos[selectedPhoto].src" class="object-contain mx-auto" style="height: 47rem;" />
+          <button class="absolute top-1/2 right-0 transform -translate-y-1/2 text-white hover:text-black bg-black hover:bg-white cursor-pointer m-1 p-2 text-2xl" @click="showNextPhoto()">
             &rarr;
           </button>
         </div>
@@ -41,7 +24,6 @@
     </div>
   </div>
 </template>
-
 <script lang="ts">
   import { defineComponent, onMounted, onUnmounted } from "vue";
   import { gsap } from "gsap";
@@ -53,25 +35,25 @@
         showModal: false,
         selectedPhoto: 0,
         photos: [
-          { src: "/analog01.jpg", loaded: false },
-          { src: "/analog02.jpg", loaded: false },
-          { src: "/analog03.jpg", loaded: false },
-          { src: "/analog04.jpg", loaded: false },
-          { src: "/analog05.jpg", loaded: false },
-          { src: "/analog06.jpg", loaded: false },
-          { src: "/analog07.jpg", loaded: false },
-          { src: "/analog08.jpg", loaded: false },
-          { src: "/analog09.jpg", loaded: false },
-          { src: "/analog10.jpg", loaded: false },
-          { src: "/analog11.jpg", loaded: false },
-          { src: "/analog12.jpg", loaded: false },
-          { src: "/analog13.jpg", loaded: false },
-          { src: "/analog14.jpg", loaded: false },
-          { src: "/analog15.jpg", loaded: false },
-          { src: "/analog16.jpg", loaded: false },
-          { src: "/analog17.jpg", loaded: false },
-          { src: "/analog18.jpg", loaded: false },
-          { src: "/analog19.jpg", loaded: false },
+          { src: "/analog01.jpg" },
+          { src: "/analog02.jpg" },
+          { src: "/analog03.jpg" },
+          { src: "/analog04.jpg" },
+          { src: "/analog05.jpg" },
+          { src: "/analog06.jpg" },
+          { src: "/analog07.jpg" },
+          { src: "/analog08.jpg" },
+          { src: "/analog09.jpg" },
+          { src: "/analog10.jpg" },
+          { src: "/analog11.jpg" },
+          { src: "/analog12.jpg" },
+          { src: "/analog13.jpg" },
+          { src: "/analog14.jpg" },
+          { src: "/analog15.jpg" },
+          { src: "/analog16.jpg" },
+          { src: "/analog17.jpg" },
+          { src: "/analog18.jpg" },
+          { src: "/analog19.jpg" },
         ],
       };
     },
@@ -81,14 +63,12 @@
         this.showModal = true;
       },
       showNextPhoto() {
-        this.selectedPhoto =
-          (this.selectedPhoto + 1) % this.photos.length;
+        this.selectedPhoto = (this.selectedPhoto + 1) % this.photos.length;
       },
       showPreviousPhoto() {
-        this.selectedPhoto =
-          (this.selectedPhoto + this.photos.length - 1) % this.photos.length;
+        this.selectedPhoto = (this.selectedPhoto + this.photos.length - 1) % this.photos.length;
       },
-      handleKeyDown(event: { key: string; }) {
+      handleKeyDown(event: { key: string }) {
         if (event.key === "ArrowRight") {
           this.showNextPhoto();
         } else if (event.key === "ArrowLeft") {
@@ -112,29 +92,6 @@
           ease: "power2.out",
         });
       },
-      lazyLoadImage(photo: { src: string; loaded: boolean }) {
-        const options = {
-          root: null,
-          rootMargin: "0px",
-          threshold: 0.1,
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              photo.loaded = true;
-              observer.unobserve(entry.target);
-            }
-          });
-        }, options);
-
-        this.$nextTick(() => {
-          const imageElement = document.querySelector(`img[src="${photo.src}"]`);
-          if (imageElement) {
-            observer.observe(imageElement);
-          }
-        });
-      },
     },
     mounted() {
       document.addEventListener("keydown", this.handleKeyDown);
@@ -145,7 +102,8 @@
         duration: 0.6,
         stagger: 0.1,
         delay: 0.6,
-        ease: "power1.in",  });
+        ease: "power1.in",
+      });
 
       gsap.from("h2", {
         opacity: 0,
@@ -154,19 +112,14 @@
         delay: 0,
         ease: "power1.in",
       });
-      
-      this.applyButtonTransition();
-      
-      this.photos.forEach(photo => {
-        this.lazyLoadImage(photo);
-      });
-      },
-      beforeUnmount() {
-      document.removeEventListener("keydown", this.handleKeyDown);
-      },
-});
-</script>
 
+      this.applyButtonTransition();
+    },
+    beforeUnmount() {
+      document.removeEventListener("keydown", this.handleKeyDown);
+    },
+  });
+</script>
 <style>
   h2 {
     font-family: 'Avenir', sans-serif;

@@ -4,7 +4,7 @@
     <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 mb-16">
       <div v-for="(photo, index) in photos" :key="index" class="relative m-2">
         <img
-          :src="photo.src"
+          :src="photo"
           class="mx-auto w-full h-full object-cover shadow-md"
           style="height: 100%"
           @click="showPhoto(index)"
@@ -31,7 +31,7 @@
             &larr;
           </button>
           <img
-            :src="photos[selectedPhoto].src"
+            :src="photos[selectedPhoto]"
             class="object-contain mx-auto"
             style="height: 47rem;"
           />
@@ -58,11 +58,11 @@
         showModal: false,
         selectedPhoto: 0,
         photos: [
-        { src: "/infrared01.jpg", loaded: false },
-        { src: "/infrared02.jpg", loaded: false },
-        { src: "/infrared03.jpg", loaded: false },
-        { src: "/infrared04.jpg", loaded: false },
-        { src: "/infrared05.jpg", loaded: false },
+        "/infrared01.jpg",
+        "/infrared02.jpg",
+        "/infrared03.jpg",
+        "/infrared04.jpg",
+        "/infrared05.jpg",
         ],
       };
     },
@@ -103,29 +103,6 @@
           ease: "power2.out",
         });
       },
-      lazyLoadImage(photo: { src: string; loaded: boolean }) {
-        const options = {
-          root: null,
-          rootMargin: "0px",
-          threshold: 0.1,
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              photo.loaded = true;
-              observer.unobserve(entry.target);
-            }
-          });
-        }, options);
-
-        this.$nextTick(() => {
-          const imageElement = document.querySelector(`img[src="${photo.src}"]`);
-          if (imageElement) {
-            observer.observe(imageElement);
-          }
-        });
-      },
     },
     mounted() {
       document.addEventListener("keydown", this.handleKeyDown);
@@ -136,7 +113,8 @@
         duration: 0.6,
         stagger: 0.1,
         delay: 0.6,
-        ease: "power1.in",  });
+        ease: "power1.in",
+      });
 
       gsap.from("h2", {
         opacity: 0,
@@ -147,15 +125,11 @@
       });
       
       this.applyButtonTransition();
-      
-      this.photos.forEach(photo => {
-        this.lazyLoadImage(photo);
-      });
-      },
-      beforeUnmount() {
+    },
+    beforeUnmount() {
       document.removeEventListener("keydown", this.handleKeyDown);
-      },
-});
+    },
+  });
 </script>
 
 <style>

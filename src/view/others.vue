@@ -58,22 +58,22 @@
         showModal: false,
         selectedPhoto: 0,
         photos: [
-          { src: "other01.jpg", loaded: false },
-          { src: "other02.jpg", loaded: false },
-          { src: "other03.jpg", loaded: false },
-          { src: "other04.jpg", loaded: false },
-          { src: "other05.jpg", loaded: false },
-          { src: "other06.jpg", loaded: false },
-          { src: "other07.jpg", loaded: false },
-          { src: "other08.jpg", loaded: false },
-          { src: "other09.jpg", loaded: false },
-          { src: "other10.jpg", loaded: false },
-          { src: "other11.jpg", loaded: false },
-          { src: "other12.jpg", loaded: false },
-          { src: "other13.jpg", loaded: false },
-          { src: "other14.jpg", loaded: false },
-          { src: "other15.jpg", loaded: false },
-          { src: "other16.jpg", loaded: false },
+          { src: "other01.jpg" },
+          { src: "other02.jpg" },
+          { src: "other03.jpg" },
+          { src: "other04.jpg" },
+          { src: "other05.jpg" },
+          { src: "other06.jpg" },
+          { src: "other07.jpg" },
+          { src: "other08.jpg" },
+          { src: "other09.jpg" },
+          { src: "other10.jpg" },
+          { src: "other11.jpg" },
+          { src: "other12.jpg" },
+          { src: "other13.jpg" },
+          { src: "other14.jpg" },
+          { src: "other15.jpg" },
+          { src: "other16.jpg" },
         ],
       };
     },
@@ -83,14 +83,13 @@
         this.showModal = true;
       },
       showNextPhoto() {
-        this.selectedPhoto =
-          (this.selectedPhoto + 1) % this.photos.length;
+        this.selectedPhoto = (this.selectedPhoto + 1) % this.photos.length;
       },
       showPreviousPhoto() {
         this.selectedPhoto =
           (this.selectedPhoto + this.photos.length - 1) % this.photos.length;
       },
-      handleKeyDown(event: { key: string; }) {
+      handleKeyDown(event: { key: string }) {
         if (event.key === "ArrowRight") {
           this.showNextPhoto();
         } else if (event.key === "ArrowLeft") {
@@ -114,29 +113,6 @@
           ease: "power2.out",
         });
       },
-      lazyLoadImage(photo: { src: string; loaded: boolean }) {
-        const options = {
-          root: null,
-          rootMargin: "0px",
-          threshold: 0.1,
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              photo.loaded = true;
-              observer.unobserve(entry.target);
-            }
-          });
-        }, options);
-
-        this.$nextTick(() => {
-          const imageElement = document.querySelector(`img[src="${photo.src}"]`);
-          if (imageElement) {
-            observer.observe(imageElement);
-          }
-        });
-      },
     },
     mounted() {
       document.addEventListener("keydown", this.handleKeyDown);
@@ -147,7 +123,8 @@
         duration: 0.6,
         stagger: 0.1,
         delay: 0.6,
-        ease: "power1.in",  });
+        ease: "power1.in",
+      });
 
       gsap.from("h2", {
         opacity: 0,
@@ -156,27 +133,22 @@
         delay: 0,
         ease: "power1.in",
       });
-      
+
       this.applyButtonTransition();
-      
-      this.photos.forEach(photo => {
-        this.lazyLoadImage(photo);
-      });
-      },
-      beforeUnmount() {
+    },
+    beforeUnmount() {
       document.removeEventListener("keydown", this.handleKeyDown);
-      },
-});
+    },
+  });
 </script>
 
 <style>
-    h2 {
-      font-family: 'Avenir', sans-serif;
-    }
+  h2 {
+    font-family: 'Avenir', sans-serif;
+  }
 
-    .drop-shadow-lg {
-        text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7),
-                     0px 0px 10px rgba(255, 255, 255, 0.7);
-    }
-  </style>
-  
+  .drop-shadow-lg {
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7),
+                 0px 0px 10px rgba(255, 255, 255, 0.7);
+  }
+</style>

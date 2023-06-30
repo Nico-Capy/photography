@@ -11,34 +11,17 @@
         />
       </div>
     </div>
-    <div
-      v-if="showModal"
-      class="fixed bg-black/50 inset-0 flex items-center justify-center z-50 h-screen max-h-90vh"
-      @click.self="showModal = false"
-    >
+    <div v-if="showModal" class="fixed bg-black/50 inset-0 flex items-center justify-center z-50 h-screen max-h-90vh" @click.self="showModal = false">
       <div class="bg-transparent p-2 w-11/12">
-        <button
-          @click="showModal = false"
-          class="absolute top-0 right-0 m-4 text-4xl w-fit h-fit text-black hover:text-white bg-white hover:bg-black cursor-pointer p-2 z-10"
-        >
+        <button @click="showModal = false" class="absolute top-0 right-0 m-4 text-4xl w-fit h-fit text-black hover:text-white bg-white hover:bg-black cursor-pointer p-2 z-10">
           &times;
         </button>
         <div class="relative">
-          <button
-            class="absolute top-1/2 left-0 transform -translate-y-1/2 text-white hover:text-black bg-black hover:bg-white cursor-pointer m-1 p-2 text-2xl"
-            @click="showPreviousPhoto()"
-          >
+          <button class="absolute top-1/2 left-0 transform -translate-y-1/2 text-white hover:text-black bg-black hover:bg-white cursor-pointer m-1 p-2 text-2xl" @click="showPreviousPhoto()">
             &larr;
           </button>
-          <img
-            :src="photos[selectedPhoto].src"
-            class="object-contain mx-auto"
-            style="height: 47rem;"
-          />
-          <button
-            class="absolute top-1/2 right-0 transform -translate-y-1/2 text-white hover:text-black bg-black hover:bg-white cursor-pointer m-1 p-2 text-2xl"
-            @click="showNextPhoto()"
-          >
+          <img :src="photos[selectedPhoto].src" class="object-contain mx-auto" style="height: 47rem;" />
+          <button class="absolute top-1/2 right-0 transform -translate-y-1/2 text-white hover:text-black bg-black hover:bg-white cursor-pointer m-1 p-2 text-2xl" @click="showNextPhoto()">
             &rarr;
           </button>
         </div>
@@ -46,7 +29,6 @@
     </div>
   </div>
 </template>
-
 <script lang="ts">
   import { defineComponent, onMounted, onUnmounted } from "vue";
   import { gsap } from "gsap";
@@ -58,28 +40,28 @@
         showModal: false,
         selectedPhoto: 0,
         photos: [
-          { src: "/street01.jpg", loaded: false },
-          { src: "/street02.jpg", loaded: false },
-          { src: "/street03.jpg", loaded: false },
-          { src: "/street04.jpg", loaded: false },
-          { src: "/street05.jpg", loaded: false },
-          { src: "/street06.jpg", loaded: false },
-          { src: "/street07.jpg", loaded: false },
-          { src: "/street08.jpg", loaded: false },
-          { src: "/street09.jpg", loaded: false },
-          { src: "/street10.jpg", loaded: false },
-          { src: "/street11.jpg", loaded: false },
-          { src: "/street12.jpg", loaded: false },
-          { src: "/street13.jpg", loaded: false },
-          { src: "/street14.jpg", loaded: false },
-          { src: "/street15.jpg", loaded: false },
-          { src: "/street16.jpg", loaded: false },
-          { src: "/street17.jpg", loaded: false },
-          { src: "/street18.jpg", loaded: false },
-          { src: "/street19.jpg", loaded: false },
-          { src: "/street20.jpg", loaded: false },
-          { src: "/street21.jpg", loaded: false },
-          { src: "/street22.jpg", loaded: false },
+          { src: "/street01.jpg" },
+          { src: "/street02.jpg" },
+          { src: "/street03.jpg" },
+          { src: "/street04.jpg" },
+          { src: "/street05.jpg" },
+          { src: "/street06.jpg" },
+          { src: "/street07.jpg" },
+          { src: "/street08.jpg" },
+          { src: "/street09.jpg" },
+          { src: "/street10.jpg" },
+          { src: "/street11.jpg" },
+          { src: "/street12.jpg" },
+          { src: "/street13.jpg" },
+          { src: "/street14.jpg" },
+          { src: "/street15.jpg" },
+          { src: "/street16.jpg" },
+          { src: "/street17.jpg" },
+          { src: "/street18.jpg" },
+          { src: "/street19.jpg" },
+          { src: "/street20.jpg" },
+          { src: "/street21.jpg" },
+          { src: "/street22.jpg" },
         ],
       };
     },
@@ -89,14 +71,12 @@
         this.showModal = true;
       },
       showNextPhoto() {
-        this.selectedPhoto =
-          (this.selectedPhoto + 1) % this.photos.length;
+        this.selectedPhoto = (this.selectedPhoto + 1) % this.photos.length;
       },
       showPreviousPhoto() {
-        this.selectedPhoto =
-          (this.selectedPhoto + this.photos.length - 1) % this.photos.length;
+        this.selectedPhoto = (this.selectedPhoto + this.photos.length - 1) % this.photos.length;
       },
-      handleKeyDown(event: { key: string; }) {
+      handleKeyDown(event: { key: string }) {
         if (event.key === "ArrowRight") {
           this.showNextPhoto();
         } else if (event.key === "ArrowLeft") {
@@ -120,29 +100,6 @@
           ease: "power2.out",
         });
       },
-      lazyLoadImage(photo: { src: string; loaded: boolean }) {
-        const options = {
-          root: null,
-          rootMargin: "0px",
-          threshold: 0.1,
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              photo.loaded = true;
-              observer.unobserve(entry.target);
-            }
-          });
-        }, options);
-
-        this.$nextTick(() => {
-          const imageElement = document.querySelector(`img[src="${photo.src}"]`);
-          if (imageElement) {
-            observer.observe(imageElement);
-          }
-        });
-      },
     },
     mounted() {
       document.addEventListener("keydown", this.handleKeyDown);
@@ -153,7 +110,8 @@
         duration: 0.6,
         stagger: 0.1,
         delay: 0.6,
-        ease: "power1.in",  });
+        ease: "power1.in",
+      });
 
       gsap.from("h2", {
         opacity: 0,
@@ -162,27 +120,21 @@
         delay: 0,
         ease: "power1.in",
       });
-      
+
       this.applyButtonTransition();
-      
-      this.photos.forEach(photo => {
-        this.lazyLoadImage(photo);
-      });
-      },
-      beforeUnmount() {
+    },
+    beforeUnmount() {
       document.removeEventListener("keydown", this.handleKeyDown);
-      },
+    },
   });
 </script>
-
 <style>
-    h2 {
-      font-family: 'Avenir', sans-serif;
-    }
+  h2 {
+    font-family: 'Avenir', sans-serif;
+  }
 
-    .drop-shadow-lg {
-        text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7),
-                     0px 0px 10px rgba(255, 255, 255, 0.7);
-    }
-  </style>
-  
+  .drop-shadow-xl {
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7),
+                 0px 0px 10px rgba(255, 255, 255, 0.7);
+  }
+</style>

@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
+    "resolveJsonModule": true,
     "target": "es5",
     "module": "commonjs",
     "outDir": "dist",
     "sourceMap": true,
     "esModuleInterop": true
+    // Other compiler options...
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]
+  // Other configuration options...
 }

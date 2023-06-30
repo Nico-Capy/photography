@@ -4,7 +4,7 @@
     <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 mb-16">
       <div v-for="(photo, index) in photos" :key="index" class="relative m-2">
         <img
-          v-lazy="photo.src"
+          :src="photo"
           class="mx-auto w-full h-full object-cover shadow-md"
           style="height: 100%"
           @click="showPhoto(index)"
@@ -31,7 +31,7 @@
             &larr;
           </button>
           <img
-            v-lazy="photos[selectedPhoto].src"
+            :src="photos[selectedPhoto]"
             class="object-contain mx-auto"
             style="height: 47rem;"
           />
@@ -53,53 +53,27 @@ import { gsap } from "gsap";
 
 export default defineComponent({
   name: "PhotoGallery",
-  directives: {
-    lazy: {
-      beforeMount(el, binding) {
-        const imageEl = el as HTMLImageElement;
-        imageEl.setAttribute('data-src', binding.value);
-        imageEl.onload = function () {
-          imageEl.src = imageEl.getAttribute('data-src') as string;
-        };
-      },
-      mounted(el) {
-        const observer = new IntersectionObserver(
-          (entries, observer) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                const img = entry.target as HTMLImageElement;
-                img.src = img.getAttribute('data-src') as string;
-                observer.unobserve(img);
-              }
-            });
-          },
-          { rootMargin: "0px 0px 200px 0px" }
-        );
-        observer.observe(el);
-      },
-    }
-  },
   data() {
     return {
       showModal: false,
       selectedPhoto: 0,
       photos: [
-        { src: "/nature09.jpg", loaded: false },
-        { src: "/nature10.jpg", loaded: false },
-        { src: "/nature11.jpg", loaded: false },
-        { src: "/nature12.jpg", loaded: false },
-        { src: "/nature13.jpg", loaded: false },
-        { src: "/nature14.jpg", loaded: false },
-        { src: "/nature16.jpg", loaded: false },
-        { src: "/nature15.jpg", loaded: false },
-        { src: "/nature07.jpg", loaded: false },
-        { src: "/nature08.jpg", loaded: false },
-        { src: "/nature01.jpg", loaded: false },
-        { src: "/nature02.jpg", loaded: false },
-        { src: "/nature03.jpg", loaded: false },
-        { src: "/nature04.jpg", loaded: false },
-        { src: "/nature05.jpg", loaded: false },
-        { src: "/nature06.jpg", loaded: false },
+        "/nature09.jpg",
+        "/nature10.jpg",
+        "/nature11.jpg",
+        "/nature12.jpg",
+        "/nature13.jpg",
+        "/nature14.jpg",
+        "/nature16.jpg",
+        "/nature15.jpg",
+        "/nature07.jpg",
+        "/nature08.jpg",
+        "/nature01.jpg",
+        "/nature02.jpg",
+        "/nature03.jpg",
+        "/nature04.jpg",
+        "/nature05.jpg",
+        "/nature06.jpg",
       ],
     };
   },
@@ -140,29 +114,6 @@ export default defineComponent({
           ease: "power2.out",
         });
       },
-      lazyLoadImage(photo: { src: string; loaded: boolean }) {
-        const options = {
-          root: null,
-          rootMargin: "0px",
-          threshold: 0.1,
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              photo.loaded = true;
-              observer.unobserve(entry.target);
-            }
-          });
-        }, options);
-
-        this.$nextTick(() => {
-          const imageElement = document.querySelector(`img[src="${photo.src}"]`);
-          if (imageElement) {
-            observer.observe(imageElement);
-          }
-        });
-      },
     },
     mounted() {
       document.addEventListener("keydown", this.handleKeyDown);
@@ -173,7 +124,8 @@ export default defineComponent({
         duration: 0.6,
         stagger: 0.1,
         delay: 0.6,
-        ease: "power1.in",  });
+        ease: "power1.in",
+      });
 
       gsap.from("h2", {
         opacity: 0,
@@ -182,16 +134,12 @@ export default defineComponent({
         delay: 0,
         ease: "power1.in",
       });
-      
+
       this.applyButtonTransition();
-      
-      this.photos.forEach(photo => {
-        this.lazyLoadImage(photo);
-      });
-      },
-      beforeUnmount() {
+    },
+    beforeUnmount() {
       document.removeEventListener("keydown", this.handleKeyDown);
-      },
+    },
 });
 </script>
 
