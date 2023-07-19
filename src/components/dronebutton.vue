@@ -7,7 +7,7 @@
       rel="noopener"
       class="text-2xl bg-black text-white py-2 px-4 transition duration-600 ease-in-out hover:text-black hover:bg-white drop-shadow-lg"
     >
-      {{ $t('dronevideo') }}
+      {{ $t("dronevideo") }}
     </a>
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
 
 <style>
 body {
-  font-family: 'Avenir', sans-serif;
+  font-family: "Avenir", sans-serif;
 }
 
 a {
@@ -28,7 +28,8 @@ a {
 }
 
 .drop-shadow-lg {
-  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.4),
+  text-shadow:
+    0px 0px 6px rgba(255, 255, 255, 0.4),
     0px 0px 6px rgba(255, 255, 255, 0.4);
 }
 </style>

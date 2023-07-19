@@ -1,20 +1,28 @@
 <template>
   <div class="flex flex-col items-center justify-center animate-element">
-    <h2 class="text-3xl text-center text-white drop-shadow-xl m-6 animate-element">
-      {{ $t('randomgen') }}
+    <h2
+      class="text-3xl text-center text-white drop-shadow-xl m-6 animate-element"
+    >
+      {{ $t("randomgen") }}
     </h2>
-      <div class="bg-transparent lg:w-1/3 xl:w-2/4 2xl:w-1/3 p-2 flex flex-col justify-center items-center drop-shadow-lg mb-16 animate-element" style="height: 63vh;">
-          <img :src="currentImage" class="h-5/6 animate-element" id="nostretch" />
-          <button class="bg-white hover:bg-transparent text-black hover:text-white drop-shadow-xl text-xl font-light p-4 mt-4 animate-element mb-16" @click="showRandomPhoto" >
-    {{ $t('randbut') }}
-    </button>
-      </div>
+    <div
+      class="bg-transparent lg:w-1/3 xl:w-2/4 2xl:w-1/3 p-2 flex flex-col justify-center items-center drop-shadow-lg mb-16 animate-element"
+      style="height: 63vh"
+    >
+      <img :src="currentImage" class="h-5/6 animate-element" id="nostretch" />
+      <button
+        class="bg-white hover:bg-transparent text-black hover:text-white drop-shadow-xl text-xl font-light p-4 mt-4 animate-element mb-16"
+        @click="showRandomPhoto"
+      >
+        {{ $t("randbut") }}
+      </button>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
-import { gsap } from 'gsap';
+import { gsap } from "gsap";
 
 const photos = [
   { src: "/nature09.jpg" },
@@ -169,7 +177,7 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      const elements = gsap.utils.toArray('.animate-element');
+      const elements = gsap.utils.toArray(".animate-element");
       elements.forEach((el: Element) => {
         gsap.from(el, {
           opacity: 0,
@@ -177,7 +185,7 @@ export default defineComponent({
           duration: 1.4,
           stagger: 0.3,
           delay: 0.6,
-          ease: "power2.in"
+          ease: "power2.in",
         });
       });
     });
@@ -197,11 +205,12 @@ h2 {
 }
 
 .drop-shadow-xl {
-  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7),
+  text-shadow:
+    0px 0px 10px rgba(255, 255, 255, 0.7),
     0px 0px 10px rgba(255, 255, 255, 0.7);
 }
 
-#nostretch{
+#nostretch {
   object-fit: cover;
 }
 </style>

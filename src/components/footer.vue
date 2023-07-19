@@ -1,11 +1,20 @@
 <template>
-  <footer class="flex flex-col lg:flex-row xl:flex-row 2xl:flew-row p-0 bg-transparent text-center text-sm w-fit drop-shadow-xl sm:fa-align-center mt-3" :style="{ backgroundColor: backgroundColor }">
-    <a href="https://github.com/Nico-Capy/photography" target="_blank" rel="noopener noreferrer">
-      <p class="px-4 py-1" style="color: white">© Nicola Corradini | <span v-html="formattedDate"></span></p>
+  <footer
+    class="flex flex-col lg:flex-row xl:flex-row 2xl:flew-row p-0 bg-transparent text-center text-sm w-fit drop-shadow-xl sm:fa-align-center mt-3"
+    :style="{ backgroundColor: backgroundColor }"
+  >
+    <a
+      href="https://github.com/Nico-Capy/photography"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <p class="px-4 py-1" style="color: white">
+        © Nicola Corradini | <span v-html="formattedDate"></span>
+      </p>
     </a>
     <font-awesome-icon
       :icon="faJediOrder"
-      style="color: white; cursor: pointer; height: 3vh;"
+      style="color: white; cursor: pointer; height: 3vh"
       @click="redirectToVideo"
     />
   </footer>
@@ -46,12 +55,18 @@ export default defineComponent({
         daySuffix = "th";
       }
 
-      const options: Intl.DateTimeFormatOptions = { month: "long", day: "numeric", year: "numeric" };
+      const options: Intl.DateTimeFormatOptions = {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      };
       const formatter = new Intl.DateTimeFormat("en-US", options);
       const formattedDate: string = formatter.format(date);
       const formattedDay = `${day}<sup>${daySuffix}</sup>`;
-  
-      return formattedDate.replace(/,/g, '').replace(day.toString(), formattedDay);
+
+      return formattedDate
+        .replace(/,/g, "")
+        .replace(day.toString(), formattedDay);
     },
   },
   computed: {
@@ -72,6 +87,8 @@ footer {
   width: 100%;
 }
 .drop-shadow-xl {
-  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.45), 0px 0px 10px rgba(255, 255, 255, 0.45);
+  text-shadow:
+    0px 0px 10px rgba(255, 255, 255, 0.45),
+    0px 0px 10px rgba(255, 255, 255, 0.45);
 }
 </style>

@@ -1,7 +1,11 @@
 <template>
   <div class="language-switcher animated-language-switcher mt-4">
     <select v-model="selectedLanguage" @change="setLanguage">
-      <option v-for="language in supportedLanguages" :value="language.code" :key="language.code">
+      <option
+        v-for="language in supportedLanguages"
+        :value="language.code"
+        :key="language.code"
+      >
         {{ language.name }}
       </option>
     </select>
@@ -9,17 +13,17 @@
 </template>
 
 <script lang="ts">
-import { onMounted } from 'vue';
-import { gsap } from 'gsap';
+import { onMounted } from "vue";
+import { gsap } from "gsap";
 
 export default {
   data() {
     return {
       supportedLanguages: [
-        { code: 'en', name: 'English' },
-        { code: 'fr', name: 'Français' },
-        { code: 'it', name: 'Italiano' },
-        { code: 'la', name: 'Latina' },
+        { code: "en", name: "English" },
+        { code: "fr", name: "Français" },
+        { code: "it", name: "Italiano" },
+        { code: "la", name: "Latina" },
       ],
       selectedLanguage: this.$i18n.locale,
     };

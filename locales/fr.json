@@ -1,32 +1,31 @@
 {
-    "analog": "Argentique",
-    "nature": "Nature",
-    "error": "Salut! Je suis désolé que tu te sois perdu ici, ce n'était pas prévu. C'est un peu gênant. Je te promets que j'y travaille.",
-    "galleries": "Galeries",
-    "portrait": "Portraits",
-    "pinhole": "Sténopé",
-    "drone": "Drone",
-    "infrared": "Infrarouge",
-    "street": "Rue",
-    "other": "Autre",
-    "photography": "Photographie",
-    "dronevideo": "Vidéo au Drone",
-    "randomgen": "Photo Aléatoire",
-    "home": "Accueil",
-    "random": "Aléatoire",
-    "aboot": "À Propos",
-    "randbut": "Cliquez ici pour une photo au hasard",
-    "about": {
-      "title": "À propos",
-      "subtitle": {
-        "start": "Bonjour, je suis ",
-        "end": ""
-      },
-      "paragraph1": "Je suis développeur web, photographe, vidéaste, pilote de drone et brasseur. Parfois, je combine ces activités. Voici ma galerie de photos en ligne !",
-      "paragraph2": "La photographie n'était pas ma vocation ; je suis tombé dedans comme moyen d'échapper à l'ennui de l'école. Cependant, j'ai rapidement compris que la réponse était d'innover. Et j'ai expérimenté. Des drones aux objectifs à sténopé, de l'infrarouge à l'analogique, de la photographie de rue aux portraits de studio, j'ai tout exploré. Autant dire que j'ai pris plaisir à découvrir.",
-      "video": {
-        "alt": "Amiral Nico, pilotant son drone"
-      }
+  "analog": "Argentique",
+  "nature": "Nature",
+  "error": "Salut! Je suis désolé que tu te sois perdu ici, ce n'était pas prévu. C'est un peu gênant. Je te promets que j'y travaille.",
+  "galleries": "Galeries",
+  "portrait": "Portraits",
+  "pinhole": "Sténopé",
+  "drone": "Drone",
+  "infrared": "Infrarouge",
+  "street": "Rue",
+  "other": "Autre",
+  "photography": "Photographie",
+  "dronevideo": "Vidéo au Drone",
+  "randomgen": "Photo Aléatoire",
+  "home": "Accueil",
+  "random": "Aléatoire",
+  "aboot": "À Propos",
+  "randbut": "Cliquez ici pour une photo au hasard",
+  "about": {
+    "title": "À propos",
+    "subtitle": {
+      "start": "Bonjour, je suis ",
+      "end": ""
+    },
+    "paragraph1": "Je suis développeur web, photographe, vidéaste, pilote de drone et brasseur. Parfois, je combine ces activités. Voici ma galerie de photos en ligne !",
+    "paragraph2": "La photographie n'était pas ma vocation ; je suis tombé dedans comme moyen d'échapper à l'ennui de l'école. Cependant, j'ai rapidement compris que la réponse était d'innover. Et j'ai expérimenté. Des drones aux objectifs à sténopé, de l'infrarouge à l'analogique, de la photographie de rue aux portraits de studio, j'ai tout exploré. Autant dire que j'ai pris plaisir à découvrir.",
+    "video": {
+      "alt": "Amiral Nico, pilotant son drone"
     }
   }
-  
+}

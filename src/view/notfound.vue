@@ -1,8 +1,15 @@
 <template>
-  <div class="h-11/12 flex flex-col items-center justify-center bg-black text-white">
+  <div
+    class="h-11/12 flex flex-col items-center justify-center bg-black text-white"
+  >
     <h2 class="text-3xl drop-shadow-lg m-6">Ooops, 404</h2>
-    <p class="text-xl w-3/6 m-2 drop-shadow-lg">{{$t('error')}}</p>
-    <button @click="changeGif" class="drop-shadow-lg m-2 py-2 px-4 bg-white text-black hover:text-white hover:bg-transparent focus:outline-none focus:shadow-outline text-xl">Amuse me, coder boy</button>
+    <p class="text-xl w-3/6 m-2 drop-shadow-lg">{{ $t("error") }}</p>
+    <button
+      @click="changeGif"
+      class="drop-shadow-lg m-2 py-2 px-4 bg-white text-black hover:text-white hover:bg-transparent focus:outline-none focus:shadow-outline text-xl"
+    >
+      Amuse me, coder boy
+    </button>
     <img :src="currentGifSrc" alt="Gif" class="h-96 w-auto" />
   </div>
 </template>
@@ -46,12 +53,14 @@ export default {
 </script>
 
 <style>
-h2, p {
-  font-family: 'Avenir', sans-serif;
+h2,
+p {
+  font-family: "Avenir", sans-serif;
 }
 
 .drop-shadow-lg {
-  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7),
-               0px 0px 10px rgba(255, 255, 255, 0.7);
+  text-shadow:
+    0px 0px 10px rgba(255, 255, 255, 0.7),
+    0px 0px 10px rgba(255, 255, 255, 0.7);
 }
 </style>

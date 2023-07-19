@@ -1,71 +1,71 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
-const Home = () => import('../src/view/home.vue');
-const About = () => import('../src/view/about.vue');
-const Gallery = () => import('../src/view/galleries.vue');
-const Street = () => import('../src/view/street.vue');
-const Portraits = () => import('../src/view/studio.vue');
-const Drone = () => import('../src/view/drone.vue');
-const Infrared = () => import('../src/view/infrared.vue');
-const Pinhole = () => import('../src/view/pinhole.vue');
-const Others = () => import('../src/view/others.vue');
-const Analog = () => import('../src/view/analog.vue');
-const Nature = () => import('../src/view/animals.vue');
-const Random = () => import('../src/view/random.vue');
-const NotFound = () => import('../src/view/notfound.vue');
+const Home = () => import("../src/view/home.vue");
+const About = () => import("../src/view/about.vue");
+const Gallery = () => import("../src/view/galleries.vue");
+const Street = () => import("../src/view/street.vue");
+const Portraits = () => import("../src/view/studio.vue");
+const Drone = () => import("../src/view/drone.vue");
+const Infrared = () => import("../src/view/infrared.vue");
+const Pinhole = () => import("../src/view/pinhole.vue");
+const Others = () => import("../src/view/others.vue");
+const Analog = () => import("../src/view/analog.vue");
+const Nature = () => import("../src/view/animals.vue");
+const Random = () => import("../src/view/random.vue");
+const NotFound = () => import("../src/view/notfound.vue");
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
+    path: "/",
     component: Home,
   },
   {
-    path: '/about',
+    path: "/about",
     component: About,
   },
   {
-    path: '/galleries',
+    path: "/galleries",
     component: Gallery,
   },
   {
-    path: '/street',
+    path: "/street",
     component: Street,
   },
   {
-    path: '/portraits',
+    path: "/portraits",
     component: Portraits,
   },
   {
-    path: '/drone',
+    path: "/drone",
     component: Drone,
   },
   {
-    path: '/infrared',
+    path: "/infrared",
     component: Infrared,
   },
   {
-    path: '/pinhole',
+    path: "/pinhole",
     component: Pinhole,
   },
   {
-    path: '/others',
+    path: "/others",
     component: Others,
   },
   {
-    path: '/analog',
+    path: "/analog",
     component: Analog,
   },
   {
-    path: '/nature',
+    path: "/nature",
     component: Nature,
   },
   {
-    path: '/random',
+    path: "/random",
     component: Random,
   },
   {
-    path: '/:catchAll(.*)',
-    name: 'NotFound',
+    path: "/:catchAll(.*)",
+    name: "NotFound",
     component: NotFound,
   },
 ];
