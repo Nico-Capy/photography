@@ -1,7 +1,11 @@
 <template>
   <div class="flex flex-col items-center justify-center">
-    <h2 role="heading" class="text-3xl text-white drop-shadow-lg m-6">{{ $t('drone') }}</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
+    <h2 role="heading" class="text-3xl text-white drop-shadow-lg m-6">
+      {{ $t("drone") }}
+    </h2>
+    <div
+      class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4"
+    >
       <div v-for="(photo, index) in photos" :key="index" class="relative m-2">
         <img
           :src="photo"
@@ -34,7 +38,7 @@
           <img
             :src="photos[selectedPhoto]"
             class="object-contain mx-auto"
-            style="height: 47rem;"
+            style="height: 47rem"
           />
           <button
             ref="nextBtn"
@@ -154,11 +158,12 @@ export default defineComponent({
 
 <style>
 h2 {
-  font-family: 'Avenir', sans-serif;
+  font-family: "Avenir", sans-serif;
 }
 
 .drop-shadow-lg {
-  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7),
+  text-shadow:
+    0px 0px 10px rgba(255, 255, 255, 0.7),
     0px 0px 10px rgba(255, 255, 255, 0.7);
 }
 </style>
