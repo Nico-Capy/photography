@@ -58,7 +58,6 @@
 import { defineComponent, onMounted, onUnmounted } from "vue";
 import { gsap } from "gsap";
 
-<<<<<<< HEAD
 import DroneButton from "../components/dronebutton.vue";
 
 export default defineComponent({
@@ -89,6 +88,7 @@ export default defineComponent({
         "/drone13.jpg",
         "/drone14.jpg",
         "/drone18.jpg",
+        "/DJI_0022.jpg",
       ],
     };
   },
@@ -96,37 +96,6 @@ export default defineComponent({
     showPhoto(index: number) {
       this.selectedPhoto = index;
       this.showModal = true;
-=======
-  export default defineComponent({
-    name: "PhotoGallery",
-    data() {
-      return {
-        showModal: false,
-        selectedPhoto: 0,
-        photos: [
-          
-        { src: "/drone01.jpg", loaded: false },
-        { src: "/drone02.jpg", loaded: false },
-        { src: "/drone03.jpg", loaded: false },
-        { src: "/drone04.jpg", loaded: false },
-        { src: "/drone05.jpg", loaded: false },
-        { src: "/drone06.jpg", loaded: false },
-        { src: "/drone07.jpg", loaded: false },
-        { src: "/drone08.jpg", loaded: false },
-        { src: "/drone09.jpg", loaded: false },
-        { src: "/drone10.jpg", loaded: false },
-        { src: "/drone11.jpg", loaded: false },
-        { src: "/drone12.jpg", loaded: false },
-        { src: "/drone15.jpg", loaded: false },
-        { src: "/drone16.jpg", loaded: false },
-        { src: "/drone17.jpg", loaded: false },
-        { src: "/drone13.jpg", loaded: false },
-        { src: "/drone14.jpg", loaded: false },
-        { src: "/drone18.jpg", loaded: false },
-        { src: "/DJI_0022.jpg", loaded: false },
-        ],
-      };
->>>>>>> Nico
     },
     showNextPhoto() {
       this.selectedPhoto = (this.selectedPhoto + 1) % this.photos.length;
