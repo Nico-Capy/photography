@@ -79,6 +79,7 @@
         { src: "/drone13.jpg", loaded: false },
         { src: "/drone14.jpg", loaded: false },
         { src: "/drone18.jpg", loaded: false },
+        { src: "/DJI_0022.jpg", loaded: false },
         ],
       };
     },
