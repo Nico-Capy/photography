@@ -64,7 +64,7 @@
       class="m-2 w-11/12 h-90 text-white hover:text-black hover:bg-white shadow-white gallery-link"
     >
       <h2 class="text-2xl drop-shadow-xl p-3">{{ $t("analog") }}</h2>
-      <img src="/thumbnail8.jpg" alt="Anal Log" class="p-2" />
+      <img src="/thumbnail8.jpg" alt="AnalLog" class="p-2" />
     </router-link>
 
     <router-link
