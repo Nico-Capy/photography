@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center justify-center animate-element">
     <h2
-      class="text-3xl text-center text-white drop-shadow-xl m-6 p-6 animate-element"
+      class="text-3xl text-center text-white drop-shadow-xl m-6 p-3 animate-element"
     >
       {{ $t("randomgen") }}
     </h2>
