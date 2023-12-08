@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center justify-center animate-element">
     <h2
-      class="text-3xl text-center text-white drop-shadow-xl m-6 p-3 animate-element"
+      class="text-3xl text-center text-white drop-shadow-xl m-6 p-6 animate-element"
     >
       {{ $t("randomgen") }}
     </h2>
@@ -11,7 +11,7 @@
     >
       <img :src="currentImage" class="h-5/6 animate-element" id="nostretch" />
       <button
-        class="bg-white hover:bg-transparent text-black hover:text-white drop-shadow-xl text-xl font-light p-4 mt-4 animate-element mb-16"
+        class="bg-white hover:bg-transparent text-black hover:text-white drop-shadow-xl text-xl font-light p-6 mt-4 animate-element mb-16"
         @click="showRandomPhoto"
       >
         {{ $t("randbut") }}
