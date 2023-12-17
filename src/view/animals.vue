@@ -62,7 +62,6 @@ export default defineComponent({
       showModal: false,
       selectedPhoto: 0,
       photos: [
-        "/nature09.jpg",
         "/nature10.jpg",
         "/nature11.jpg",
         "/nature12.jpg",
