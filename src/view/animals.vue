@@ -77,6 +77,7 @@ export default defineComponent({
         "/nature04.jpg",
         "/nature05.jpg",
         "/nature06.jpg",
+        "/nature09.jpg",
       ],
     };
   },
