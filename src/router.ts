@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
+// Importing your components
 const Home = () => import("../src/view/home.vue");
 const About = () => import("../src/view/about.vue");
 const Gallery = () => import("../src/view/galleries.vue");
@@ -12,8 +13,9 @@ const Others = () => import("../src/view/others.vue");
 const Analog = () => import("../src/view/analog.vue");
 const Nature = () => import("../src/view/animals.vue");
 const Random = () => import("../src/view/random.vue");
-const NotFound = () => import("../src/view/notfound.vue");
+const NotFound = () => import("../src/view/notfound.vue"); // Importing the 404 component
 
+// Routes configuration
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -63,6 +65,7 @@ const routes: Array<RouteRecordRaw> = [
     path: "/random",
     component: Random,
   },
+  
   {
     path: "/:catchAll(.*)",
     name: "NotFound",
@@ -70,9 +73,11 @@ const routes: Array<RouteRecordRaw> = [
   },
 ];
 
+// Creating the router instance
 const router = createRouter({
   history: createWebHistory(),
   routes,
 });
 
 export default router;
+
