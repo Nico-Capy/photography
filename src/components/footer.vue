@@ -1,21 +1,20 @@
 <template>
   <footer
-    class="flex flex-col lg:flex-row xl:flex-row 2xl:flex-row p-0 bg-transparent text-center text-sm w-full drop-shadow-xl mt-3"
+    class="flex flex-col lg:flex-row xl:flex-row 2xl:flew-row p-0 bg-transparent text-center text-sm w-fit drop-shadow-xl sm:fa-align-center mt-3"
     :style="{ backgroundColor: backgroundColor }"
   >
     <a
       href="https://youtu.be/ZrF7MEWojQ0?si=5krp37w1AMIZ255t"
       target="_blank"
       rel="noopener noreferrer"
-      class="px-4 py-1 text-white hover:opacity-80 transition-opacity"
     >
-      © Nicola Corradini | <span v-html="formattedDate"></span>
+      <p class="px-4 py-1" style="color: white">
+        © Nicola Corradini | <span v-html="formattedDate"></span>
+      </p>
     </a>
-
     <font-awesome-icon
       :icon="faJediOrder"
-      class="ml-4 text-white cursor-pointer"
-      style="height: 3vh"
+      style="color: white; cursor: pointer; height: 3vh"
       @click="redirectToVideo"
     />
   </footer>
@@ -28,25 +27,33 @@ import { faJediOrder } from "@fortawesome/free-brands-svg-icons";
 
 export default defineComponent({
   name: "Footer",
-  components: { FontAwesomeIcon },
+  components: {
+    FontAwesomeIcon,
+  },
   data() {
     return {
+      currentDate: this.getCurrentDate(),
       backgroundColor: "transparent",
     };
   },
-  computed: {
-    faJediOrder() {
-      return faJediOrder;
+  methods: {
+    redirectToVideo() {
+      window.open("https://www.youtube.com/watch?v=usQTt-y2Idk", "_blank");
     },
-    formattedDate() {
+    getCurrentDate() {
       const date = new Date();
       const day = date.getDate();
       let daySuffix: string;
 
-      if ([1, 21, 31].includes(day)) daySuffix = "st";
-      else if ([2, 22].includes(day)) daySuffix = "nd";
-      else if ([3, 23].includes(day)) daySuffix = "rd";
-      else daySuffix = "th";
+      if (day === 1 || day === 21 || day === 31) {
+        daySuffix = "st";
+      } else if (day === 2 || day === 22) {
+        daySuffix = "nd";
+      } else if (day === 3 || day === 23) {
+        daySuffix = "rd";
+      } else {
+        daySuffix = "th";
+      }
 
       const options: Intl.DateTimeFormatOptions = {
         month: "long",
@@ -57,13 +64,17 @@ export default defineComponent({
       const formattedDate: string = formatter.format(date);
       const formattedDay = `${day}<sup>${daySuffix}</sup>`;
 
-      return formattedDate.replace(/,/g, "").replace(day.toString(), formattedDay);
+      return formattedDate
+        .replace(/,/g, "")
+        .replace(day.toString(), formattedDay);
     },
   },
-  methods: {
-    redirectToVideo() {
-      // Open YouTube video
-      window.open("https://www.youtube.com/watch?v=usQTt-y2Idk", "_blank");
+  computed: {
+    faJediOrder() {
+      return faJediOrder;
+    },
+    formattedDate() {
+      return this.getCurrentDate();
     },
   },
 });
