@@ -4,7 +4,7 @@
     :style="{ backgroundColor: backgroundColor }"
   >
     <a
-      href="https://youtu.be/ZrF7MEWojQ0?si=fgYxN05eCXV8_f5S"
+      href="https://github.com/Nico-Capy/photography"
       target="_blank"
       rel="noopener noreferrer"
     >

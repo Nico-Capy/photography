@@ -5,15 +5,22 @@
     <div
       class="flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row items-center pb-6 animate-element"
     >
-      <h1
-        class="text-4xl sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-white animate-element"
-        role="heading"
+      <a
+        href="https://youtu.be/ZrF7MEWojQ0?si=fgYxN05eCXV8_f5S"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row items-center gap-2 cursor-pointer text-inherit no-underline"
       >
-        Nicola Corradini |
-      </h1>
-      <h2 class="text-2xl text-gray-200 indent-6 animate-element">
-        {{ $t("photography") }}
-      </h2>
+        <h1
+          class="text-4xl sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-white animate-element"
+          role="heading"
+        >
+          Nicola Corradini |
+        </h1>
+        <h2 class="text-2xl sm:text-lg md:text-xl lg:text-2xl xl:text-2xl 2xl:text-2xl text-gray-200 animate-element">
+          {{ $t("photography") }}
+        </h2>
+      </a>
     </div>
   </div>
 
