@@ -2,12 +2,6 @@
   <div
     class="flex flex-col items-center drop-shadow-xl mt-6 bg-transparent animate animate-element"
   >
-    <a
-      href="https://youtu.be/ZrF7MEWojQ0?si=fgYxN05eCXV8_f5S"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="inline-flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row items-center gap-2 cursor-pointer no-underline"
-    >
       <h1
         class="text-4xl sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-white animate-element"
         role="heading"
@@ -17,7 +11,6 @@
       <h2 class="text-2xl sm:text-lg md:text-xl lg:text-2xl xl:text-2xl 2xl:text-2xl text-gray-200 animate-element">
         {{ $t("photography") }}
       </h2>
-    </a>
   </div>
 
   <div class="flex justify-center bg-transparent h-2/3 animate-element mb-16">
