@@ -4,7 +4,7 @@
     :style="{ backgroundColor: backgroundColor }"
   >
     <a
-      href="https://youtu.be/ZrF7MEWojQ0?si=fgYxN05eCXV8_f5S"
+      href="https://youtu.be/ZrF7MEWojQ0?si=5krp37w1AMIZ255t"
       target="_blank"
       rel="noopener noreferrer"
     >
