@@ -9,7 +9,7 @@
         href="https://youtu.be/ZrF7MEWojQ0?si=fgYxN05eCXV8_f5S"
         target="_blank"
         rel="noopener noreferrer"
-        class="flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row items-center gap-2 cursor-pointer text-inherit no-underline"
+        class="flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row items-center gap-2 cursor-pointer text-current no-underline"
       >
         <h1
           class="text-4xl sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-white animate-element"
