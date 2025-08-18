@@ -1,20 +1,22 @@
 {
   "compilerOptions": {
-    "target": "ESNext",               // use modern JS target
-    "module": "ESNext",               // module system for Vite
-    "moduleResolution": "Node",
-    "strict": true,
-    "jsx": "preserve",
-    "baseUrl": ".",
+    "target": "ESNext",                        // Modern JS target
+    "module": "ESNext",                        // Module system compatible with Vite
+    "moduleResolution": "Node",                // Node-style module resolution
+    "strict": true,                             // Enable strict type-checking
+    "jsx": "preserve",                          // For Vue JSX if needed
+    "baseUrl": ".",                             // Base for paths
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"]                          // Alias for src/
     },
-    "types": ["vite/client"],         // Vite type support
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "outDir": "dist",
-    "sourceMap": true
+    "types": ["vite/client"],                   // Vite type support
+    "resolveJsonModule": true,                  // Import JSON files
+    "esModuleInterop": true,                    // CommonJS interoperability
+    "skipLibCheck": true,                       // Skip library type checking for faster builds
+    "forceConsistentCasingInFileNames": true, 
+    "sourceMap": true,
+    "outDir": "dist"                            // Build output
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "env.d.ts", "src/shims-vue.d.ts"],
   "exclude": ["node_modules", "**/*.spec.ts"]
 }
