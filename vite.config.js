@@ -3,6 +3,10 @@ import vue from "@vitejs/plugin-vue";
 import { imagetools } from "vite-imagetools";
 import Fonts from "unplugin-fonts/vite";
 
+// Polyfill Node built-ins for Vite
+import { NodeGlobalsPolyfillPlugin } from "@esbuild-plugins/node-globals-polyfill";
+import { NodeModulesPolyfillPlugin } from "@esbuild-plugins/node-modules-polyfill";
+
 export default defineConfig({
   plugins: [
     vue(),
@@ -20,5 +24,24 @@ export default defineConfig({
   ],
   server: {
     port: 3020,
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      define: {
+        global: "globalThis",
+      },
+      plugins: [
+        NodeGlobalsPolyfillPlugin({
+          buffer: true,
+        }),
+        NodeModulesPolyfillPlugin(),
+      ],
+    },
+  },
+  resolve: {
+    alias: {
+      // Polyfill Node crypto
+      crypto: "crypto-browserify",
+    },
   },
 });
