@@ -1,6 +1,6 @@
 <template>
   <!-- Header -->
-  <div class="flex flex-col items-center drop-shadow-xl mt-6 bg-transparent">
+  <div class="flex flex-col items-center mt-6 bg-transparent header-fade drop-shadow-xl">
     <a
       href="https://youtu.be/ZrF7MEWojQ0?si=fgYxN05eCXV8_f5S"
       target="_blank"
@@ -17,7 +17,7 @@
   </div>
 
   <!-- Slideshow -->
-  <div class="flex justify-center bg-transparent mb-16">
+  <div class="flex justify-center bg-transparent h-2/3 mb-16">
     <div
       class="bg-transparent w-11/12 lg:w-screen xl:w-screen 2xl:w-screen p-3 flex flex-col justify-center items-center drop-shadow-lg"
       style="height: 63vh"
@@ -26,9 +26,8 @@
         :key="currentImageIndex"
         :src="`/preview/${imageSources[currentImageIndex]}`"
         alt="Preview image"
-        width="1920"
-        height="1080"
-        class="w-full h-full object-cover"
+        loading="lazy"
+        class="h-fit sm:h-fit md:h-fit lg:h-full xl:h-full 2xl:h-full my-auto object-cover slide-fade"
       />
     </div>
   </div>
@@ -36,7 +35,6 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted, onBeforeUnmount } from "vue";
-import { gsap } from "gsap";
 
 export default defineComponent({
   setup() {
@@ -51,20 +49,9 @@ export default defineComponent({
     let intervalId: number;
 
     onMounted(() => {
-      // Animate header and images
-      gsap.from(".drop-shadow-xl, .drop-shadow-lg img", {
-        opacity: 0,
-        y: 100,
-        duration: 1.6,
-        delay: 0.6,
-        stagger: 0.3,
-        ease: "power1.in",
-      });
-
-      // Start slideshow
       intervalId = window.setInterval(() => {
         currentImageIndex.value = (currentImageIndex.value + 1) % imageSources.length;
-      }, 4618);
+      }, 4600);
     });
 
     onBeforeUnmount(() => {
@@ -82,6 +69,34 @@ body {
   font-family: "Avenir", sans-serif;
 }
 
+/* Header animation */
+.header-fade {
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeInUp 1.6s ease forwards;
+  animation-delay: 0.6s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slideshow fade */
+.slide-fade {
+  opacity: 0;
+  animation: fadeSlide 0.7s ease-in-out forwards;
+}
+
+@keyframes fadeSlide {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Drop shadow for header text */
 .drop-shadow-xl {
   text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.45),
                0px 0px 10px rgba(255, 255, 255, 0.45);

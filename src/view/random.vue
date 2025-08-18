@@ -1,21 +1,30 @@
 <template>
   <div class="flex flex-col items-center justify-center">
-    <h2 ref="title" class="text-3xl text-center text-white drop-shadow-xl m-6 p-6">
+    <!-- Title -->
+    <h2
+      ref="title"
+      class="text-3xl text-center text-white drop-shadow-xl m-6 p-6 mb-8"
+    >
       {{ $t("randomgen") }}
     </h2>
 
+    <!-- Container -->
     <div
       ref="container"
       class="bg-transparent lg:w-1/3 xl:w-2/4 2xl:w-1/3 p-6 flex flex-col justify-center items-center drop-shadow-lg mb-16"
       style="height: 63vh"
     >
+      <!-- Image -->
       <img
         :src="currentImage"
         ref="image"
         id="image-no-stretch"
-        class="h-5/6"
+        class="max-h-full max-w-full transition-opacity duration-500 ease-in-out"
+        style="height: auto; width: auto;"
         alt="Random photo"
       />
+
+      <!-- Button -->
       <button
         ref="button"
         class="bg-white hover:bg-transparent text-black hover:text-white drop-shadow-xl text-xl font-light p-6 mt-4 mb-16"
@@ -31,6 +40,7 @@
 import { defineComponent, ref, onMounted } from "vue";
 import { gsap } from "gsap";
 
+// --- PHOTO SOURCES ---
 const photoSources = [
   // Nature
   "/nature01.jpg","/nature02.jpg","/nature03.jpg","/nature04.jpg",
@@ -75,15 +85,20 @@ const photoSources = [
   "/portrait33.jpg","/portrait34.jpg","/portrait35.jpg","/portrait36.jpg",
   "/portrait37.jpg","/portrait38.jpg","/portrait39.jpg","/portrait40.jpg",
   "/portrait41.jpg",
-
-  // Nico images (commented out)
-  // "/nico.jpg",
-  // "/nico1.jpg",
-  // "/nico2.JPG",
-  // "/nico3.JPG",
-  // "/nico4.JPG",
-  // "/nico5.jpeg"
 ];
+
+// --- NICO IMAGES (kept commented for reference) ---
+const nicoImages = [
+  "/nico.jpg",
+  "/nico1.jpg",
+  "/nico2.JPG",
+  "/nico3.JPG",
+  "/nico4.JPG",
+  "/nico5.jpeg"
+];
+
+// Merge them
+const allPhotos = [...photoSources, ...nicoImages];
 
 export default defineComponent({
   name: "RandomPhoto",
@@ -96,22 +111,23 @@ export default defineComponent({
     const getRandomIndex = (excludeIndex?: number) => {
       let index;
       do {
-        index = Math.floor(Math.random() * photoSources.length);
+        index = Math.floor(Math.random() * allPhotos.length);
       } while (excludeIndex !== undefined && index === excludeIndex);
       return index;
     };
 
-    // Pick a random first image
+    // Initial image
     let lastIndex = getRandomIndex();
-    const currentImage = ref(photoSources[lastIndex]);
+    const currentImage = ref(allPhotos[lastIndex]);
 
     const preloadImages = () => {
-      photoSources.forEach(src => {
+      allPhotos.forEach(src => {
         const img = new Image();
         img.src = src;
       });
     };
 
+    // Fade transition
     const showRandomPhoto = () => {
       const randomIndex = getRandomIndex(lastIndex);
       lastIndex = randomIndex;
@@ -119,26 +135,31 @@ export default defineComponent({
       if (imageRef.value) {
         gsap.to(imageRef.value, {
           opacity: 0,
-          duration: 0.06,
+          duration: 0.8, // fade out
+          ease: "power2.inOut",
           onComplete: () => {
-            currentImage.value = photoSources[randomIndex];
-            gsap.to(imageRef.value, { opacity: 1, duration: 0.06 });
+            currentImage.value = allPhotos[randomIndex];
+            gsap.to(imageRef.value!, {
+              opacity: 1,
+              duration: 0.8, // fade in
+              ease: "power2.inOut"
+            });
           },
         });
       } else {
-        currentImage.value = photoSources[randomIndex];
+        currentImage.value = allPhotos[randomIndex];
       }
     };
 
     onMounted(() => {
       preloadImages();
 
-      // Animation on mount
+      // Animate on mount
       gsap.from([titleRef.value, containerRef.value, buttonRef.value], {
         opacity: 0,
         y: 100,
-        duration: 1.4,
-        stagger: 0.3,
+        duration: 0.8,
+        stagger: 0.6,
         ease: "power2.in",
       });
     });
@@ -166,6 +187,6 @@ h2 {
 }
 
 #image-no-stretch {
-  object-fit: cover;
+  object-fit: contain; /* preserves proportions */
 }
 </style>
