@@ -31,17 +31,14 @@ export default defineConfig({
         global: "globalThis",
       },
       plugins: [
-        NodeGlobalsPolyfillPlugin({
-          buffer: true,
-        }),
+        NodeGlobalsPolyfillPlugin({ buffer: true }),
         NodeModulesPolyfillPlugin(),
       ],
     },
   },
   resolve: {
     alias: {
-      // Polyfill Node crypto
-      crypto: "crypto-browserify",
+      crypto: "crypto-browserify", // Polyfill Node crypto
     },
   },
 });
