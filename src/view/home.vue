@@ -1,23 +1,24 @@
+vue
 <template>
   <!-- Header -->
   <div
     class="flex flex-col items-center drop-shadow-xl mt-6 bg-transparent animate animate-element"
   >
+    <!-- Responsive H1 + H2 container -->
     <a
       href="https://youtu.be/ZrF7MEWojQ0?si=fgYxN05eCXV8_f5S"
       target="_blank"
       rel="noopener noreferrer"
       class="flex flex-col lg:flex-row items-center gap-2 cursor-pointer no-underline"
     >
-      <!-- H1 always centered -->
+      <!-- H1 -->
       <h1
         class="text-4xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white animate-element text-center lg:text-left"
         role="heading"
       >
         Nicola Corradini |
       </h1>
-
-      <!-- H2 centered under H1 on small screens, inline on large -->
+      <!-- H2 -->
       <h2
         class="text-2xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-gray-200 animate-element text-center lg:text-left"
       >
@@ -25,7 +26,6 @@
       </h2>
     </a>
   </div>
-
   <!-- Slideshow -->
   <div class="flex justify-center bg-transparent h-2/3 animate-element mb-16">
     <div
@@ -42,11 +42,9 @@
     </div>
   </div>
 </template>
-
 <script lang="ts">
 import { defineComponent, nextTick } from "vue";
 import { gsap } from "gsap";
-
 export default defineComponent({
   data() {
     return {
@@ -96,24 +94,20 @@ export default defineComponent({
   },
 });
 </script>
-
 <style>
 body {
   background-color: black;
 }
-
 h1,
 h2,
 p {
   font-family: "Avenir", sans-serif;
 }
-
 .drop-shadow-xl {
   text-shadow:
     0px 0px 10px rgba(255, 255, 255, 0.45),
     0px 0px 10px rgba(255, 255, 255, 0.45);
 }
-
 #nostretch {
   object-fit: cover;
 }
