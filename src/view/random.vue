@@ -31,7 +31,6 @@
 import { defineComponent, ref, onMounted } from "vue";
 import { gsap } from "gsap";
 
-// All photos grouped by type
 const photoSources = [
   // Nature
   "/nature01.jpg","/nature02.jpg","/nature03.jpg","/nature04.jpg",
@@ -77,7 +76,7 @@ const photoSources = [
   "/portrait37.jpg","/portrait38.jpg","/portrait39.jpg","/portrait40.jpg",
   "/portrait41.jpg",
 
-  // Nico images (still commented)
+  // Nico images
   // "/nico.jpg",
   // "/nico1.jpg",
   // "/nico2.JPG",
@@ -97,6 +96,13 @@ export default defineComponent({
     const imageRef = ref<HTMLImageElement | null>(null);
     const buttonRef = ref<HTMLButtonElement | null>(null);
 
+    const preloadImages = () => {
+      photoSources.forEach(src => {
+        const img = new Image();
+        img.src = src;
+      });
+    };
+
     const showRandomPhoto = () => {
       let randomIndex;
       do {
@@ -104,20 +110,25 @@ export default defineComponent({
       } while (randomIndex === lastIndex);
       lastIndex = randomIndex;
 
-      currentImage.value = photoSources[randomIndex];
-
-      // Fade-in animation for the new image
       if (imageRef.value) {
-        gsap.fromTo(
-          imageRef.value,
-          { opacity: 0, y: 50 },
-          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
-        );
+        // fade-out, switch image, fade-in ultra rapide
+        gsap.to(imageRef.value, {
+          opacity: 0,
+          duration: 0.18,
+          onComplete: () => {
+            currentImage.value = photoSources[randomIndex];
+            gsap.to(imageRef.value, { opacity: 1, duration: 0.18 });
+          },
+        });
+      } else {
+        currentImage.value = photoSources[randomIndex];
       }
     };
 
     onMounted(() => {
-      // Animate all elements on mount
+      preloadImages();
+
+      // Animation au montage
       gsap.from([titleRef.value, containerRef.value, buttonRef.value], {
         opacity: 0,
         y: 100,
