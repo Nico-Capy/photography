@@ -5,7 +5,7 @@ vue
     :style="{ backgroundColor: backgroundColor }"
   >
     <a
-      href="https://github.com/Nico-Capy/photography"
+      href="https://youtu.be/ZrF7MEWojQ0?si=fgYxN05eCXV8_f5S"
       target="_blank"
       rel="noopener noreferrer"
       class="px-4 py-1 text-white no-underline hover:opacity-80 transition-opacity"
