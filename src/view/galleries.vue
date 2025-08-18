@@ -1,4 +1,3 @@
-vue
 <template>
   <div class="flex items-center p-3">
     <h1 class="text-white text-4xl drop-shadow-xl mx-auto">
