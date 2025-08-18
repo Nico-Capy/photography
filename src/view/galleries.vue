@@ -1,81 +1,77 @@
-vue
 <template>
   <div class="flex items-center p-3">
     <h1 class="text-white text-4xl drop-shadow-xl mx-auto">
       {{ $t("galleries") }}
     </h1>
   </div>
-  <div
-    class="gallery-row"
-  >
+
+  <!-- Top Row -->
+  <div class="gallery-row">
     <router-link
-      to="/portraits"
+      v-for="(gallery, index) in topGalleries"
+      :key="gallery.to"
+      :to="gallery.to"
       class="m-2 w-11/12 h-90 text-white hover:text-black hover:bg-white shadow-white gallery-link"
     >
-      <h2 class="text-2xl drop-shadow-xl p-3">{{ $t("portrait") }}</h2>
-      <img src="/thumbnail6.jpg" alt="Studio Portrait" class="p-4 pt-2" />
-    </router-link>
-    <router-link
-      to="/pinhole"
-      class="m-2 w-11/12 h-90 text-white hover:text-black hover:bg-white shadow-white gallery-link"
-    >
-      <h2 class="text-2xl drop-shadow-xl p-3">{{ $t("pinhole") }}</h2>
-      <img src="/thumbnail3.jpg" alt="Pinhole Of London" class="p-2" />
-    </router-link>
-    <router-link
-      to="/drone"
-      class="m-2 w-11/12 h-90 text-white hover:text-black hover:bg-white shadow-white gallery-link"
-    >
-      <h2 class="text-2xl drop-shadow-xl p-3">{{ $t("drone") }}</h2>
-      <img src="/thumbnail7.jpg" alt="Drone Forest" class="p-2" />
-    </router-link>
-    <router-link
-      to="/infrared"
-      class="m-2 w-11/12 h-90 text-white hover:text-black hover:bg-white shadow-white gallery-link"
-    >
-      <h2 class="text-2xl drop-shadow-xl p-3">{{ $t("infrared") }}</h2>
-      <img src="/thumbnail1.jpg" alt="Infrared" class="p-2" />
+      <h2 class="text-2xl drop-shadow-xl p-3">{{ $t(gallery.label) }}</h2>
+      <img :src="gallery.thumb" :alt="gallery.alt" class="p-2" />
     </router-link>
   </div>
-  <div
-    class="flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row w-11/12 h-11/12 mx-auto my-16 bg-transparent justify-center align-center overflow-scroll"
-  >
+
+  <!-- Bottom Row -->
+  <div class="flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row w-11/12 h-11/12 mx-auto my-16 bg-transparent justify-center align-center overflow-scroll">
     <router-link
-      to="/nature"
+      v-for="(gallery, index) in bottomGalleries"
+      :key="gallery.to"
+      :to="gallery.to"
       class="m-2 w-11/12 h-90 text-white hover:text-black hover:bg-white shadow-white gallery-link"
     >
-      <h2 class="text-2xl drop-shadow-xl p-3">{{ $t("nature") }}</h2>
-      <img src="/thumbnail5.jpg" alt="Meerkat" class="p-4 pt-2" />
-    </router-link>
-    <router-link
-      to="/street"
-      class="m-2 w-11/12 h-90 text-white hover:text-black hover:bg-white shadow-white gallery-link"
-    >
-      <h2 class="text-2xl drop-shadow-xl p-3">{{ $t("street") }}</h2>
-      <img src="/thumbnail4.jpg" alt="Streets Of London" class="p-2" />
-    </router-link>
-    <router-link
-      to="/analog"
-      class="m-2 w-11/12 h-90 text-white hover:text-black hover:bg-white shadow-white gallery-link"
-    >
-      <h2 class="text-2xl drop-shadow-xl p-3">{{ $t("analog") }}</h2>
-      <img src="/thumbnail8.jpg" alt="Analog" class="p-2" />
-    </router-link>
-    <router-link
-      to="/others"
-      class="m-2 w-11/12 h-90 text-white hover:text-black hover:bg-white shadow-white gallery-link"
-    >
-      <h2 class="text-2xl drop-shadow-xl p-3">{{ $t("other") }}</h2>
-      <img src="/thumbnail2.jpg" alt="Other" class="p-2" />
+      <h2 class="text-2xl drop-shadow-xl p-3">{{ $t(gallery.label) }}</h2>
+      <img :src="gallery.thumb" :alt="gallery.alt" class="p-2" />
     </router-link>
   </div>
 </template>
+
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
+import { gsap } from "gsap";
+
 export default defineComponent({
   name: "Galleries",
+  setup() {
+    const topGalleries = [
+      { to: "/portraits", label: "portrait", thumb: "/thumbnail6.jpg", alt: "Studio Portrait" },
+      { to: "/pinhole", label: "pinhole", thumb: "/thumbnail3.jpg", alt: "Pinhole Of London" },
+      { to: "/drone", label: "drone", thumb: "/thumbnail7.jpg", alt: "Drone Forest" },
+      { to: "/infrared", label: "infrared", thumb: "/thumbnail1.jpg", alt: "Infrared" },
+    ];
+
+    const bottomGalleries = [
+      { to: "/nature", label: "nature", thumb: "/thumbnail5.jpg", alt: "Meerkat" },
+      { to: "/street", label: "street", thumb: "/thumbnail4.jpg", alt: "Streets Of London" },
+      { to: "/analog", label: "analog", thumb: "/thumbnail8.jpg", alt: "Analog" },
+      { to: "/others", label: "other", thumb: "/thumbnail2.jpg", alt: "Other" },
+    ];
+
+    onMounted(() => {
+      // Animate heading
+      gsap.from("h1", { opacity: 0, y: 50, duration: 1, ease: "power2.out" });
+
+      // Animate all gallery links
+      gsap.from(".gallery-link", {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power2.out",
+      });
+    });
+
+    return { topGalleries, bottomGalleries };
+  },
 });
 </script>
+
 <style scoped>
 .gallery-row {
   display: flex;

@@ -1,38 +1,24 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
-// Lazy-loaded components with prefetch for better performance
-const Home = () => import(/* webpackPrefetch: true */ "../src/view/home.vue");
-const About = () => import(/* webpackPrefetch: true */ "../src/view/about.vue");
-const Gallery = () => import(/* webpackPrefetch: true */ "../src/view/galleries.vue");
-const Street = () => import(/* webpackPrefetch: true */ "../src/view/street.vue");
-const Portraits = () => import(/* webpackPrefetch: true */ "../src/view/studio.vue");
-const Drone = () => import(/* webpackPrefetch: true */ "../src/view/drone.vue");
-const Infrared = () => import(/* webpackPrefetch: true */ "../src/view/infrared.vue");
-const Pinhole = () => import(/* webpackPrefetch: true */ "../src/view/pinhole.vue");
-const Others = () => import(/* webpackPrefetch: true */ "../src/view/others.vue");
-const Analog = () => import(/* webpackPrefetch: true */ "../src/view/analog.vue");
-const Nature = () => import(/* webpackPrefetch: true */ "../src/view/animals.vue");
-const Random = () => import(/* webpackPrefetch: true */ "../src/view/random.vue");
-const NotFound = () => import(/* webpackPrefetch: true */ "../src/view/notfound.vue");
-
-// Define the routes configuration
+// Lazy-loaded views
 const routes: Array<RouteRecordRaw> = [
-  { path: "/", name: "Home", component: Home },
-  { path: "/about", name: "About", component: About },
-  { path: "/galleries", name: "Galleries", component: Gallery },
-  { path: "/street", name: "Street", component: Street },
-  { path: "/portraits", name: "Portraits", component: Portraits },
-  { path: "/drone", name: "Drone", component: Drone },
-  { path: "/infrared", name: "Infrared", component: Infrared },
-  { path: "/pinhole", name: "Pinhole", component: Pinhole },
-  { path: "/others", name: "Others", component: Others },
-  { path: "/analog", name: "Analog", component: Analog },
-  { path: "/nature", name: "Nature", component: Nature },
-  { path: "/random", name: "Random", component: Random },
-  { path: "/:catchAll(.*)", name: "NotFound", component: NotFound },
+  { path: "/", name: "Home", component: () => import(/* webpackPrefetch: true */ "@/view/home.vue") },
+  { path: "/about", name: "About", component: () => import(/* webpackPrefetch: true */ "@/view/about.vue") },
+  { path: "/galleries", name: "Galleries", component: () => import(/* webpackPrefetch: true */ "@/view/galleries.vue") },
+  { path: "/street", name: "Street", component: () => import(/* webpackPrefetch: true */ "@/view/street.vue") },
+  { path: "/portraits", name: "Portraits", component: () => import(/* webpackPrefetch: true */ "@/view/studio.vue") },
+  { path: "/drone", name: "Drone", component: () => import(/* webpackPrefetch: true */ "@/view/drone.vue") },
+  { path: "/infrared", name: "Infrared", component: () => import(/* webpackPrefetch: true */ "@/view/infrared.vue") },
+  { path: "/pinhole", name: "Pinhole", component: () => import(/* webpackPrefetch: true */ "@/view/pinhole.vue") },
+  { path: "/others", name: "Others", component: () => import(/* webpackPrefetch: true */ "@/view/others.vue") },
+  { path: "/analog", name: "Analog", component: () => import(/* webpackPrefetch: true */ "@/view/analog.vue") },
+  { path: "/nature", name: "Nature", component: () => import(/* webpackPrefetch: true */ "@/view/animals.vue") },
+  { path: "/random", name: "Random", component: () => import(/* webpackPrefetch: true */ "@/view/random.vue") },
+
+  // Catch-all 404 route (always last)
+  { path: "/:catchAll(.*)", name: "NotFound", component: () => import(/* webpackPrefetch: true */ "@/view/notfound.vue") },
 ];
 
-// Create a router instance with history mode
 const router = createRouter({
   history: createWebHistory(),
   routes,

@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="h-11/12 flex flex-col items-center justify-center bg-black text-white"
-  >
+  <div class="h-11/12 flex flex-col items-center justify-center bg-black text-white">
     <h2 class="text-3xl drop-shadow-lg m-6">Ooops, 404</h2>
     <p class="text-xl w-3/6 m-2 drop-shadow-lg">{{ $t("error") }}</p>
     <button
@@ -15,44 +13,44 @@
 </template>
 
 <script lang="ts">
+import { ref, computed } from "vue";
+
 export default {
-  data() {
-    return {
-      currentGifIndex: 0,
-      gifs: [
-        "/heydave.gif",
-        "/roy.gif",
-        "/galafianakis.gif",
-        "/michael.gif",
-        "/steve.gif",
-        "/joey.gif",
-        "/jarjar.gif",
-        "/moss.gif",
-        "/pratt.gif",
-        "/house.gif",
-        "/ron.gif",
-        "/pippin.gif",
-        "/sid.gif",
-        "/community.gif",
-        "/homer.gif",
-        "/jack.gif",
-      ],
+  name: "Error404",
+  setup() {
+    const gifs = [
+      "/heydave.gif",
+      "/roy.gif",
+      "/galafianakis.gif",
+      "/michael.gif",
+      "/steve.gif",
+      "/joey.gif",
+      "/jarjar.gif",
+      "/moss.gif",
+      "/pratt.gif",
+      "/house.gif",
+      "/ron.gif",
+      "/pippin.gif",
+      "/sid.gif",
+      "/community.gif",
+      "/homer.gif",
+      "/jack.gif",
+    ];
+
+    const currentGifIndex = ref(0);
+
+    const currentGifSrc = computed(() => gifs[currentGifIndex.value]);
+
+    const changeGif = () => {
+      currentGifIndex.value = (currentGifIndex.value + 1) % gifs.length;
     };
-  },
-  computed: {
-    currentGifSrc() {
-      return this.gifs[this.currentGifIndex];
-    },
-  },
-  methods: {
-    changeGif() {
-      this.currentGifIndex = (this.currentGifIndex + 1) % this.gifs.length;
-    },
+
+    return { currentGifSrc, changeGif };
   },
 };
 </script>
 
-<style>
+<style scoped>
 h2,
 p {
   font-family: "Avenir", sans-serif;

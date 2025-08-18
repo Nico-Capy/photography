@@ -1,14 +1,20 @@
 {
   "compilerOptions": {
+    "target": "ESNext",               // use modern JS target
+    "module": "ESNext",               // module system for Vite
+    "moduleResolution": "Node",
+    "strict": true,
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "types": ["vite/client"],         // Vite type support
     "resolveJsonModule": true,
-    "target": "es5",
-    "module": "commonjs",
+    "esModuleInterop": true,
     "outDir": "dist",
-    "sourceMap": true,
-    "esModuleInterop": true
-    // Other compiler options...
+    "sourceMap": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]
-  // Other configuration options...
 }

@@ -1,8 +1,7 @@
-vue
 <template>
   <footer
-    class="flex flex-col lg:flex-row xl:flex-row 2xl:flex-row p-0 bg-transparent text-center text-sm w-fit drop-shadow-xl sm:fa-align-center mt-3"
-    :style="{ backgroundColor: backgroundColor }"
+    class="flex flex-col lg:flex-row xl:flex-row 2xl:flex-row p-0 bg-transparent text-center text-sm w-full drop-shadow-xl mt-3"
+    :style="{ backgroundColor }"
   >
     <a
       href="https://youtu.be/ZrF7MEWojQ0?si=fgYxN05eCXV8_f5S"
@@ -14,65 +13,52 @@ vue
     </a>
     <font-awesome-icon
       :icon="faJediOrder"
-      style="color: white; cursor: pointer; height: 3vh"
+      class="text-white cursor-pointer h-[3vh]"
       @click="redirectToVideo"
     />
   </footer>
 </template>
+
 <script lang="ts">
 import { defineComponent } from "vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faJediOrder } from "@fortawesome/free-brands-svg-icons";
+
 export default defineComponent({
   name: "Footer",
-  components: {
-    FontAwesomeIcon,
-  },
+  components: { FontAwesomeIcon },
   data() {
-    return {
-      backgroundColor: "transparent",
-    };
+    return { backgroundColor: "transparent" };
+  },
+  computed: {
+    formattedDate(): string {
+      const date = new Date();
+      const day = date.getDate();
+      const suffix =
+        day === 1 || day === 21 || day === 31
+          ? "st"
+          : day === 2 || day === 22
+          ? "nd"
+          : day === 3 || day === 23
+          ? "rd"
+          : "th";
+
+      const options: Intl.DateTimeFormatOptions = { month: "long", year: "numeric" };
+      const monthYear = date.toLocaleDateString("en-US", options);
+      return `${day}<sup>${suffix}</sup> ${monthYear}`;
+    },
+    faJediOrder() {
+      return faJediOrder;
+    },
   },
   methods: {
     redirectToVideo() {
       window.open("https://www.youtube.com/watch?v=usQTt-y2Idk", "_blank");
     },
-    getCurrentDate() {
-      const date = new Date();
-      const day = date.getDate();
-      let daySuffix: string;
-      if (day === 1 || day === 21 || day === 31) {
-        daySuffix = "st";
-      } else if (day === 2 || day === 22) {
-        daySuffix = "nd";
-      } else if (day === 3 || day === 23) {
-        daySuffix = "rd";
-      } else {
-        daySuffix = "th";
-      }
-      const options: Intl.DateTimeFormatOptions = {
-        month: "long",
-        day: "numeric",
-        year: "numeric",
-      };
-      const formatter = new Intl.DateTimeFormat("en-US", options);
-      const formattedDate: string = formatter.format(date);
-      const formattedDay = `${day}<sup>${daySuffix}</sup>`;
-      return formattedDate
-        .replace(/,/g, "")
-        .replace(day.toString(), formattedDay);
-    },
   },
-  computed: {
-    faJediOrder() {
-      return faJediOrder;
-    },
-    formattedDate(): string {
-      return this.getCurrentDate();
-    }
-  }
 });
 </script>
+
 <style scoped>
 footer {
   position: fixed;
@@ -80,8 +66,6 @@ footer {
   width: 100%;
 }
 .drop-shadow-xl {
-  text-shadow:
-    0px 0px 10px rgba(255, 255, 255, 0.45),
-    0px 0px 10px rgba(255, 255, 255, 0.45);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.45), 0 0 10px rgba(255, 255, 255, 0.45);
 }
 </style>

@@ -1,7 +1,6 @@
 <template>
   <div class="flex justify-center items-center w-3/12 mb-10 p-6">
     <a
-      ref="droneButton"
       href="https://www.youtube.com/watch?v=ZrF7MEWojQ0"
       target="_blank"
       rel="noopener"

@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { imagetools } from "vite-imagetools";
 import Fonts from "unplugin-fonts/vite";
+import path from "path";
 
 // Polyfill Node built-ins for Vite
 import { NodeGlobalsPolyfillPlugin } from "@esbuild-plugins/node-globals-polyfill";
@@ -38,7 +39,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      crypto: "crypto-browserify", // Polyfill Node crypto
+      "@": path.resolve(__dirname, "src"), // Add @ alias
+      crypto: "crypto-browserify",         // Node crypto polyfill
     },
   },
 });

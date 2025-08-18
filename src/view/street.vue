@@ -1,47 +1,55 @@
 <template>
   <div class="flex flex-col items-center justify-center">
-    <h2 role="heading" class="text-3xl text-white drop-shadow-xl m-6">
+    <h2 role="heading" class="text-3xl text-white drop-shadow-xl my-6">
       {{ $t("street") }}
     </h2>
-    <div
-      class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 mb-10"
-    >
-      <div v-for="(photo, index) in photos" :key="index" class="relative m-2">
+
+    <!-- Gallery Grid -->
+    <div ref="gridRef" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 mb-10">
+      <div
+        v-for="(photo, index) in photos"
+        :key="index"
+        class="relative cursor-pointer"
+        @click="showPhoto(index)"
+      >
         <img
           :src="photo.src"
-          class="mx-auto w-full h-full object-cover shadow-md"
-          style="height: 100%"
-          @click="showPhoto(index)"
+          class="w-full h-full object-cover shadow-md"
         />
       </div>
     </div>
+
+    <!-- Modal -->
     <div
       v-if="showModal"
-      class="fixed bg-black/50 inset-0 flex items-center justify-center z-50 h-screen max-h-90vh"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
       @click.self="showModal = false"
     >
-      <div class="bg-transparent p-2 w-11/12">
+      <div class="relative bg-transparent w-11/12 max-w-6xl p-2">
         <button
           @click="showModal = false"
-          class="absolute top-0 right-0 m-4 text-4xl w-fit h-fit text-black hover:text-white bg-white hover:bg-black cursor-pointer p-2 z-10"
+          class="absolute top-2 right-2 text-4xl text-black hover:text-white bg-white hover:bg-black cursor-pointer p-2 z-10"
         >
           &times;
         </button>
-        <div class="relative">
+
+        <!-- Modal Image + Navigation -->
+        <div class="relative flex items-center justify-center">
           <button
-            class="absolute top-1/2 left-0 transform -translate-y-1/2 text-white hover:text-black bg-black hover:bg-white cursor-pointer m-1 p-2 text-2xl"
-            @click="showPreviousPhoto()"
+            class="absolute left-0 transform -translate-y-1/2 text-2xl text-white bg-black hover:bg-white hover:text-black cursor-pointer p-2"
+            @click="showPreviousPhoto"
           >
             &larr;
           </button>
+
           <img
             :src="photos[selectedPhoto].src"
-            class="object-contain mx-auto"
-            style="height: 47rem"
+            class="object-contain mx-auto max-h-[80vh]"
           />
+
           <button
-            class="absolute top-1/2 right-0 transform -translate-y-1/2 text-white hover:text-black bg-black hover:bg-white cursor-pointer m-1 p-2 text-2xl"
-            @click="showNextPhoto()"
+            class="absolute right-0 transform -translate-y-1/2 text-2xl text-white bg-black hover:bg-white hover:text-black cursor-pointer p-2"
+            @click="showNextPhoto"
           >
             &rarr;
           </button>
@@ -50,114 +58,88 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
-import { defineComponent, onMounted, onUnmounted } from "vue";
+import { defineComponent, ref, onMounted, onBeforeUnmount } from "vue";
 import { gsap } from "gsap";
 
 export default defineComponent({
-  name: "PhotoGallery",
-  data() {
-    return {
-      showModal: false,
-      selectedPhoto: 0,
-      photos: [
-        { src: "/street01.jpg" },
-        { src: "/street02.jpg" },
-        { src: "/street03.jpg" },
-        { src: "/street04.jpg" },
-        { src: "/street05.jpg" },
-        { src: "/street06.jpg" },
-        { src: "/street07.jpg" },
-        { src: "/street08.jpg" },
-        { src: "/street09.jpg" },
-        { src: "/street10.jpg" },
-        { src: "/street11.jpg" },
-        { src: "/street12.jpg" },
-        { src: "/street13.jpg" },
-        { src: "/street14.jpg" },
-        { src: "/street15.jpg" },
-        { src: "/street16.jpg" },
-        { src: "/street17.jpg" },
-        { src: "/street18.jpg" },
-        { src: "/street19.jpg" },
-        { src: "/street20.jpg" },
-        { src: "/street21.jpg" },
-        { src: "/street22.jpg" },
-      ],
+  name: "StreetGallery",
+  setup() {
+    const showModal = ref(false);
+    const selectedPhoto = ref(0);
+    const gridRef = ref<HTMLElement | null>(null);
+
+    // Dynamically generate the photo array
+    const totalPhotos = 22;
+    const photos = ref(
+      Array.from({ length: totalPhotos }, (_, i) => ({
+        src: `/street${(i + 1).toString().padStart(2, "0")}.jpg`,
+      }))
+    );
+
+    const showPhoto = (index: number) => {
+      selectedPhoto.value = index;
+      showModal.value = true;
     };
-  },
-  methods: {
-    showPhoto(index: number) {
-      this.selectedPhoto = index;
-      this.showModal = true;
-    },
-    showNextPhoto() {
-      this.selectedPhoto = (this.selectedPhoto + 1) % this.photos.length;
-    },
-    showPreviousPhoto() {
-      this.selectedPhoto =
-        (this.selectedPhoto + this.photos.length - 1) % this.photos.length;
-    },
-    handleKeyDown(event: { key: string }) {
-      if (event.key === "ArrowRight") {
-        this.showNextPhoto();
-      } else if (event.key === "ArrowLeft") {
-        this.showPreviousPhoto();
-      } else if (event.key === "Escape") {
-        this.showModal = false;
+
+    const showNextPhoto = () => {
+      selectedPhoto.value = (selectedPhoto.value + 1) % photos.value.length;
+    };
+
+    const showPreviousPhoto = () => {
+      selectedPhoto.value =
+        (selectedPhoto.value + photos.value.length - 1) % photos.value.length;
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowRight") showNextPhoto();
+      else if (event.key === "ArrowLeft") showPreviousPhoto();
+      else if (event.key === "Escape") showModal.value = false;
+    };
+
+    onMounted(() => {
+      document.addEventListener("keydown", handleKeyDown);
+
+      // Animate gallery items
+      if (gridRef.value) {
+        gsap.from(gridRef.value.children, {
+          opacity: 0,
+          y: 50,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "power1.in",
+        });
       }
-    },
-    applyButtonTransition() {
-      gsap.from(this.$refs.previousBtn, {
-        opacity: 0,
-        x: -100,
-        duration: 0.5,
-        ease: "power2.out",
-      });
 
-      gsap.from(this.$refs.nextBtn, {
+      // Animate heading
+      gsap.from("h2", {
         opacity: 0,
-        x: 100,
-        duration: 0.5,
-        ease: "power2.out",
+        y: 50,
+        duration: 0.8,
+        ease: "power1.in",
       });
-    },
-  },
-  mounted() {
-    document.addEventListener("keydown", this.handleKeyDown);
-
-    gsap.from(".relative", {
-      opacity: 0,
-      y: 100,
-      duration: 0.6,
-      stagger: 0.1,
-      delay: 0.6,
-      ease: "power1.in",
     });
 
-    gsap.from("h2", {
-      opacity: 0,
-      y: 100,
-      duration: 1,
-      delay: 0,
-      ease: "power1.in",
+    onBeforeUnmount(() => {
+      document.removeEventListener("keydown", handleKeyDown);
     });
 
-    this.applyButtonTransition();
-  },
-  beforeUnmount() {
-    document.removeEventListener("keydown", this.handleKeyDown);
+    return {
+      showModal,
+      selectedPhoto,
+      photos,
+      showPhoto,
+      showNextPhoto,
+      showPreviousPhoto,
+      gridRef,
+    };
   },
 });
 </script>
+
 <style>
 h2 {
   font-family: "Avenir", sans-serif;
-}
-
-.drop-shadow-xl {
-  text-shadow:
-    0px 0px 10px rgba(255, 255, 255, 0.7),
-    0px 0px 10px rgba(255, 255, 255, 0.7);
 }
 </style>
