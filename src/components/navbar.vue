@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { gsap } from "gsap";
+import gsap from "gsap";
 import { onMounted } from "vue";
 
 export default {

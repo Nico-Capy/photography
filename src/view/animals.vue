@@ -69,7 +69,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, onMounted, onBeforeUnmount, nextTick, watch } from "vue";
-import { gsap } from "gsap";
+import gsap from "gsap";
 
 export default defineComponent({
   name: "PhotoGallery",

@@ -61,7 +61,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted, onBeforeUnmount } from "vue";
-import { gsap } from "gsap";
+import gsap from "gsap";
 
 export default defineComponent({
   name: "StreetGallery",

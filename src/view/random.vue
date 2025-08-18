@@ -2,32 +2,31 @@
   <div class="flex flex-col items-center justify-center">
     <!-- Title -->
     <h2
-      ref="title"
-      class="text-3xl text-center text-white drop-shadow-xl m-6 p-6 mb-8"
-    >
-      {{ $t("randomgen") }}
-    </h2>
+  ref="title"
+  class="text-3xl text-center text-white drop-shadow-xl m-3 p-3 mb-2"
+>
+  {{ $t("randomgen") }}
+</h2>
 
     <!-- Container -->
     <div
       ref="container"
-      class="bg-transparent lg:w-1/3 xl:w-2/4 2xl:w-1/3 p-6 flex flex-col justify-center items-center drop-shadow-lg mb-16"
-      style="height: 63vh"
+      class="bg-transparent w-full max-w-2/3 p-3 flex flex-col justify-center items-center drop-shadow-lg mb-6"
+      style="height: auto;"
     >
       <!-- Image -->
       <img
         :src="currentImage"
         ref="image"
         id="image-no-stretch"
-        class="max-h-full max-w-full transition-opacity duration-500 ease-in-out"
-        style="height: auto; width: auto;"
+        class="w-full h-auto max-h-[63vh] transition-opacity duration-500 ease-in-out rounded-lg shadow-lg"
         alt="Random photo"
       />
 
       <!-- Button -->
       <button
         ref="button"
-        class="bg-white hover:bg-transparent text-black hover:text-white drop-shadow-xl text-xl font-light p-6 mt-4 mb-16"
+        class="bg-white hover:bg-transparent text-black hover:text-white drop-shadow-xl text-xl font-light p-2 mt-2 mb-2"
         @click="showRandomPhoto"
       >
         {{ $t("randbut") }}
@@ -87,18 +86,19 @@ const photoSources = [
   "/portrait41.jpg",
 ];
 
-// --- NICO IMAGES (kept commented for reference) ---
-const nicoImages = [
-  "/nico.jpg",
-  "/nico1.jpg",
-  "/nico2.JPG",
-  "/nico3.JPG",
-  "/nico4.JPG",
-  "/nico5.jpeg"
-];
+// --- NICO IMAGES (kept commented out for reference) ---
+// const nicoImages = [
+//   "/nico.jpg",
+//   "/nico1.jpg",
+//   "/nico2.JPG",
+//   "/nico3.JPG",
+//   "/nico4.JPG",
+//   "/nico5.jpeg"
+// ];
 
 // Merge them
-const allPhotos = [...photoSources, ...nicoImages];
+// const allPhotos = [...photoSources, ...nicoImages];
+const allPhotos = [...photoSources];
 
 export default defineComponent({
   name: "RandomPhoto",
@@ -116,7 +116,6 @@ export default defineComponent({
       return index;
     };
 
-    // Initial image
     let lastIndex = getRandomIndex();
     const currentImage = ref(allPhotos[lastIndex]);
 
@@ -127,7 +126,6 @@ export default defineComponent({
       });
     };
 
-    // Fade transition
     const showRandomPhoto = () => {
       const randomIndex = getRandomIndex(lastIndex);
       lastIndex = randomIndex;
@@ -135,13 +133,13 @@ export default defineComponent({
       if (imageRef.value) {
         gsap.to(imageRef.value, {
           opacity: 0,
-          duration: 0.8, // fade out
+          duration: 0.8,
           ease: "power2.inOut",
           onComplete: () => {
             currentImage.value = allPhotos[randomIndex];
             gsap.to(imageRef.value!, {
               opacity: 1,
-              duration: 0.8, // fade in
+              duration: 0.8,
               ease: "power2.inOut"
             });
           },
@@ -153,13 +151,11 @@ export default defineComponent({
 
     onMounted(() => {
       preloadImages();
-
-      // Animate on mount
       gsap.from([titleRef.value, containerRef.value, buttonRef.value], {
         opacity: 0,
         y: 100,
-        duration: 0.8,
-        stagger: 0.6,
+        duration: 1.18,
+        stagger: 1.18,
         ease: "power2.in",
       });
     });

@@ -72,7 +72,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted, onBeforeUnmount, nextTick } from "vue";
-import { gsap } from "gsap";
+import gsap from "gsap";
 import DroneButton from "../components/dronebutton.vue";
 
 export default defineComponent({
