@@ -12,6 +12,9 @@
   # Use Node 20 LTS for better ES module + polyfill support
   NODE_VERSION = "20"
 
+  # Explicitly set the Netlify build image to Jammy (Ubuntu 22.04)
+  NETLIFY_BUILD_IMAGE = "jammy"
+
 # Optional: caching to speed up builds
 [cache]
   paths = [
