@@ -17,7 +17,7 @@
   </div>
 
   <!-- Slideshow -->
-  <div class="flex justify-center bg-transparent h-2/3 mb-16">
+  <div class="flex justify-center bg-transparent mb-16">
     <div
       class="bg-transparent w-11/12 lg:w-screen xl:w-screen 2xl:w-screen p-3 flex flex-col justify-center items-center drop-shadow-lg"
       style="height: 63vh"
@@ -26,14 +26,16 @@
         :key="currentImageIndex"
         :src="`/preview/${imageSources[currentImageIndex]}`"
         alt="Preview image"
-        class="h-fit sm:h-fit md:h-fit lg:h-full xl:h-full 2xl:h-full my-auto object-cover"
+        width="1920"
+        height="1080"
+        class="w-full h-full object-cover"
       />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, onBeforeUnmount, ref } from "vue";
+import { defineComponent, ref, onMounted, onBeforeUnmount } from "vue";
 import { gsap } from "gsap";
 
 export default defineComponent({
@@ -49,7 +51,7 @@ export default defineComponent({
     let intervalId: number;
 
     onMounted(() => {
-      // Animate elements
+      // Animate header and images
       gsap.from(".drop-shadow-xl, .drop-shadow-lg img", {
         opacity: 0,
         y: 100,

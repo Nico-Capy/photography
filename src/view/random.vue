@@ -76,7 +76,7 @@ const photoSources = [
   "/portrait37.jpg","/portrait38.jpg","/portrait39.jpg","/portrait40.jpg",
   "/portrait41.jpg",
 
-  // Nico images
+  // Nico images (commented out)
   // "/nico.jpg",
   // "/nico1.jpg",
   // "/nico2.JPG",
@@ -88,13 +88,22 @@ const photoSources = [
 export default defineComponent({
   name: "RandomPhoto",
   setup() {
-    const currentImage = ref(photoSources[0]);
-    let lastIndex = 0;
-
     const titleRef = ref<HTMLElement | null>(null);
     const containerRef = ref<HTMLElement | null>(null);
     const imageRef = ref<HTMLImageElement | null>(null);
     const buttonRef = ref<HTMLButtonElement | null>(null);
+
+    const getRandomIndex = (excludeIndex?: number) => {
+      let index;
+      do {
+        index = Math.floor(Math.random() * photoSources.length);
+      } while (excludeIndex !== undefined && index === excludeIndex);
+      return index;
+    };
+
+    // Pick a random first image
+    let lastIndex = getRandomIndex();
+    const currentImage = ref(photoSources[lastIndex]);
 
     const preloadImages = () => {
       photoSources.forEach(src => {
@@ -104,14 +113,10 @@ export default defineComponent({
     };
 
     const showRandomPhoto = () => {
-      let randomIndex;
-      do {
-        randomIndex = Math.floor(Math.random() * photoSources.length);
-      } while (randomIndex === lastIndex);
+      const randomIndex = getRandomIndex(lastIndex);
       lastIndex = randomIndex;
 
       if (imageRef.value) {
-        // fade-out, switch image, fade-in ultra rapide
         gsap.to(imageRef.value, {
           opacity: 0,
           duration: 0.06,
@@ -128,7 +133,7 @@ export default defineComponent({
     onMounted(() => {
       preloadImages();
 
-      // Animation au montage
+      // Animation on mount
       gsap.from([titleRef.value, containerRef.value, buttonRef.value], {
         opacity: 0,
         y: 100,
