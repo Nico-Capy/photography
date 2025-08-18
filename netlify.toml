@@ -1,0 +1,26 @@
+[build]
+  # Build command
+  command = "npm run build"
+  
+  # Directory to publish
+  publish = "dist"
+
+  # Use Netlify's default base directory (root of repo)
+  base = "/"
+
+[build.environment]
+  # Use Node 20 LTS for better ES module + polyfill support
+  NODE_VERSION = "20"
+
+# Optional: caching to speed up builds
+[cache]
+  paths = [
+    "node_modules/**/*",
+    ".vite/**/*"
+  ]
+
+# Optional: redirect all 404s to index.html (for Vue router history mode)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
