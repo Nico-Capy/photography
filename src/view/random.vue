@@ -1,183 +1,60 @@
+vue
 <template>
-  <div class="flex flex-col items-center justify-center animate-element">
-    <h2
-      class="text-3xl text-center text-white drop-shadow-xl m-6 p-6 animate-element"
-    >
+  <div class="flex flex-col items-center justify-center animate-fade-in">
+    <h2 class="text-3xl text-center text-white drop-shadow-xl m-6 p-6 animate-fade-in">
       {{ $t("randomgen") }}
     </h2>
-    <div
-      class="bg-transparent lg:w-1/3 xl:w-2/4 2xl:w-1/3 p-6 flex flex-col justify-center items-center drop-shadow-lg mb-16 animate-element"
-      style="height: 63vh"
-    >
-      <img :src="currentImage" class="h-5/6 animate-element" id="nostretch" />
-      <button
-        class="bg-white hover:bg-transparent text-black hover:text-white drop-shadow-xl text-xl font-light p-6 mt-4 animate-element mb-16"
-        @click="showRandomPhoto"
-      >
+    <div class="bg-transparent lg:w-1/3 xl:w-2/4 2xl:w-1/3 p-6 flex flex-col justify-center items-center drop-shadow-lg mb-16 animate-fade-in" style="height: 63vh">
+      <img :src="currentImage" class="h-5/6 animate-fade-in" id="image-no-stretch" />
+      <button class="bg-white hover:bg-transparent text-black hover:text-white drop-shadow-xl text-xl font-light p-6 mt-4 animate-fade-in mb-16" @click="showRandomPhoto">
         {{ $t("randbut") }}
       </button>
     </div>
   </div>
 </template>
-
 <script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
 import { gsap } from "gsap";
-
-const photos = [
-  { src: "/nature09.jpg" },
-  { src: "/nature10.jpg" },
-  { src: "/nature11.jpg" },
-  { src: "/nature12.jpg" },
-  { src: "/nature13.jpg" },
-  { src: "/nature14.jpg" },
-  { src: "/nature16.jpg" },
-  { src: "/nature15.jpg" },
-  { src: "/nature07.jpg" },
-  { src: "/nature08.jpg" },
-  { src: "/nature01.jpg" },
-  { src: "/nature02.jpg" },
-  { src: "/nico1.jpg" },
-  { src: "/nature03.jpg" },
-  { src: "/nature04.jpg" },
-  { src: "/nature05.jpg" },
-  { src: "/nature06.jpg" },
-  { src: "/analog02.jpg" },
-  { src: "/analog03.jpg" },
-  { src: "/analog04.jpg" },
-  { src: "/analog05.jpg" },
-  { src: "/analog06.jpg" },
-  { src: "/analog07.jpg" },
-  { src: "/analog08.jpg" },
-  { src: "/analog09.jpg" },
-  { src: "/analog10.jpg" },
-  { src: "/analog11.jpg" },
-  { src: "/analog12.jpg" },
-  { src: "/analog13.jpg" },
-  { src: "/analog14.jpg" },
-  { src: "/analog15.jpg" },
-  { src: "/analog16.jpg" },
-  { src: "/analog17.jpg" },
-  { src: "/analog18.jpg" },
-  { src: "/analog19.jpg" },
-  { src: "/drone01.jpg" },
-  { src: "/drone02.jpg" },
-  { src: "/drone03.jpg" },
-  { src: "/drone04.jpg" },
-  { src: "/drone05.jpg" },
-  { src: "/drone06.jpg" },
-  { src: "/drone07.jpg" },
-  { src: "/drone08.jpg" },
-  { src: "/drone09.jpg" },
-  { src: "/drone10.jpg" },
-  { src: "/drone11.jpg" },
-  { src: "/drone12.jpg" },
-  { src: "/drone15.jpg" },
-  { src: "/nico3.JPG" },
-  { src: "/drone16.jpg" },
-  { src: "/drone17.jpg" },
-  { src: "/drone13.jpg" },
-  { src: "/drone14.jpg" },
-  { src: "/drone18.jpg" },
-  { src: "/infrared01.jpg" },
-  { src: "/infrared02.jpg" },
-  { src: "/infrared03.jpg" },
-  { src: "/other04.jpg" },
-  { src: "/other05.jpg" },
-  { src: "/other06.jpg" },
-  { src: "/other07.jpg" },
-  { src: "/other08.jpg" },
-  { src: "/other09.jpg" },
-  { src: "/other10.jpg" },
-  { src: "/other11.jpg" },
-  { src: "/other12.jpg" },
-  { src: "/other13.jpg" },
-  { src: "/nico5.jpeg" },
-  { src: "/infrared04.jpg" },
-  { src: "/infrared05.jpg" },
-  { src: "/other01.jpg" },
-  { src: "/other02.jpg" },
-  { src: "/other03.jpg" },
-  { src: "/other14.jpg" },
-  { src: "/other15.jpg" },
-  { src: "/other16.jpg" },
-  { src: "/street01.jpg" },
-  { src: "/street02.jpg" },
-  { src: "/street03.jpg" },
-  { src: "/street04.jpg" },
-  { src: "/street05.jpg" },
-  { src: "/street06.jpg" },
-  { src: "/street07.jpg" },
-  { src: "/street08.jpg" },
-  { src: "/street09.jpg" },
-  { src: "/street10.jpg" },
-  { src: "/nico4.JPG" },
-  { src: "/street11.jpg" },
-  { src: "/street12.jpg" },
-  { src: "/street13.jpg" },
-  { src: "/street14.jpg" },
-  { src: "/street15.jpg" },
-  { src: "/street16.jpg" },
-  { src: "/street17.jpg" },
-  { src: "/street18.jpg" },
-  { src: "/street19.jpg" },
-  { src: "/street20.jpg" },
-  { src: "/street21.jpg" },
-  { src: "/street22.jpg" },
-  { src: "/portrait01.jpg" },
-  { src: "/portrait02.jpg" },
-  { src: "/portrait03.jpg" },
-  { src: "/portrait04.jpg" },
-  { src: "/portrait05.jpg" },
-  { src: "/portrait06.jpg" },
-  { src: "/portrait07.jpg" },
-  { src: "/portrait08.jpg" },
-  { src: "/portrait09.jpg" },
-  { src: "/portrait10.jpg" },
-  { src: "/portrait11.jpg" },
-  { src: "/portrait12.jpg" },
-  { src: "/portrait13.jpg" },
-  { src: "/nico2.JPG" },
-  { src: "/portrait15.jpg" },
-  { src: "/portrait16.jpg" },
-  { src: "/portrait19.jpg" },
-  { src: "/portrait20.jpg" },
-  { src: "/portrait20.jpg" },
-  { src: "/portrait21.jpg" },
-  { src: "/portrait22.jpg" },
-  { src: "/portrait23.jpg" },
-  { src: "/portrait24.jpg" },
-  { src: "/portrait25.jpg" },
-  { src: "/portrait26.jpg" },
-  { src: "/portrait14.jpg" },
-  { src: "/portrait29.jpg" },
-  { src: "/portrait30.jpg" },
-  { src: "/nico.jpg" },
-  { src: "/portrait31.jpg" },
-  { src: "/portrait32.jpg" },
-  { src: "/portrait33.jpg" },
-  { src: "/portrait34.jpg" },
-  { src: "/portrait35.jpg" },
-  { src: "/portrait36.jpg" },
-  { src: "/portrait37.jpg" },
-  { src: "/portrait38.jpg" },
-  { src: "/portrait39.jpg" },
-  { src: "/portrait40.jpg" },
-  { src: "/portrait41.jpg" },
+const photoSources = [
+  "/nature09.jpg", "/nature10.jpg", "/nature11.jpg", "/nature12.jpg", "/nature13.jpg",
+  "/nature14.jpg", "/nature16.jpg", "/nature15.jpg", "/nature07.jpg", "/nature08.jpg",
+  "/nature01.jpg", "/nature02.jpg", "/nico1.jpg", "/nature03.jpg", "/nature04.jpg",
+  "/nature05.jpg", "/nature06.jpg", "/analog02.jpg", "/analog03.jpg", "/analog04.jpg",
+  "/analog05.jpg", "/analog06.jpg", "/analog07.jpg", "/analog08.jpg", "/analog09.jpg",
+  "/analog10.jpg", "/analog11.jpg", "/analog12.jpg", "/analog13.jpg", "/analog14.jpg",
+  "/analog15.jpg", "/analog16.jpg", "/analog17.jpg", "/analog18.jpg", "/analog19.jpg",
+  "/drone01.jpg", "/drone02.jpg", "/drone03.jpg", "/drone04.jpg", "/drone05.jpg",
+  "/drone06.jpg", "/drone07.jpg", "/drone08.jpg", "/drone09.jpg", "/drone10.jpg",
+  "/drone11.jpg", "/drone12.jpg", "/drone15.jpg", "/nico3.JPG", "/drone16.jpg",
+  "/drone17.jpg", "/drone13.jpg", "/drone14.jpg", "/drone18.jpg", "/infrared01.jpg",
+  "/infrared02.jpg", "/infrared03.jpg", "/other04.jpg", "/other05.jpg", "/other06.jpg",
+  "/other07.jpg", "/other08.jpg", "/other09.jpg", "/other10.jpg", "/other11.jpg",
+  "/other12.jpg", "/other13.jpg", "/nico5.jpeg", "/infrared04.jpg", "/infrared05.jpg",
+  "/other01.jpg", "/other02.jpg", "/other03.jpg", "/other14.jpg", "/other15.jpg",
+  "/other16.jpg", "/street01.jpg", "/street02.jpg", "/street03.jpg", "/street04.jpg",
+  "/street05.jpg", "/street06.jpg", "/street07.jpg", "/street08.jpg", "/street09.jpg",
+  "/street10.jpg", "/nico4.JPG", "/street11.jpg", "/street12.jpg", "/street13.jpg",
+  "/street14.jpg", "/street15.jpg", "/street16.jpg", "/street17.jpg", "/street18.jpg",
+  "/street19.jpg", "/street20.jpg", "/street21.jpg", "/street22.jpg", "/portrait01.jpg",
+  "/portrait02.jpg", "/portrait03.jpg", "/portrait04.jpg", "/portrait05.jpg",
+  "/portrait06.jpg", "/portrait07.jpg", "/portrait08.jpg", "/portrait09.jpg", "/portrait10.jpg",
+  "/portrait11.jpg", "/portrait12.jpg", "/portrait13.jpg", "/nico2.JPG", "/portrait15.jpg",
+  "/portrait16.jpg", "/portrait19.jpg", "/portrait20.jpg", "/portrait21.jpg", "/portrait22.jpg",
+  "/portrait23.jpg", "/portrait24.jpg", "/portrait25.jpg", "/portrait26.jpg", "/portrait14.jpg",
+  "/portrait29.jpg", "/portrait30.jpg", "/nico.jpg", "/portrait31.jpg", "/portrait32.jpg",
+  "/portrait33.jpg", "/portrait34.jpg", "/portrait35.jpg", "/portrait36.jpg", "/portrait37.jpg",
+  "/portrait38.jpg", "/portrait39.jpg", "/portrait40.jpg", "/portrait41.jpg"
 ];
-
 export default defineComponent({
   name: "App",
   setup() {
-    const currentImage = ref(photos[0].src);
-
+    const currentImage = ref(photoSources[0]);
     function showRandomPhoto() {
-      const randomIndex = Math.floor(Math.random() * photos.length);
-      currentImage.value = photos[randomIndex].src;
+      const randomIndex = Math.floor(Math.random() * photoSources.length);
+      currentImage.value = photoSources[randomIndex];
     }
-
     onMounted(() => {
-      const elements = gsap.utils.toArray(".animate-element");
+      const elements = gsap.utils.toArray(".animate-fade-in");
       elements.forEach((el: Element) => {
         gsap.from(el, {
           opacity: 0,
@@ -189,28 +66,21 @@ export default defineComponent({
         });
       });
     });
-
     return {
-      photos,
       currentImage,
       showRandomPhoto,
     };
   },
 });
 </script>
-
 <style>
 h2 {
   font-family: "Avenir", sans-serif;
 }
-
 .drop-shadow-xl {
-  text-shadow:
-    0px 0px 10px rgba(255, 255, 255, 0.7),
-    0px 0px 10px rgba(255, 255, 255, 0.7);
+  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7), 0px 0px 10px rgba(255, 255, 255, 0.7);
 }
-
-#nostretch {
+#image-no-stretch {
   object-fit: cover;
 }
 </style>
