@@ -3,15 +3,14 @@
     class="flex flex-col lg:flex-row xl:flex-row 2xl:flew-row p-0 bg-transparent text-center text-sm w-fit drop-shadow-xl sm:fa-align-center mt-3"
     :style="{ backgroundColor: backgroundColor }"
   >
-    <a
-      href="https://youtu.be/ZrF7MEWojQ0?si=5krp37w1AMIZ255t"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <p class="px-4 py-1" style="color: white">
-        © Nicola Corradini | <span v-html="formattedDate"></span>
-      </p>
-    </a>
+   <a
+  href="https://youtu.be/ZrF7MEWojQ0?si=5krp37w1AMIZ255t"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="px-4 py-1 text-white no-underline hover:opacity-80 transition-opacity"
+>
+  © Nicola Corradini | <span v-html="formattedDate"></span>
+</a>
     <font-awesome-icon
       :icon="faJediOrder"
       style="color: white; cursor: pointer; height: 3vh"
