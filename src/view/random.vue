@@ -114,10 +114,10 @@ export default defineComponent({
         // fade-out, switch image, fade-in ultra rapide
         gsap.to(imageRef.value, {
           opacity: 0,
-          duration: 0.18,
+          duration: 0.06,
           onComplete: () => {
             currentImage.value = photoSources[randomIndex];
-            gsap.to(imageRef.value, { opacity: 1, duration: 0.18 });
+            gsap.to(imageRef.value, { opacity: 1, duration: 0.06 });
           },
         });
       } else {
