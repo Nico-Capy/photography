@@ -8,8 +8,8 @@ vue
 <script lang="ts">
 import { defineComponent } from "vue";
 import Navbar from "./components/navbar.vue";
-import DroneButton from "../src/components/dronebutton.vue";
 import Footer from "../src/components/footer.vue";
+import LanguageSwitcher from "../src/components/LanguageSwitcher.vue";
 import Home from "../src/view/home.vue";
 import About from "../src/view/about.vue";
 import Drone from "../src/view/drone.vue";
@@ -23,7 +23,6 @@ import Others from "../src/view/others.vue";
 import Street from "../src/view/street.vue";
 import Pinhole from "../src/view/pinhole.vue";
 import Random from "../src/view/random.vue";
-import LanguageSwitcher from "../src/components/LanguageSwitcher.vue";
 export default defineComponent({
   components: {
     LanguageSwitcher,
@@ -42,7 +41,6 @@ export default defineComponent({
     Street,
     Pinhole,
     Random,
-    DroneButton,
   },
 });
 </script>
