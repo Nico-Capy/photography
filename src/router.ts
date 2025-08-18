@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-
-// Importing your components
+// Lazy-loaded components for better performance
 const Home = () => import("../src/view/home.vue");
 const About = () => import("../src/view/about.vue");
 const Gallery = () => import("../src/view/galleries.vue");
@@ -13,71 +12,52 @@ const Others = () => import("../src/view/others.vue");
 const Analog = () => import("../src/view/analog.vue");
 const Nature = () => import("../src/view/animals.vue");
 const Random = () => import("../src/view/random.vue");
-const NotFound = () => import("../src/view/notfound.vue"); // Importing the 404 component
-
-// Routes configuration
+const NotFound = () => import("../src/view/notfound.vue");
+// Define the routes configuration
 const routes: Array<RouteRecordRaw> = [
-  {
-    path: "/",
-    component: Home,
-  },
-  {
-    path: "/about",
-    component: About,
-  },
-  {
-    path: "/galleries",
-    component: Gallery,
-  },
-  {
-    path: "/street",
-    component: Street,
-  },
-  {
-    path: "/portraits",
-    component: Portraits,
-  },
-  {
-    path: "/drone",
-    component: Drone,
-  },
-  {
-    path: "/infrared",
-    component: Infrared,
-  },
-  {
-    path: "/pinhole",
-    component: Pinhole,
-  },
-  {
-    path: "/others",
-    component: Others,
-  },
-  {
-    path: "/analog",
-    component: Analog,
-  },
-  {
-    path: "/nature",
-    component: Nature,
-  },
-  {
-    path: "/random",
-    component: Random,
-  },
+  // Home page route
+  { path: "/", name: "Home", component: Home },
   
-  {
-    path: "/:catchAll(.*)",
-    name: "NotFound",
-    component: NotFound,
-  },
+  // About page route
+  { path: "/about", name: "About", component: About },
+  
+  // Galleries page route
+  { path: "/galleries", name: "Galleries", component: Gallery },
+  
+  // Street photography page route
+  { path: "/street", name: "Street", component: Street },
+  
+  // Portraits page route
+  { path: "/portraits", name: "Portraits", component: Portraits },
+  
+  // Drone photography page route
+  { path: "/drone", name: "Drone", component: Drone },
+  
+  // Infrared photography page route
+  { path: "/infrared", name: "Infrared", component: Infrared },
+  
+  // Pinhole photography page route
+  { path: "/pinhole", name: "Pinhole", component: Pinhole },
+  
+  // Other photography styles page route
+  { path: "/others", name: "Others", component: Others },
+  
+  // Analog photography page route
+  { path: "/analog", name: "Analog", component: Analog },
+  
+  // Nature photography page route
+  { path: "/nature", name: "Nature", component: Nature },
+  
+  // Random photography page route
+  { path: "/random", name: "Random", component: Random },
+  
+  // Catch-all route for undefined paths
+  { path: "/:catchAll(.*)", name: "NotFound", component: NotFound },
 ];
-
-// Creating the router instance
+// Create a router instance with history mode
 const router = createRouter({
   history: createWebHistory(),
-  routes,
+  routes, // Assign the defined routes
 });
-
+// Export the router instance for use in the application
 export default router;
-
