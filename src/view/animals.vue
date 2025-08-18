@@ -1,3 +1,4 @@
+vue
 <template>
   <div class="flex flex-col items-center justify-center">
     <h2 role="heading" class="text-3xl text-white drop-shadow-xl m-6">
@@ -50,11 +51,9 @@
     </div>
   </div>
 </template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 import { gsap } from "gsap";
-
 export default defineComponent({
   name: "PhotoGallery",
   data() {
@@ -77,7 +76,6 @@ export default defineComponent({
         "/nature04.jpg",
         "/nature05.jpg",
         "/nature06.jpg",
-        /* "/nature09.jpg", */
       ],
     };
   },
@@ -109,7 +107,6 @@ export default defineComponent({
         duration: 0.5,
         ease: "power2.out",
       });
-
       gsap.from(this.$refs.nextBtn, {
         opacity: 0,
         x: 100,
@@ -120,24 +117,6 @@ export default defineComponent({
   },
   mounted() {
     document.addEventListener("keydown", this.handleKeyDown);
-
-    gsap.from(".relative", {
-      opacity: 0,
-      y: 100,
-      duration: 0.6,
-      stagger: 0.1,
-      delay: 0.6,
-      ease: "power1.in",
-    });
-
-    gsap.from("h2", {
-      opacity: 0,
-      y: 100,
-      duration: 1,
-      delay: 0,
-      ease: "power1.in",
-    });
-
     this.applyButtonTransition();
   },
   beforeUnmount() {
@@ -145,12 +124,10 @@ export default defineComponent({
   },
 });
 </script>
-
 <style>
 h2 {
   font-family: "Avenir", sans-serif;
 }
-
 .drop-shadow-xl {
   text-shadow:
     0px 0px 10px rgba(255, 255, 255, 0.7),

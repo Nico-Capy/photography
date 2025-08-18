@@ -1,18 +1,32 @@
 <template>
+  <!-- Header -->
   <div
     class="flex flex-col items-center drop-shadow-xl mt-6 bg-transparent animate animate-element"
   >
+    <a
+      href="https://youtu.be/ZrF7MEWojQ0?si=fgYxN05eCXV8_f5S"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex flex-col lg:flex-row items-center gap-2 cursor-pointer no-underline"
+    >
+      <!-- H1 always centered -->
       <h1
-        class="text-4xl sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-white animate-element"
+        class="text-4xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white animate-element text-center lg:text-left"
         role="heading"
       >
         Nicola Corradini |
       </h1>
-      <h2 class="text-2xl sm:text-lg md:text-xl lg:text-2xl xl:text-2xl 2xl:text-2xl text-gray-200 animate-element">
+
+      <!-- H2 centered under H1 on small screens, inline on large -->
+      <h2
+        class="text-2xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-gray-200 animate-element text-center lg:text-left"
+      >
         {{ $t("photography") }}
       </h2>
+    </a>
   </div>
 
+  <!-- Slideshow -->
   <div class="flex justify-center bg-transparent h-2/3 animate-element mb-16">
     <div
       class="bg-transparent w-11/12 lg:w-screen xl:w-screen 2xl:w-screen p-3 flex flex-col justify-center items-center drop-shadow-lg animate-element"
@@ -55,7 +69,6 @@ export default defineComponent({
         "preview15.png",
         "preview16.png",
       ],
-      direction: "right",
     };
   },
   computed: {
