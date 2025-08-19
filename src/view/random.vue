@@ -41,12 +41,60 @@ import { defineComponent, ref, onMounted } from "vue";
 import { gsap } from "gsap";
 
 // --- PHOTO SOURCES ---
+// Comment/uncomment at will.
 const photoSources = [
-  "/nature01.jpg", "/nature02.jpg", "/nature03.jpg", "/nature04.jpg",
-  "/nature05.jpg", "/nature06.jpg", "/nature07.jpg", "/nature08.jpg",
-  "/analog02.jpg", "/analog03.jpg", "/analog04.jpg", "/analog05.jpg",
-  "/drone01.jpg", "/drone02.jpg", "/drone03.jpg", "/drone04.jpg",
-  "/nico.jpg", "/nico1.jpg", "/nico2.JPG", "/nico3.JPG", "/nico4.JPG", "/nico5.jpeg",
+  // Analog
+  "/analog01.jpg","/analog02.jpg","/analog03.jpg","/analog04.jpg","/analog05.jpg",
+  "/analog06.jpg","/analog07.jpg","/analog08.jpg","/analog09.jpg","/analog10.jpg",
+  "/analog11.jpg","/analog12.jpg","/analog13.jpg","/analog14.jpg","/analog15.jpg",
+  "/analog16.jpg","/analog17.jpg","/analog18.jpg","/analog19.jpg",
+
+  // Infrared
+  "/infrared01.jpg","/infrared02.jpg","/infrared03.jpg","/infrared04.jpg","/infrared05.jpg",
+
+  // Drone
+  "/DJI_0022.jpg","/DJI_0970.jpg",
+  "/drone01.jpg","/drone02.jpg","/drone03.jpg","/drone04.jpg","/drone05.jpg",
+  "/drone06.jpg","/drone07.jpg","/drone08.jpg","/drone09.jpg","/drone10.jpg",
+  "/drone11.jpg","/drone12.jpg","/drone13.jpg","/drone14.jpg","/drone15.jpg",
+  "/drone16.jpg","/drone17.jpg","/drone18.jpg",
+
+  // Nature
+  "/nature01.jpg","/nature02.jpg","/nature03.jpg","/nature04.jpg","/nature05.jpg",
+  "/nature06.jpg","/nature07.jpg","/nature08.jpg","/nature09.jpg","/nature10.jpg",
+  "/nature11.jpg","/nature12.jpg","/nature13.jpg","/nature14.jpg","/nature15.jpg",
+  "/nature16.jpg",
+
+  // Other
+  "/other01.jpg","/other02.jpg","/other03.jpg","/other04.jpg","/other05.jpg",
+  "/other06.jpg","/other07.jpg","/other08.jpg","/other09.jpg","/other10.jpg",
+  "/other11.jpg","/other12.jpg","/other13.jpg","/other14.jpg","/other15.jpg",
+  "/other16.jpg",
+
+  // Pinhole
+  "/pinhole01.jpg","/pinhole02.jpg","/pinhole03.jpg","/pinhole04.jpg","/pinhole05.jpg",
+  "/pinhole06.jpg","/pinhole07.jpg","/pinhole08.jpg","/pinhole09.jpg","/pinhole10.jpg",
+  "/pinhole11.jpg","/pinhole12.jpg","/pinhole13.jpg","/pinhole14.jpg","/pinhole15.jpg",
+
+  // Portrait
+  "/portrait01.jpg","/portrait02.jpg","/portrait03.jpg","/portrait04.jpg","/portrait05.jpg",
+  "/portrait06.jpg","/portrait07.jpg","/portrait08.jpg","/portrait09.jpg","/portrait10.jpg",
+  "/portrait11.jpg","/portrait12.jpg","/portrait13.jpg","/portrait14.jpg","/portrait15.jpg",
+  "/portrait16.jpg","/portrait17.jpg","/portrait18.jpg","/portrait19.jpg","/portrait20.jpg",
+  "/portrait21.jpg","/portrait22.jpg","/portrait23.jpg","/portrait24.jpg","/portrait25.jpg",
+  "/portrait26.jpg","/portrait29.jpg","/portrait30.jpg","/portrait31.jpg","/portrait32.jpg",
+  "/portrait33.jpg","/portrait34.jpg","/portrait35.jpg","/portrait36.jpg","/portrait37.jpg",
+  "/portrait38.jpg","/portrait39.jpg","/portrait40.jpg","/portrait41.jpg",
+
+  // Street
+  "/street01.jpg","/street02.jpg","/street03.jpg","/street04.jpg","/street05.jpg",
+  "/street06.jpg","/street07.jpg","/street08.jpg","/street09.jpg","/street10.jpg",
+  "/street11.jpg","/street12.jpg","/street13.jpg","/street14.jpg","/street15.jpg",
+  "/street16.jpg","/street17.jpg","/street18.jpg","/street19.jpg","/street20.jpg",
+  "/street21.jpg","/street22.jpg",
+
+  // Nico
+  "/nico.jpg","/nico1.jpg","/nico2.JPG","/nico3.JPG","/nico4.JPG","/nico5.jpeg",
 ];
 
 export default defineComponent({
