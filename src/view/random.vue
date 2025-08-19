@@ -3,7 +3,7 @@
     <!-- Title -->
     <h2
       ref="title"
-      class="text-3xl text-center text-white drop-shadow-xl m-3 p-3 mb-2"
+      class="text-3xl text-center text-white drop-shadow-xl m-2 p-2 mb-2"
     >
       {{ $t("randomgen") }}
     </h2>
@@ -11,7 +11,7 @@
     <!-- Container -->
     <div
       ref="container"
-      class="bg-transparent w-full max-w-2/3 p-3 flex flex-col justify-center items-center drop-shadow-lg mb-6"
+      class="bg-transparent w-full max-w-2/3 p-1 flex flex-col justify-center items-center drop-shadow-lg mb-3"
       style="height: auto;"
     >
       <!-- Image -->
@@ -41,65 +41,26 @@ import { defineComponent, ref, onMounted } from "vue";
 import { gsap } from "gsap";
 
 // --- PHOTO SOURCES ---
+// Add, remove, or comment/uncomment photos here
 const photoSources = [
   // Nature
-  "/nature01.jpg","/nature02.jpg","/nature03.jpg","/nature04.jpg",
-  "/nature05.jpg","/nature06.jpg","/nature07.jpg","/nature08.jpg",
-  "/nature09.jpg","/nature10.jpg","/nature11.jpg","/nature12.jpg",
-  "/nature13.jpg","/nature14.jpg","/nature15.jpg","/nature16.jpg",
+  "/nature01.jpg", "/nature02.jpg", "/nature03.jpg", "/nature04.jpg",
+  "/nature05.jpg", "/nature06.jpg", "/nature07.jpg", "/nature08.jpg",
 
   // Analog
-  "/analog02.jpg","/analog03.jpg","/analog04.jpg","/analog05.jpg",
-  "/analog06.jpg","/analog07.jpg","/analog08.jpg","/analog09.jpg",
-  "/analog10.jpg","/analog11.jpg","/analog12.jpg","/analog13.jpg",
-  "/analog14.jpg","/analog15.jpg","/analog16.jpg","/analog17.jpg",
-  "/analog18.jpg","/analog19.jpg",
+  "/analog02.jpg", "/analog03.jpg", "/analog04.jpg", "/analog05.jpg",
 
   // Drone
-  "/drone01.jpg","/drone02.jpg","/drone03.jpg","/drone04.jpg",
-  "/drone05.jpg","/drone06.jpg","/drone07.jpg","/drone08.jpg",
-  "/drone09.jpg","/drone10.jpg","/drone11.jpg","/drone12.jpg",
-  "/drone13.jpg","/drone14.jpg","/drone15.jpg","/drone16.jpg",
-  "/drone17.jpg","/drone18.jpg",
+  "/drone01.jpg", "/drone02.jpg", "/drone03.jpg", "/drone04.jpg",
 
-  // Infrared
-  "/infrared01.jpg","/infrared02.jpg","/infrared03.jpg",
-  "/infrared04.jpg","/infrared05.jpg",
-
-  // Street
-  "/street01.jpg","/street02.jpg","/street03.jpg","/street04.jpg",
-  "/street05.jpg","/street06.jpg","/street07.jpg","/street08.jpg",
-  "/street09.jpg","/street10.jpg","/street11.jpg","/street12.jpg",
-  "/street13.jpg","/street14.jpg","/street15.jpg","/street16.jpg",
-  "/street17.jpg","/street18.jpg","/street19.jpg","/street20.jpg",
-  "/street21.jpg","/street22.jpg",
-
-  // Portrait
-  "/portrait01.jpg","/portrait02.jpg","/portrait03.jpg","/portrait04.jpg",
-  "/portrait05.jpg","/portrait06.jpg","/portrait07.jpg","/portrait08.jpg",
-  "/portrait09.jpg","/portrait10.jpg","/portrait11.jpg","/portrait12.jpg",
-  "/portrait13.jpg","/portrait14.jpg","/portrait15.jpg","/portrait16.jpg",
-  "/portrait19.jpg","/portrait20.jpg","/portrait21.jpg","/portrait22.jpg",
-  "/portrait23.jpg","/portrait24.jpg","/portrait25.jpg","/portrait26.jpg",
-  "/portrait29.jpg","/portrait30.jpg","/portrait31.jpg","/portrait32.jpg",
-  "/portrait33.jpg","/portrait34.jpg","/portrait35.jpg","/portrait36.jpg",
-  "/portrait37.jpg","/portrait38.jpg","/portrait39.jpg","/portrait40.jpg",
-  "/portrait41.jpg",
+  // Extra photos (formerly)
+  "/nico.jpg",
+  "/nico1.jpg",
+  "/nico2.JPG",
+  "/nico3.JPG",
+  "/nico4.JPG",
+  "/nico5.jpeg",
 ];
-
-// --- NICO IMAGES (kept commented out for reference) ---
-// const nicoImages = [
-//   "/nico.jpg",
-//   "/nico1.jpg",
-//   "/nico2.JPG",
-//   "/nico3.JPG",
-//   "/nico4.JPG",
-//   "/nico5.jpeg"
-// ];
-
-// Merge them
-// const allPhotos = [...photoSources, ...nicoImages];
-const allPhotos = [...photoSources];
 
 export default defineComponent({
   name: "RandomPhoto",
@@ -112,13 +73,13 @@ export default defineComponent({
     const getRandomIndex = (excludeIndex?: number) => {
       let index;
       do {
-        index = Math.floor(Math.random() * allPhotos.length);
+        index = Math.floor(Math.random() * photoSources.length);
       } while (excludeIndex !== undefined && index === excludeIndex);
       return index;
     };
 
     let lastIndex = getRandomIndex();
-    const currentImage = ref(allPhotos[lastIndex]);
+    const currentImage = ref(photoSources[lastIndex]);
 
     const showRandomPhoto = () => {
       const randomIndex = getRandomIndex(lastIndex);
@@ -130,16 +91,16 @@ export default defineComponent({
           duration: 0.8,
           ease: "power2.inOut",
           onComplete: () => {
-            currentImage.value = allPhotos[randomIndex];
+            currentImage.value = photoSources[randomIndex];
             gsap.to(imageRef.value!, {
               opacity: 1,
               duration: 0.8,
-              ease: "power2.inOut"
+              ease: "power2.inOut",
             });
           },
         });
       } else {
-        currentImage.value = allPhotos[randomIndex];
+        currentImage.value = photoSources[randomIndex];
       }
     };
 
