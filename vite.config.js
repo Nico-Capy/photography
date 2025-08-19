@@ -38,20 +38,13 @@ export default defineConfig({
       brotliSize: true,
     }),
 
-    // 🔥 Image optimizer
+    // 🔥 Image optimizer (merged version)
     viteImagemin({
-      gifsicle: { optimizationLevel: 7, interlaced: false },
+      gifsicle: { optimizationLevel: 7 },
       optipng: { optimizationLevel: 7 },
-      mozjpeg: { quality: 75 }, // compress JPEGs
+      mozjpeg: { quality: 75 },
       pngquant: { quality: [0.65, 0.9], speed: 4 },
-      svgo: {
-        plugins: [
-          { name: "removeViewBox" },
-          { name: "removeEmptyAttrs", active: false },
-        ],
-      },
-      webp: { quality: 75 },
-      avif: { quality: 50 },
+      svgo: { plugins: [{ removeViewBox: false }] },
     }),
   ],
 
