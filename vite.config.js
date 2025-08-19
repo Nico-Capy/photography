@@ -11,8 +11,16 @@ import path from "path";
 import { NodeGlobalsPolyfillPlugin } from "@esbuild-plugins/node-globals-polyfill";
 import { NodeModulesPolyfillPlugin } from "@esbuild-plugins/node-modules-polyfill";
 
-// toggle this to true if you want *no chunk splitting at all*
-const disableManualChunks = false;
+/**
+ * Toggle chunk splitting.
+ *
+ * Priority:
+ *   1. Environment variable: NO_CHUNKS=true → disables manualChunks
+ *   2. Fallback: local toggle below
+ */
+const localDisableManualChunks = false;
+const disableManualChunks =
+  process.env.NO_CHUNKS === "true" || localDisableManualChunks;
 
 export default defineConfig({
   plugins: [

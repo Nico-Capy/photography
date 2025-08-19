@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:single": "NO_CHUNKS=true vite build",
     "preview": "vite preview",
     "start": "serve dist",
     "optimize:images": "node scripts/optimize.js"
