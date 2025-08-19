@@ -19,7 +19,7 @@
         :src="currentImage"
         ref="image"
         id="image-no-stretch"
-        class="w-full h-auto max-h-[63vh] transition-opacity duration-500 ease-in-out rounded-lg shadow-lg"
+        class="w-full h-auto max-h-[63vh] rounded-lg shadow-lg"
         alt="Random photo"
         loading="lazy"
       />
@@ -41,25 +41,12 @@ import { defineComponent, ref, onMounted } from "vue";
 import { gsap } from "gsap";
 
 // --- PHOTO SOURCES ---
-// Add, remove, or comment/uncomment photos here
 const photoSources = [
-  // Nature
   "/nature01.jpg", "/nature02.jpg", "/nature03.jpg", "/nature04.jpg",
   "/nature05.jpg", "/nature06.jpg", "/nature07.jpg", "/nature08.jpg",
-
-  // Analog
   "/analog02.jpg", "/analog03.jpg", "/analog04.jpg", "/analog05.jpg",
-
-  // Drone
   "/drone01.jpg", "/drone02.jpg", "/drone03.jpg", "/drone04.jpg",
-
-  // Extra photos (formerly)
-  "/nico.jpg",
-  "/nico1.jpg",
-  "/nico2.JPG",
-  "/nico3.JPG",
-  "/nico4.JPG",
-  "/nico5.jpeg",
+  "/nico.jpg", "/nico1.jpg", "/nico2.JPG", "/nico3.JPG", "/nico4.JPG", "/nico5.jpeg",
 ];
 
 export default defineComponent({
