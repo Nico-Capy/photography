@@ -5,9 +5,8 @@ import Fonts from "unplugin-fonts/vite";
 import compression from "vite-plugin-compression";
 import { visualizer } from "rollup-plugin-visualizer";
 import path from "path";
-import viteImagemin from "vite-plugin-imagemin";
 
-// Polyfills (only if you need Node globals/modules in the browser)
+// Polyfills
 import { NodeGlobalsPolyfillPlugin } from "@esbuild-plugins/node-globals-polyfill";
 import { NodeModulesPolyfillPlugin } from "@esbuild-plugins/node-modules-polyfill";
 
@@ -25,26 +24,17 @@ export default defineConfig({
       },
     }),
 
-    // Compression (gzip + brotli)
+    // Compression
     compression({ algorithm: "gzip" }),
     compression({ algorithm: "brotliCompress" }),
 
     // Bundle visualizer
     visualizer({
-      template: "treemap", // or "sunburst"
+      template: "treemap",
       filename: "./dist/bundle-analysis.html",
       open: true,
       gzipSize: true,
       brotliSize: true,
-    }),
-
-    // 🔥 Image optimizer (merged version)
-    viteImagemin({
-      gifsicle: { optimizationLevel: 7 },
-      optipng: { optimizationLevel: 7 },
-      mozjpeg: { quality: 75 },
-      pngquant: { quality: [0.65, 0.9], speed: 4 },
-      svgo: { plugins: [{ removeViewBox: false }] },
     }),
   ],
 
