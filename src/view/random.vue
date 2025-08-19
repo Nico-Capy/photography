@@ -2,11 +2,11 @@
   <div class="flex flex-col items-center justify-center">
     <!-- Title -->
     <h2
-  ref="title"
-  class="text-3xl text-center text-white drop-shadow-xl m-3 p-3 mb-2"
->
-  {{ $t("randomgen") }}
-</h2>
+      ref="title"
+      class="text-3xl text-center text-white drop-shadow-xl m-3 p-3 mb-2"
+    >
+      {{ $t("randomgen") }}
+    </h2>
 
     <!-- Container -->
     <div
@@ -21,6 +21,7 @@
         id="image-no-stretch"
         class="w-full h-auto max-h-[63vh] transition-opacity duration-500 ease-in-out rounded-lg shadow-lg"
         alt="Random photo"
+        loading="lazy"
       />
 
       <!-- Button -->
@@ -119,13 +120,6 @@ export default defineComponent({
     let lastIndex = getRandomIndex();
     const currentImage = ref(allPhotos[lastIndex]);
 
-    const preloadImages = () => {
-      allPhotos.forEach(src => {
-        const img = new Image();
-        img.src = src;
-      });
-    };
-
     const showRandomPhoto = () => {
       const randomIndex = getRandomIndex(lastIndex);
       lastIndex = randomIndex;
@@ -150,7 +144,6 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      preloadImages();
       gsap.from([titleRef.value, containerRef.value, buttonRef.value], {
         opacity: 0,
         y: 100,
