@@ -1,3 +1,4 @@
+// vite.config.js
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { imagetools } from "vite-imagetools";
@@ -9,6 +10,9 @@ import path from "path";
 // Polyfills
 import { NodeGlobalsPolyfillPlugin } from "@esbuild-plugins/node-globals-polyfill";
 import { NodeModulesPolyfillPlugin } from "@esbuild-plugins/node-modules-polyfill";
+
+// toggle this to true if you want *no chunk splitting at all*
+const disableManualChunks = false;
 
 export default defineConfig({
   plugins: [
@@ -66,15 +70,17 @@ export default defineConfig({
     chunkSizeWarningLimit: 800,
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          if (id.includes("node_modules")) {
-            return id
-              .toString()
-              .split("node_modules/")[1]
-              .split("/")[0]
-              .toString();
-          }
-        },
+        manualChunks: disableManualChunks
+          ? undefined
+          : (id) => {
+              if (id.includes("node_modules")) {
+                if (id.includes("gsap")) return "gsap";
+                if (id.includes("vue-router")) return "vue-router";
+                if (id.includes("vue-i18n")) return "vue-i18n";
+                if (id.includes("@fortawesome")) return "icons";
+                return "vendor";
+              }
+            },
       },
     },
   },
