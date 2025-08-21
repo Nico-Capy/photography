@@ -94,7 +94,7 @@ const photoSources = [
   "/street21.jpg","/street22.jpg",
 
   // Nico
-   "/nico.jpg","/nico1.jpg","/nico2.JPG","/nico3.JPG","/nico4.JPG","/nico5.jpeg",
+  // "/nico.jpg","/nico1.jpg","/nico2.JPG","/nico3.JPG","/nico4.JPG","/nico5.jpeg",
 ];
 
 export default defineComponent({
