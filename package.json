@@ -32,7 +32,6 @@
     "@tailwindcss/typography": "^0.5.9",
     "@types/gsap": "^3.0.0",
     "@types/node": "^20.10.4",
-    "@vheemstra/vite-plugin-imagemin": "^2.2.0",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.4.0",
     "autoprefixer": "^10.4.14",
