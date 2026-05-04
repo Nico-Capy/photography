@@ -44,8 +44,5 @@
     "vite-bundle-visualizer": "^1.2.1",
     "vite-imagetools": "^8.0.0",
     "vite-plugin-compression": "^0.5.1"
-  },
-  "overrides": {
-    "elliptic": "npm:elliptic@^7.0.0"
   }
 }

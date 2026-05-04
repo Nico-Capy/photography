@@ -7,10 +7,6 @@ import compression from "vite-plugin-compression";
 import { visualizer } from "rollup-plugin-visualizer";
 import path from "path";
 
-// Polyfills
-import { NodeGlobalsPolyfillPlugin } from "@esbuild-plugins/node-globals-polyfill";
-import { NodeModulesPolyfillPlugin } from "@esbuild-plugins/node-modules-polyfill";
-
 /**
  * Toggle chunk splitting.
  *
@@ -54,20 +50,19 @@ export default defineConfig({
     port: 3020,
   },
 
+  // Suppression des plugins de polyfill obsolètes et vulnérables
+  // Vite gère nativement la plupart des cas modernes
   optimizeDeps: {
     esbuildOptions: {
       define: { global: "globalThis" },
-      plugins: [
-        NodeGlobalsPolyfillPlugin({ buffer: true }),
-        NodeModulesPolyfillPlugin(),
-      ],
+      // Plugins supprimés : NodeGlobalsPolyfillPlugin et NodeModulesPolyfillPlugin
     },
   },
 
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
-      crypto: "crypto-browserify",
+      // L'alias 'crypto: "crypto-browserify"' a été supprimé pour éviter la vulnérabilité
     },
   },
 
