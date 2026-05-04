@@ -5,6 +5,7 @@
     "moduleResolution": "Node",                // Node-style module resolution
     "strict": true,                             // Enable strict type-checking
     "jsx": "preserve",                          // For Vue JSX if needed
+    "ignoreDeprecations": "6.0",               // Silence baseUrl deprecation warning
     "baseUrl": ".",                             // Base for paths
     "paths": {
       "@/*": ["src/*"]                          // Alias for src/
