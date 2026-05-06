@@ -9,7 +9,7 @@
       rel="noopener noreferrer"
       class="px-4 py-1 text-white no-underline hover:opacity-80 transition-opacity"
     >
-      © Nicola Corradini | <span v-text="dayNumber"></span><sup>{{ daySuffix }}</sup> <span v-text="monthYear"></span>
+      © Nicola Corradini | <span v-text="monthName"></span> <span v-text="dayNumber"></span><sup>{{ daySuffix }}</sup> <span v-text="yearNumber"></span>
     </a>
     <font-awesome-icon
       :icon="faJediOrder"
@@ -44,10 +44,12 @@ export default defineComponent({
         ? "rd"
         : "th";
     },
-    monthYear(): string {
+    monthName(): string {
       const date = new Date();
-      const options: Intl.DateTimeFormatOptions = { month: "long", year: "numeric" };
-      return date.toLocaleDateString("en-US", options);
+      return date.toLocaleDateString("en-US", { month: "long" });
+    },
+    yearNumber(): string {
+      return String(new Date().getFullYear());
     },
     faJediOrder() {
       return faJediOrder;
