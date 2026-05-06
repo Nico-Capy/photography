@@ -23,7 +23,7 @@
       style="height: 63vh"
     >
       <img
-        :key="currentImageIndex"
+
         :src="`/preview/${imageSources[currentImageIndex]}`"
         alt="Preview image"
         loading="lazy"
@@ -46,7 +46,7 @@ export default defineComponent({
     ];
 
     const currentImageIndex = ref(0);
-    let intervalId: number;
+    let intervalId: number | undefined;
 
     onMounted(() => {
       intervalId = window.setInterval(() => {
@@ -55,7 +55,7 @@ export default defineComponent({
     });
 
     onBeforeUnmount(() => {
-      clearInterval(intervalId);
+      if (intervalId !== undefined) clearInterval(intervalId);
     });
 
     return { imageSources, currentImageIndex };
@@ -64,10 +64,9 @@ export default defineComponent({
 </script>
 
 <style>
-body {
-  background-color: black;
-  font-family: "Avenir", sans-serif;
-}
+/* Intentionally avoid global body overrides inside a page component.
+   Global background/fonts are handled in src/main.css / src/style.css. */
+
 
 /* Header animation */
 .header-fade {

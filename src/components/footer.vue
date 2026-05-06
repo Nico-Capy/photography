@@ -9,7 +9,7 @@
       rel="noopener noreferrer"
       class="px-4 py-1 text-white no-underline hover:opacity-80 transition-opacity"
     >
-      © Nicola Corradini | <span v-html="formattedDate"></span>
+      © Nicola Corradini | <span v-text="dayNumber"></span><sup>{{ daySuffix }}</sup> <span v-text="monthYear"></span>
     </a>
     <font-awesome-icon
       :icon="faJediOrder"
@@ -31,21 +31,23 @@ export default defineComponent({
     return { backgroundColor: "transparent" };
   },
   computed: {
-    formattedDate(): string {
+    dayNumber(): string {
+      return String(new Date().getDate());
+    },
+    daySuffix(): string {
+      const day = new Date().getDate();
+      return day === 1 || day === 21 || day === 31
+        ? "st"
+        : day === 2 || day === 22
+        ? "nd"
+        : day === 3 || day === 23
+        ? "rd"
+        : "th";
+    },
+    monthYear(): string {
       const date = new Date();
-      const day = date.getDate();
-      const suffix =
-        day === 1 || day === 21 || day === 31
-          ? "st"
-          : day === 2 || day === 22
-          ? "nd"
-          : day === 3 || day === 23
-          ? "rd"
-          : "th";
-
       const options: Intl.DateTimeFormatOptions = { month: "long", year: "numeric" };
-      const monthYear = date.toLocaleDateString("en-US", options);
-      return `${day}<sup>${suffix}</sup> ${monthYear}`;
+      return date.toLocaleDateString("en-US", options);
     },
     faJediOrder() {
       return faJediOrder;
