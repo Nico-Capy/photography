@@ -1,0 +1,31 @@
+{
+  "analog": "Analog",
+  "error": "Hé! Het spijt me dat je hier beneden bent verdwaald, dat was niet de bedoeling. Dit is wat ongemakkelijk. Ik beloof je, ik werk eraan.",
+  "nature": "Natuur",
+  "galleries": "Galeries",
+  "portrait": "Portretten",
+  "pinhole": "Gaatjescamera",
+  "drone": "Drone",
+  "infrared": "Infrarood",
+  "street": "Straat",
+  "other": "Overig",
+  "photography": "Fotografie",
+  "dronevideo": "Dronevideo",
+  "randomgen": "Willekeurige foto-generator",
+  "random": "Willekeurig",
+  "randbut": "Klik hier voor een willekeurige foto",
+  "home": "Home",
+  "aboot": "Over",
+  "about": {
+    "title": "Over",
+    "subtitle": {
+      "start": "Hallo, ik ben ",
+      "end": ""
+    },
+    "paragraph1": "Ik ben ontwikkelaar, fotograaf, filmmaker, dronepiloot, bokser, schrijver, acteur, kok en brouwer. Soms combineer ik deze interesses. Aanschouw mijn online fotogalerij!",
+    "paragraph2": "Fotografie was niet mijn roeping; ik raakte er per ongeluk in verzeild als middel om de saaheid van school te ontvluchten. Maar al snel besefte ik dat het antwoord lag in innovatie. En experimenteren deed ik. Van drones tot gaatjeslenses, van infrarood tot analoog, van straatfotografie tot portretten in de studio, ik ontdekte het allemaal. Het volstaat te zeggen dat ik genoot van de opwinding van de ontdekking.",
+    "video": {
+      "alt": "Admiraal Nico, die zijn drone bestuurt"
+    }
+  }
+}

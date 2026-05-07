@@ -21,6 +21,7 @@ export default {
         { code: "en", name: "English" },
         { code: "fr", name: "Français" },
         { code: "it", name: "Italiano" },
+        { code: "ndls", name: "Nederlands" },
         { code: "la", name: "Latina" },
       ],
       selectedLanguage: this.$i18n.locale,

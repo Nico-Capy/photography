@@ -1,0 +1,3 @@
+- [x] Update `locales/messages.ts` to import Dutch locale (`ndls.json`)
+- [x] Register `ndls` in the `messages` object
+- [x] Mark tasks complete after edit
