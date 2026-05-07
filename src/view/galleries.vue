@@ -8,7 +8,7 @@
   <!-- Top Row -->
   <div class="gallery-row">
     <router-link
-      v-for="(gallery, index) in topGalleries"
+      v-for="gallery in topGalleries"
       :key="gallery.to"
       :to="gallery.to"
       class="m-2 w-11/12 h-90 text-white hover:text-black hover:bg-white shadow-white gallery-link"
@@ -21,7 +21,7 @@
   <!-- Bottom Row -->
   <div class="flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row w-11/12 h-11/12 mx-auto my-16 bg-transparent justify-center align-center overflow-scroll">
     <router-link
-      v-for="(gallery, index) in bottomGalleries"
+      v-for="gallery in bottomGalleries"
       :key="gallery.to"
       :to="gallery.to"
       class="m-2 w-11/12 h-90 text-white hover:text-black hover:bg-white shadow-white gallery-link"

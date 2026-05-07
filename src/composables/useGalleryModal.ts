@@ -16,10 +16,12 @@ export function useGalleryModal(photosLength: Ref<number>, initialIndex = 0) {
   };
 
   const showNext = () => {
+    if (photosLength.value <= 0) return;
     selectedIndex.value = (selectedIndex.value + 1) % photosLength.value;
   };
 
   const showPrevious = () => {
+    if (photosLength.value <= 0) return;
     selectedIndex.value = (selectedIndex.value + photosLength.value - 1) % photosLength.value;
   };
 
